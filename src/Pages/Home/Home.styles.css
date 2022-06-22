@@ -60,13 +60,13 @@ right: 0px;
 .home-container button {  
     margin-top: 3rem;  
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
     background-color: #1488E9;
-    width: 30rem;
-    height: 7rem;
-    border-radius: 10px;
-    border-color: #1488E9;
+    width: 22rem;
+    height: 5rem;
+    border-radius: 6px;    
     cursor: pointer;
+    border: 1px solid #1488E9;;
 }
 
 .home-container button:hover {    
