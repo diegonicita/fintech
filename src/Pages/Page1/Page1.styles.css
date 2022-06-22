@@ -1,0 +1,108 @@
+.page1-container {
+    position: relative;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    width: 100vw;    
+    }
+    
+    .page1-background {
+    background-image:  url("/public/img-home.png");
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    opacity: 0.2;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    }
+    
+    .page1-container img {
+        width: auto;        
+        height: 20vh;
+    }
+    
+    .page1-up {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 0vh;
+        width: auto;
+    }
+    
+    .page1-middle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 30vh;
+    }
+    
+    .page1-down {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+    }
+    
+    .page1-container h1 {
+        font-size: 2.5rem;    
+        text-align: center;
+    }
+    
+    .page1-container button {  
+        margin-top: 3rem;  
+        color: white;
+        font-size: 2rem;
+        background-color: #1488E9;
+        width: 22rem;
+        height: 5rem;
+        border-radius: 6px;    
+        cursor: pointer;
+        border: 1px solid #1488E9;;
+    }
+    
+    .page1-container button:hover {    
+        color: #1488E9;    
+        background-color: white;    
+        border-color: white;
+        border: 0px;
+    }    
+
+    .page1-container label {
+        margin-top: 1rem;
+    }
+
+    .page1-container input {
+        padding: 0.25rem;
+        width: 300px;
+    }    
+
+    .page1-middle select {
+        padding: 0.25rem;
+        width: 310px;
+    }
+
+    .myCheckbox {
+        max-width: 300px;
+    }
+    
+    @media (min-width: 900px)
+    {    
+        .page1-container button {   
+            font-size: 1.2rem;
+            width: 15rem;
+            height: 3.5rem;
+        }
+
+        .myCheckbox {
+            max-width: 600px;
+        }
+    }
