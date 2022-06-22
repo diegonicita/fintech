@@ -61,19 +61,18 @@ right: 0px;
     margin-top: 3rem;  
     color: white;
     font-size: 2rem;
-    background-color: #1488E9;
+    background-color: var(--global-primary-color);
     width: 22rem;
     height: 5rem;
-    border-radius: 6px;    
+    border-radius: var(--global-border-radius);
     cursor: pointer;
-    border: 1px solid #1488E9;;
+    border: 1px solid var(--global-primary-color);
 }
 
 .home-container button:hover {    
-    color: #1488E9;    
-    background-color: white;    
-    border-color: white;
-    border: 0px;
+    color: var(--global-primary-color); 
+    background-color: var(--global-bg-color);    
+    border-color: var(--global-border-color);        
 }
 
 @media (min-width: 900px)

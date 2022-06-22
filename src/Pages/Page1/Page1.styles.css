@@ -1,10 +1,9 @@
 .page1-container {
     position: relative;
-    display: flex;
-    justify-content:space-around;
+    display: flex;    
     align-items: center;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    justify-content: center;    
+    flex-direction: column;    
     margin: 0px;
     padding: 0px;
     height: 100vh;
@@ -24,7 +23,7 @@
     
     .page1-container img {
         width: auto;        
-        height: 20vh;
+        height: 10rem;
     }
     
     .page1-up {
@@ -40,8 +39,8 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        height: 30vh;
+        align-items: left;
+        height: auto;
     }
     
     .page1-down {
@@ -50,6 +49,12 @@
         justify-content: center;
         align-items: center;
         height: 20vh;
+    }
+
+    .page1-container form {        
+        display: flex;                
+        flex-direction: column;  
+        width: 100%;          
     }
     
     .page1-container h1 {
@@ -61,19 +66,19 @@
         margin-top: 3rem;  
         color: white;
         font-size: 2rem;
-        background-color: #1488E9;
+        background-color: var(--global-primary-color);
         width: 22rem;
         height: 5rem;
-        border-radius: 6px;    
+        border-radius:  var(--global-border-radius);    
         cursor: pointer;
-        border: 1px solid #1488E9;;
+        border: 1px solid var(--global-primary-color);
+        align-self: center;            
     }
     
     .page1-container button:hover {    
-        color: #1488E9;    
-        background-color: white;    
-        border-color: white;
-        border: 0px;
+        color: var(--global-primary-color); 
+        background-color: var(--global-bg-color);    
+        border-color: var(--global-border-color);
     }    
 
     .page1-container label {
@@ -81,25 +86,63 @@
     }
 
     .page1-container input {
-        padding: 0.25rem;
-        width: 300px;
-    }    
+        padding: 0.8rem;
+        font-size: 1.2rem;
+        width: 90%;  
+        border: var(--global-border);
+        border-radius: var(--global-border-radius);                     
+    }  
+    
+    .page1-container input.error {
+        border: 1px solid var(--global-error-color);
+    }
 
     .page1-middle select {
-        padding: 0.25rem;
-        width: 310px;
+        padding: 0.9rem;
+        font-size: 1.2rem;
+        width: 97%;
+        color: var(--global-select-option-color);        
+        border: var(--global-border);
+        border-radius: var(--global-border-radius); 
+    } 
+    
+    .page1-container select.error {
+        border: 1px solid var(--global-error-color);
     }
 
-    .myCheckbox {
-        max-width: 300px;
+    .myCheckbox label {
+        display: flex;        
+        flex-direction: row;
+        max-width: 400px;
+        justify-content: left;
+        align-items: left;        
     }
     
+    .myCheckbox label input{
+        width: 5%; 
+        margin: 0;
+        padding: 0;       
+    }
+    .terminos {
+        width: 90%;        
+    }  
+
+    .error-msg {
+        color: var(--global-error-color);
+        font-size: 1rem;        
+    }
+
+    .no-error-msg {                
+        font-size: 0.8rem; 
+        display: hidden;
+    }
+
     @media (min-width: 900px)
     {    
         .page1-container button {   
             font-size: 1.2rem;
             width: 15rem;
-            height: 3.5rem;
+            height: 3.5rem;          
         }
 
         .myCheckbox {

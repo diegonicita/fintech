@@ -1,10 +1,8 @@
-// Styles //
-import "./App.css";
 // Pages //
 import Home from "./Pages/Home/Home";
 import Page1 from "./Pages/Page1/Page1";
 // React Router DOM
-import { Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 // Framer Motion
 import { AnimatePresence } from "framer-motion";
 import MotionDiv from "./components/MotionDiv";
