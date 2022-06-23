@@ -21,4 +21,26 @@
     .terminos {
         width: 90%;        
     } 
+
+    .check-box-field {
+        display: flex;
+        flex-direction: column;        
+    }
+
+    .check-box-field div {
+        display: flex;
+        flex-direction: row;        
+        align-items: center;
+    }
+
+    .check-box-field input[type="checkbox"] {        
+        width: 1.5rem; 
+        height: 1.5rem;
+        margin-right: 5px;
+    }
+
+    .check-box-field label { 
+        margin-top: 0px!important; 
+        height: auto;       
+    }    
     

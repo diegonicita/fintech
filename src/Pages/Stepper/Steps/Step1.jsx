@@ -6,6 +6,7 @@ import validationSchema from "../Formik-yup/validationSchemaStep1";
 function Step1({data, updateStep}) {
 
     const onSubmit = () => { 
+        console.log("submit 1");
         sessionStorage.setItem("step1", JSON.stringify({...values}));
         updateStep(2);
     }; 

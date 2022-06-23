@@ -1,33 +1,44 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../Assets/logo.png";
 import Step1 from "./Steps/Step1";
 import Step2 from "./Steps/Step2";
+import Step3 from "./Steps/Step3";
+import Step4 from "./Steps/Step4";
 import "./Stepper.styles.css";
 
 function Stepper() {
-
   const [data, setData] = useState({});
-  const  [step, setStep] = useState(1);  
+  const [step, setStep] = useState(1);
 
   useEffect(() => {
     const step1 = sessionStorage.getItem("step1");
-    const step2 = sessionStorage.getItem("step2");    
-    setData((prevData) => ({...prevData, ...JSON.parse(step1), ...JSON.parse(step2)}));
-    }, [step]);
+    const step2 = sessionStorage.getItem("step2");
+    const step3 = sessionStorage.getItem("step3");
+    const step4 = sessionStorage.getItem("step4");
+    setData((prevData) => ({
+      ...prevData,
+      ...JSON.parse(step1),
+      ...JSON.parse(step2),
+      ...JSON.parse(step3),
+      ...JSON.parse(step4),
+    }));
+  }, [step]);
 
   const updateStep = (n) => {
-    console.log("step " + n);    
-    setStep(n);    
-  }; 
-  
+    console.log("step " + n);
+    setStep(n);
+  };
+
   return (
     <div className="stepper-container">
       <section className="stepper-up"></section>
       <img src={logo} alt="logo" />
       <section className="stepper-middle">
-        {(step === 1) && <Step1 data={data} updateStep={updateStep}/>}
-        {(step === 2) && <Step2 data={data} updateStep={updateStep}/>}        
-      </section>      
+        {step === 1 && <Step1 data={data} updateStep={updateStep} />}
+        {step === 2 && <Step2 data={data} updateStep={updateStep} />}
+        {step === 3 && <Step3 data={data} updateStep={updateStep} />}
+        {step === 4 && <Step4 data={data} updateStep={updateStep} />}
+      </section>
       <section className="stepper-down"></section>
     </div>
   );

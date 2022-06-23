@@ -1,29 +1,28 @@
 import React from 'react'
 import "./Steps.styles.css";
 import { useFormik } from "formik";
-import validationSchema from "../Formik-yup/validationSchemaStep2";
+import validationSchema from "../Formik-yup/validationSchemaStep3";
 import {Link} from "react-router-dom";
 import InputField from '../../../components/InputField';
 
-function Step2({data,updateStep}) {
+function Step3({data,updateStep}) {
 
     const onSubmit = () => {
-        console.log("submit 2");
-        sessionStorage.setItem("step2", JSON.stringify({...values}))                
-        updateStep(3);
+        console.log("submit 3");        
+        sessionStorage.setItem("step3", JSON.stringify({...values}))                
+        updateStep(4);
     }; 
 
     // console.log(data);
 
     const initialValues = {
-        primerNombre: data?.primerNombre || "",   
-        segundosNombres: data?.segundosNombres || "",
-        apellidos: data?.apellidos || "",
-        cuilcuit: data?.cuilcuit || "",
-        genero: data?.genero || "",
-        nacionalidad: data?.nacionalidad || "",
-        paisDeNacimiento: data?.paisDeNacimiento || "",
-        fechaDeNacimiento: data?.fechaDeNacimiento || "",       
+        pais: data?.pais || "",   
+        provincia: data?.provincia || "",
+        ciudadLocalidad: data?.ciudadLocalidad || "",
+        calle: data?.calle || "",
+        altura: data?.altura || "",
+        pisoDepto: data?.pisoDepto || "",
+        codigoPostal: data?.codigoPostal || "",        
       };
 
     const formik = useFormik({ initialValues, validationSchema, onSubmit, enableReinitialize: true  });
@@ -31,100 +30,89 @@ function Step2({data,updateStep}) {
 
   return (
     <form onSubmit={handleSubmit} type="POST">   
-     <h2> Datos Personales </h2>                 
+     <h2> Dirección </h2>                 
             <InputField
-                label="Primer Nombre"
-                name="primerNombre"
+                label="Pais"
+                name="pais"
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 errors={errors}
                 touched={touched}
                 values={values}
-                placeholder="Primer Nombre"
+                placeholder="Pais"
                 type="text">
             </InputField> 
             <InputField
-                label="Segundos Nombres"
-                name="segundosNombres"
+                label="Provincia"
+                name="provincia"
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 errors={errors}
                 touched={touched}
                 values={values}
-                placeholder="Segundos Nombres"
+                placeholder="Provincia"
                 type="text">
             </InputField>
             <InputField
-                label="Apellidos"
-                name="apellidos"
+                label="Ciudad o Localidad"
+                name="ciudadLocalidad"
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 errors={errors}
                 touched={touched}
                 values={values}
-                placeholder="Apellidos"
+                placeholder="Ciudad o Localidad"
                 type="text">
             </InputField>
             <InputField
-                label="Cuil/Cuit"
-                name="cuilcuit"
+                label="Calle"
+                name="calle"
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 errors={errors}
                 touched={touched}
                 values={values}
-                placeholder="Cuil/Cuit"
+                placeholder="calle"
+                type="string">
+            </InputField>
+            <InputField
+                label="Altura"
+                name="altura"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                errors={errors}
+                touched={touched}
+                values={values}
+                placeholder="altura"
                 type="number">
             </InputField>
             <InputField
-                label="Genero"
-                name="genero"
+                label="Piso y/o Depto"
+                name="pisoDepto"
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 errors={errors}
                 touched={touched}
                 values={values}
-                placeholder="genero"
+                placeholder="Piso y/o Depto"
                 type="string">
             </InputField>
             <InputField
-                label="Nacionalidad"
-                name="nacionalidad"
+                label="Codigo Postal"
+                name="codigoPostal"
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 errors={errors}
                 touched={touched}
                 values={values}
-                placeholder="nacionalidad"
+                placeholder="Codigo Postal"
                 type="string">
-            </InputField>
-            <InputField
-                label="Pais Nacimiento"
-                name="paisDeNacimiento"
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                errors={errors}
-                touched={touched}
-                values={values}
-                placeholder="Pais de Nacimiento"
-                type="string">
-            </InputField>
-            <InputField
-                label="Fecha Nacimiento"
-                name="fechaDeNacimiento"
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                errors={errors}
-                touched={touched}
-                values={values}
-                placeholder="Fecha de Nacimiento"
-                type="date">
-            </InputField>
+            </InputField>          
 
           <button type="submit"> Proximo Paso </button>
-          <Link to="/stepper" onClick={()=>updateStep(1)}>Volver</Link>
+          <Link to="/stepper" onClick={()=>updateStep(2)}>Volver</Link>
         </form>
   )
 }
 
-export default Step2
+export default Step3

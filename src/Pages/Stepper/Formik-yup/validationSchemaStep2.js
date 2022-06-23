@@ -7,7 +7,7 @@ const validationSchema = Yup.object().shape({
     segundosNombres: Yup.string().required(required),
     apellidos: Yup.string().required(required),
     cuilcuit: Yup.string().required(required),
-    genero: Yup.string().required(required),
+    genero: Yup.string().notRequired(),
     nacionalidad: Yup.string().required(required),
     paisDeNacimiento: Yup.string().required(required),
     fechaDeNacimiento: Yup.string().required(required),
