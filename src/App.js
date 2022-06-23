@@ -1,6 +1,6 @@
 // Pages //
 import Home from "./Pages/Home/Home";
-import Page1 from "./Pages/Page1/Page1";
+import Stepper from "./Pages/Stepper/Stepper";
 // React Router DOM
 import { Route, Routes, useLocation } from "react-router-dom";
 // Framer Motion
@@ -24,10 +24,10 @@ function App() {
             }
           ></Route>
           <Route
-            path="/page1"
+            path="/stepper"
             element={
               <MotionDiv>
-                <Page1 />
+                <Stepper />
               </MotionDiv>
             }
           ></Route>

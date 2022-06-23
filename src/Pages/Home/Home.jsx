@@ -8,7 +8,7 @@ function Home() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/page1", {replace: true});
+    navigate("/stepper", {replace: true});
   }
 
   return (

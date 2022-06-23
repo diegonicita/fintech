@@ -1,60 +1,46 @@
-import React from "react";
-import logo from "../../Assets/logo.png";
+import React from 'react'
+import "./Steps.styles.css";
 import { useFormik } from "formik";
-import * as Yup from "yup";
-import "./Page1.styles.css";
+import validationSchema from "../Formik-yup/validationSchema";
 
-function Page1() {
-  const initialValues = {
-    phone: "",
-    email: "",
-    tipoDeDocumento: "",
-    numeroDeDocumento: "",
-    aceptacionTerminos: false,
-  };
+function Step1({formData, setFormData,updateStep}) {
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    alert();
-  };
+    const onSubmit = () => {        
+        setFormData({...formData, 
+            phone: values.phone,
+            email: values.email,
+            tipoDeDocumento: values.tipoDeDocumento,
+            numeroDeDocumento: values.numeroDeDocumento,
+            aceptacionTerminos: values.aceptacionTerminos,
+            step: 2
+            }
+            );
+        sessionStorage.setItem("step1", JSON.stringify({...values}));
+        updateStep(2);
+    }; 
 
-  const required = "* Campo requerido";
+    const initialValues = {
+        phone: formData.phone || "",
+        email: formData.email || "",
+        tipoDeDocumento: formData.tipoDeDocumento || "",
+        numeroDeDocumento: formData.numeroDeDocumento || "",
+        aceptacionTerminos: formData.aceptacionTerminos || false,   
+      };
 
-  const validationSchema = Yup.object().shape({
-    phone: Yup.string().required(required).matches(
-      /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-      "Phone number is not valid"),
-    email: Yup.string().email("El email no es valido").required(required),
-    tipoDeDocumento: Yup.string().required(required),
-    numeroDeDocumento: Yup.string().required(required),
-    aceptacionTerminos: Yup.boolean().oneOf(
-      [true],
-      "*Campo requerido. Debe aceptar los terminos"
-    ),
-  });
-
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit,
-  });
-
-  const { handleSubmit, handleChange, handleBlur, errors, touched } = formik;
+    const formik = useFormik({ initialValues, validationSchema, onSubmit });
+    const { handleSubmit, handleChange, handleBlur, errors, touched, values } = formik;    
 
   return (
-    <div className="page1-container">
-      {/* <div className="page1-background">Home</div> */}
-      <div className="page1-up"></div>
-      <img src={logo} alt="logo" />
-      <div className="page1-middle">
-        <form onSubmit={handleSubmit} type="POST">
+    <form onSubmit={handleSubmit} type="POST">
           <label>
+            <h2> Paso 1</h2>
             <input
               type="tel"
               name="phone"
               placeholder="Telefono"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.phone}
               className={errors.phone && touched.phone && "error"}
             />
             {errors.phone && touched.phone ? (
@@ -70,6 +56,7 @@ function Page1() {
               placeholder="Email"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.email}
               className={errors.email && touched.email && "error"}
             />
             {errors.email && touched.email ? (
@@ -84,6 +71,7 @@ function Page1() {
               placeholder="Tipo de Documento"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.tipoDeDocumento}
               className={
                 errors.tipoDeDocumento && touched.tipoDeDocumento && "error"
               }
@@ -107,6 +95,7 @@ function Page1() {
               placeholder="Número de Documento"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.numeroDeDocumento}
               className={
                 errors.numeroDeDocumento && touched.numeroDeDocumento && "error"
               }
@@ -124,6 +113,7 @@ function Page1() {
                 name="aceptacionTerminos"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                checked={values.aceptacionTerminos}
               />
               <div className="terminos">
                 Declaro bajo juramento que toda la informacion consignada en el
@@ -139,10 +129,7 @@ function Page1() {
           </div>
           <button type="submit"> Proximo Paso </button>
         </form>
-      </div>
-      <div className="page1-down"></div>
-    </div>
-  );
+  )
 }
 
-export default Page1;
+export default Step1

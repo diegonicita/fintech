@@ -1,0 +1,23 @@
+    
+    .myCheckbox label {
+        display: flex;        
+        flex-direction: row;
+        max-width: 400px;
+        justify-content: left;
+        align-items: left;        
+    }
+    
+    .myCheckbox label input{
+        width: 5%; 
+        margin: 0;
+        padding: 0;       
+    }     
+    
+    .error-msg {
+        color: var(--global-error-color);
+        font-size: 1rem;        
+    }    
+
+    .terminos {
+        width: 90%;        
+    } 
