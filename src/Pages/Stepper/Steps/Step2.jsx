@@ -2,47 +2,127 @@ import React from 'react'
 import "./Steps.styles.css";
 import { useFormik } from "formik";
 import validationSchema from "../Formik-yup/validationSchemaStep2";
+import {Link} from "react-router-dom";
+import InputField from '../../../components/InputField';
 
 function Step2({data,updateStep}) {
 
     const onSubmit = () => {
+        console.log("submit 2");
         sessionStorage.setItem("step2", JSON.stringify({...values}))                
         updateStep(1);
     }; 
 
-    console.log(data);
+    // console.log(data);
 
     const initialValues = {
-        aceptacionTerminos2: data?.aceptacionTerminos2 || false,   
+        primerNombre: data?.primerNombre || "",   
+        segundosNombres: data?.segundosNombres || "",
+        apellidos: data?.apellidos || "",
+        cuilcuit: data?.cuilcuit || "",
+        genero: data?.genero || "",
+        nacionalidad: data?.nacionalidad || "",
+        paisDeNacimiento: data?.paisDeNacimiento || "",
+        fechaDeNacimiento: data?.fechaDeNacimiento || "",       
       };
 
     const formik = useFormik({ initialValues, validationSchema, onSubmit, enableReinitialize: true  });
     const { handleSubmit, handleChange, handleBlur, errors, touched, values } = formik;    
 
   return (
-    <form onSubmit={handleSubmit} type="POST">         
-          <div className="myCheckbox">
-            <label htmlFor="aceptacion">
-              <input
-                type="checkbox"
-                name="aceptacionTerminos2"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                checked={values.aceptacionTerminos2}
-              />
-              <div className="terminos">
-                Declaro bajo juramento que toda la informacion consignada en el
-                presente formulario es fehaciente y he leido y acepto los
-                terminos de la Apertura de la Cuenta Comitente
-              </div>
-            </label>
-            {errors.aceptacionTerminos2 && touched.aceptacionTerminos2 ? (
-              <div className="error-msg">{errors.aceptacionTerminos2}</div>
-            ) : (
-              ""
-            )}
-          </div>
-          <button type="submit"> Proximo Paso </button>          
+    <form onSubmit={handleSubmit} type="POST">   
+     <h2> Datos Personales </h2>                 
+            <InputField
+                label="Primer Nombre"
+                name="primerNombre"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                errors={errors}
+                touched={touched}
+                values={values}
+                placeholder="Primer Nombre"
+                type="text">
+            </InputField> 
+            <InputField
+                label="Segundos Nombres"
+                name="segundosNombres"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                errors={errors}
+                touched={touched}
+                values={values}
+                placeholder="Segundos Nombres"
+                type="text">
+            </InputField>
+            <InputField
+                label="Apellidos"
+                name="apellidos"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                errors={errors}
+                touched={touched}
+                values={values}
+                placeholder="Apellidos"
+                type="text">
+            </InputField>
+            <InputField
+                label="Cuil/Cuit"
+                name="cuilcuit"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                errors={errors}
+                touched={touched}
+                values={values}
+                placeholder="Cuil/Cuit"
+                type="number">
+            </InputField>
+            <InputField
+                label="Genero"
+                name="genero"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                errors={errors}
+                touched={touched}
+                values={values}
+                placeholder="genero"
+                type="string">
+            </InputField>
+            <InputField
+                label="Nacionalidad"
+                name="nacionalidad"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                errors={errors}
+                touched={touched}
+                values={values}
+                placeholder="nacionalidad"
+                type="string">
+            </InputField>
+            <InputField
+                label="Pais Nacimiento"
+                name="paisDeNacimiento"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                errors={errors}
+                touched={touched}
+                values={values}
+                placeholder="Pais de Nacimiento"
+                type="string">
+            </InputField>
+            <InputField
+                label="Fecha Nacimiento"
+                name="fechaDeNacimiento"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                errors={errors}
+                touched={touched}
+                values={values}
+                placeholder="Fecha de Nacimiento"
+                type="date">
+            </InputField>
+
+          <button type="submit"> Proximo Paso </button>
+          <Link to="/stepper" onClick={()=>updateStep(1)}>Volver</Link>
         </form>
   )
 }

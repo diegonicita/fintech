@@ -2,7 +2,7 @@
     position: relative;
     display: flex;    
     align-items: center;
-    justify-content: center;    
+    justify-content: start;    
     flex-direction: column;    
     margin: 0px;
     padding: 0px;
@@ -24,6 +24,12 @@
     .stepper-container img {
         width: auto;        
         height: 10rem;
+    }
+
+    .stepper-container a {
+        text-decoration: none;      
+        margin-top: 20px;  
+        font-size: 2rem;        
     }
     
     .stepper-up {
