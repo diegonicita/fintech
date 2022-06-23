@@ -1,34 +1,25 @@
 import React from 'react'
 import "./Steps.styles.css";
 import { useFormik } from "formik";
-import validationSchema from "../Formik-yup/validationSchema";
+import validationSchema from "../Formik-yup/validationSchemaStep1";
 
-function Step1({formData, setFormData,updateStep}) {
+function Step1({data, updateStep}) {
 
-    const onSubmit = () => {        
-        setFormData({...formData, 
-            phone: values.phone,
-            email: values.email,
-            tipoDeDocumento: values.tipoDeDocumento,
-            numeroDeDocumento: values.numeroDeDocumento,
-            aceptacionTerminos: values.aceptacionTerminos,
-            step: 2
-            }
-            );
+    const onSubmit = () => { 
         sessionStorage.setItem("step1", JSON.stringify({...values}));
         updateStep(2);
     }; 
 
     const initialValues = {
-        phone: formData.phone || "",
-        email: formData.email || "",
-        tipoDeDocumento: formData.tipoDeDocumento || "",
-        numeroDeDocumento: formData.numeroDeDocumento || "",
-        aceptacionTerminos: formData.aceptacionTerminos || false,   
-      };
+        phone: data.phone || "",
+        email: data.email || "",
+        tipoDeDocumento: data.tipoDeDocumento || "",
+        numeroDeDocumento: data.numeroDeDocumento || "",
+        aceptacionTerminos: data.aceptacionTerminos || false,   
+      };        
 
-    const formik = useFormik({ initialValues, validationSchema, onSubmit });
-    const { handleSubmit, handleChange, handleBlur, errors, touched, values } = formik;    
+    const formik = useFormik({ initialValues, validationSchema, onSubmit, enableReinitialize: true });
+    const { handleSubmit, handleChange, handleBlur, errors, touched, values } = formik;       
 
   return (
     <form onSubmit={handleSubmit} type="POST">
