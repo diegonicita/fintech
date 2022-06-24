@@ -1,5 +1,5 @@
     
-    .myCheckbox label {
+    .myCheckbox div {
         display: flex;        
         flex-direction: row;
         max-width: 400px;
@@ -7,9 +7,9 @@
         align-items: left;        
     }
     
-    .myCheckbox label input{
+    .myCheckbox div input{
         width: 5%; 
-        margin: 0;
+        margin-top: 1rem;
         padding: 0;       
     }     
     
@@ -19,7 +19,8 @@
     }    
 
     .terminos {
-        width: 90%;        
+        width: 90%;  
+        margin-top: 1rem;      
     } 
 
     .check-box-field {

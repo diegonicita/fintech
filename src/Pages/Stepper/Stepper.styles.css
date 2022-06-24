@@ -2,7 +2,7 @@
     position: relative;
     display: flex;    
     align-items: center;
-    justify-content: start;    
+    justify-content: flex-start;    
     flex-direction: column;    
     margin: 0px;
     padding: 0px;
@@ -44,7 +44,7 @@
     .stepper-middle {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: left;
         height: auto;
     }
@@ -87,18 +87,44 @@
         border-color: var(--global-border-color);
     }    
 
-    .stepper-container label {
-        margin-top: 1rem;
+    .stepper-container label {        
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
         max-width: 400px;
         min-width: 400px;
+        border: var(--global-border);
+    }
+
+    .with-margin-top {       
+        
+        margin-top: 1rem;
+    }
+
+    .without-border {
+        border: none!important;
+    }
+
+    .stepper-container label svg {        
+     font-size: 1.2rem;
+     margin-left: 0.5rem;
+    }
+
+    .stepper-container label.error {
+        border: 1px solid var(--global-error-color);
     }
 
     .stepper-container input {
         padding: 0.8rem;
         font-size: 1.2rem;
-        width: 90%;  
-        border: var(--global-border);
-        border-radius: var(--global-border-radius);                     
+        width: 85%;  
+        border: 0px;  
+        justify-content: flex-end;          
+    }  
+
+    .stepper-container select:focus,
+    .stepper-container input:focus {
+        outline: none;      
     }  
     
     .stepper-container input.error {
@@ -108,10 +134,9 @@
     .stepper-middle select {
         padding: 0.9rem;
         font-size: 1.2rem;
-        width: 97%;
+        width: 88%;
         color: var(--global-select-option-color);        
-        border: var(--global-border);
-        border-radius: var(--global-border-radius); 
+        border: 0px;        
     } 
     
     .stepper-container select.error {

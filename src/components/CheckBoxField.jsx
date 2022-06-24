@@ -28,7 +28,7 @@ function CheckBoxField({
           checked={values[nameIndex]}
           className={errors[nameIndex] && touched[nameIndex] && "error"}
         />
-        <label htmlFor={nameIndex}><h3>{option}</h3></label>
+        <label className="without-border" htmlFor={nameIndex}><h3>{option}</h3></label>
         {errors[nameIndex] && touched[nameIndex] ? (<div className="error-msg">{errors[nameIndex]}</div>) : ("")}
       </div>)})}
     </div>

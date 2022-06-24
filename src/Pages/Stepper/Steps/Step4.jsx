@@ -10,7 +10,7 @@ function Step4({ data, updateStep }) {
   const onSubmit = () => {
     console.log("submit 4");    
     sessionStorage.setItem("step4", JSON.stringify({ ...values }));
-    updateStep(1);
+    updateStep(5);
   };
 
   const initialValues = {
@@ -73,7 +73,7 @@ function Step4({ data, updateStep }) {
       ></CheckBoxField>     
 
       <button type="submit"> Proximo Paso </button>
-      <Link to="/stepper" onClick={() => updateStep(1)}>
+      <Link to="/stepper" onClick={() => updateStep(3)}>
         Volver
       </Link>
     </form>
