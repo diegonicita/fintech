@@ -19,16 +19,16 @@ function CheckBoxField({
         let nameIndex = `${name}${index+1}`;
         
         return (
-      <div>      
+      <div key={1001 + index}>      
         <input
           type={type}
           name={nameIndex}
           onChange={handleChange}
           onBlur={handleBlur}
-          value={values[nameIndex]}
-          classnameIndex={errors[nameIndex] && touched[nameIndex] && "error"}
+          checked={values[nameIndex]}
+          className={errors[nameIndex] && touched[nameIndex] && "error"}
         />
-        <label forHTML={nameIndex}><h3>{option}</h3></label>
+        <label htmlFor={nameIndex}><h3>{option}</h3></label>
         {errors[nameIndex] && touched[nameIndex] ? (<div className="error-msg">{errors[nameIndex]}</div>) : ("")}
       </div>)})}
     </div>

@@ -33,10 +33,14 @@
         align-items: center;
     }
 
+    .check-box-field input[type="radio"],
     .check-box-field input[type="checkbox"] {        
         width: 1.5rem; 
         height: 1.5rem;
         margin-right: 5px;
+        -webkit-appearance: checkbox; /* Chrome, Safari, Opera */
+        -moz-appearance: checkbox;    /* Firefox */
+        -ms-appearance: checkbox;     /* not currently supported */
     }
 
     .check-box-field label { 
