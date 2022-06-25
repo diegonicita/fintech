@@ -2,9 +2,6 @@ import React from 'react'
 import "./Steps.styles.css";
 import { useFormik } from "formik";
 import validationSchema from "../Formik-yup/validationSchemaStep1";
-import {GiSmartphone} from 'react-icons/gi';
-import {HiOutlineMail} from "react-icons/hi";
-import {FaAddressCard} from 'react-icons/fa';
 import { Link } from "react-router-dom";
 
 function Step1({data, updateStep}) {
@@ -79,7 +76,7 @@ function Step1({data, updateStep}) {
               }
               style={{backgroundImage: "url('/id-card-regular.svg'"}}
             >
-              <option value="" disabled selected>Tipo de Documento</option>
+              <option value="" disabled defaultValue="true">Tipo de Documento</option>
               <option value="dni">DNI</option>
               <option value="passport">Pasaporte</option>
               <option value="DNI">LC</option>

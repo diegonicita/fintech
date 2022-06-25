@@ -8,7 +8,7 @@ const validationSchema = Yup.object().shape({
       "Phone number is not valid"),
     email: Yup.string().email("El email no es valido").required(required),
     tipoDeDocumento: Yup.string().required(required),
-    numeroDeDocumento: Yup.string().required(required),
+    numeroDeDocumento: Yup.number().label('ID card').integer().positive().min(1000).required(required),
     aceptacionTerminos: Yup.boolean().oneOf(
       [true],
       "*Campo requerido. Debe aceptar los terminos"

@@ -11,9 +11,7 @@ function Step2({data,updateStep}) {
         console.log("submit 2");
         sessionStorage.setItem("step2", JSON.stringify({...values}))                
         updateStep(3);
-    }; 
-
-    // console.log(data);
+    };    
 
     const initialValues = {
         primerNombre: data?.primerNombre || "",   
@@ -74,7 +72,7 @@ function Step2({data,updateStep}) {
                 touched={touched}
                 values={values}
                 placeholder="Cuil/Cuit"
-                type="number">
+                type="text">
             </InputField>
             <InputField
                 label="Genero"

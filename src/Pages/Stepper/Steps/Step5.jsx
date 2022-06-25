@@ -3,7 +3,6 @@ import "./Steps.styles.css";
 import { useFormik } from "formik";
 import validationSchema from "../Formik-yup/validationSchemaStep5";
 import { Link } from "react-router-dom";
-import { FaBeer } from 'react-icons/fa';
 
 function Step5({data, updateStep}) {
 
@@ -27,7 +26,7 @@ function Step5({data, updateStep}) {
     <form onSubmit={handleSubmit} type="POST">
           <h2>Para continuar, agregá una cuenta bancaria</h2>
           <label className="with-margin-top">            
-            <FaBeer /> <input
+            <input
               type="text"
               name="cvucbu"
               placeholder="cvu/cbu"
@@ -35,6 +34,7 @@ function Step5({data, updateStep}) {
               onBlur={handleBlur}
               value={values.cvucbu}
               className={errors.cvucbu && touched.cvucbu && "error"}
+              style={{backgroundImage: "url('/coins-solid.svg')"}}
             />
             </label>
             {errors.cvucbu && touched.cvucbu ? (
@@ -43,17 +43,15 @@ function Step5({data, updateStep}) {
               ""
             )}          
 
-          <label className="with-margin-top">
-          <FaBeer />
+          <label className="with-margin-top">          
             <select
               name="tipoDeCuenta"
               placeholder="Tipo de Cuenta"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.tipoDeCuenta}
-              className={
-                errors.tipoDeCuenta && touched.tipoDeCuenta && "error"
-              }
+              className={errors.tipoDeCuenta && touched.tipoDeCuenta && "error"}
+              style={{backgroundImage: "url('/coins-solid.svg')"}}
             >
               <option value="">Tipo de Cuenta</option>
               <option value="cajaDeAhorro"> Caja de Ahorro </option>
@@ -67,17 +65,15 @@ function Step5({data, updateStep}) {
               ""
             )}           
 
-          <label className="with-margin-top">
-          <FaBeer />
+          <label className="with-margin-top">          
             <select
               name="moneda"
               placeholder="Moneda"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.moneda}
-              className={
-                errors.moneda && touched.moneda && "error"
-              }
+              className={errors.moneda && touched.moneda && "error"}
+              style={{backgroundImage: "url('/dollar-sign-solid.svg')"}}
             >
               <option value="">Moneda</option>
               <option value="ars"> ARS </option>
@@ -101,6 +97,7 @@ function Step5({data, updateStep}) {
               onBlur={handleBlur}
               value={values.entidad}
               className={errors.entidad && touched.entidad && "error"}
+              style={{backgroundImage: "url('/building-columns-solid.svg')"}}
             />
             </label>      
             {errors.entidad && touched.entidad ? (

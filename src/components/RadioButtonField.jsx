@@ -7,27 +7,36 @@ function RadioButtonField({
   errors,
   touched,
   values,
-  name,  
-  type,
+  name,
   options,
 }) {
   return (
     <div className="check-box-field" name={name}>
-      <h2>{label}</h2>
-      {options.map( (option, index) => {        
+      <h2 className="step4">{label}</h2>
+      {options.map((option, index) => {
         return (
-      <div>      
-        <input
-          type="radio"
-          name={name}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values[name]}
-          className={errors[name] && touched[name] && "error"}
-        />
-        <label htmlFor={name}><h3>{option}</h3></label>
-        {errors[name] && touched[name] ? (<div className="error-msg">{errors[name]}</div>) : ("")}
-      </div>)})}
+          <div key={"aa"+ index}>
+            <input
+              type="radio"
+              name={name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={option}
+              id={name + index}
+              className={errors[name] && touched[name] && "error"}
+              checked={values==option}
+            />
+            <label htmlFor={name + index}>
+              <h3>{option}</h3>
+            </label>
+          </div>
+        );
+      })}
+      {errors[name] && touched[name] ? (
+        <div className="error-msg">{errors[name]}</div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

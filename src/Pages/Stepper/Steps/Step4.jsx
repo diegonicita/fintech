@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import validationSchema from "../Formik-yup/validationSchemaStep4";
 import { Link } from "react-router-dom";
 import CheckBoxField from "../../../components/CheckBoxField";
+import RadioButtonField from "../../../components/RadioButtonField";
 
 function Step4({ data, updateStep }) {  
 
@@ -18,10 +19,8 @@ function Step4({ data, updateStep }) {
     condicionesSOIPEPFATCA2: data?.condicionesSOIPEPFATCA2 || false,
     condicionesSOIPEPFATCA3: data?.condicionesSOIPEPFATCA3 || false,
     condicionesSOIPEPFATCA4: data?.condicionesSOIPEPFATCA4 || false,
-    tributaEnOtroPais1: data?.tributaEnOtroPais1 || false,
-    tributaEnOtroPais2: data?.tributaEnOtroPais2 || false,
-    fondosOrigenesLicitos1: data?.fondosOrigenesLicitos1 || false,
-    fondosOrigenesLicitos2: data?.fondosOrigenesLicitos2 || false,
+    tributaEnOtroPais: data?.tributaEnOtroPais || false,    
+    fondosOrigenesLicitos: data?.fondosOrigenesLicitos || false,    
   };
 
   const formik = useFormik({
@@ -47,30 +46,31 @@ function Step4({ data, updateStep }) {
         type="checkbox"
         options={["SOI", "PEP", "FATCA", "Ninguna"]}        
       ></CheckBoxField>
-      <CheckBoxField
+      <div style={{fontSize: "0.8rem", color: "gray", fontWeight: "800"}}>
+        ¿No estás seguro? 
+        <Link style={{fontSize: "0.8rem", color: "#1488E9", fontWeight: "800"}} to="/"> Ver más informacion
+        </Link>
+       </div>
+      <RadioButtonField
         label="¿Tributas en otro país ademas de Argentina?"
         name="tributaEnOtroPais"
         handleChange={handleChange}
         handleBlur={handleBlur}
         errors={errors}
         touched={touched}
-        values={values}
-        placeholder="None"
-        type="checkbox"
+        values={values.tributaEnOtroPais}        
         options={["Si", "No"]}
-      ></CheckBoxField>
-      <CheckBoxField
+      ></RadioButtonField>
+      <RadioButtonField
         label="¿Sus fondos provienen de orígenes lícitos?"
         name="fondosOrigenesLicitos"
         handleChange={handleChange}
         handleBlur={handleBlur}
         errors={errors}
         touched={touched}
-        values={values}
-        placeholder="None"
-        type="checkbox"
+        values={values.fondosOrigenesLicitos}        
         options={["Si", "No"]}
-      ></CheckBoxField>     
+      ></RadioButtonField>     
 
       <button type="submit"> Proximo Paso </button>
       <Link to="/stepper" onClick={() => updateStep(3)}>
