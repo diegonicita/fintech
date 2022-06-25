@@ -8,12 +8,11 @@ function CreateAccount6() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/createAccount1", {replace: true});
+    navigate("/createAccount7", {replace: true});
   }
 
   return (
-    <div className="home-container">
-      {/* <div className="home-background">Home</div> */}
+    <div className="home-container">      
       <div className="home-up"></div>
       <img src={logo} alt="logo"/>
       <div className="home-middle">

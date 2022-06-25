@@ -7,6 +7,8 @@ import CreateAccount3 from "./Pages/CreateAccount3/CreateAccount3";
 import CreateAccount4 from "./Pages/CreateAccount4/CreateAccount4";
 import CreateAccount5 from "./Pages/CreateAccount5/CreateAccount5";
 import CreateAccount6 from "./Pages/CreateAccount6/CreateAccount6";
+import CreateAccount7 from "./Pages/CreateAccount7/CreateAccount7";
+
 
 // React Router DOM
 import { Route, Routes, useLocation } from "react-router-dom";
@@ -83,6 +85,14 @@ function App() {
             element={
               <MotionDiv>
                 <CreateAccount6 />
+              </MotionDiv>
+            }
+          ></Route>
+          <Route
+            path="/createAccount7"
+            element={
+              <MotionDiv>
+                <CreateAccount7 />
               </MotionDiv>
             }
           ></Route>

@@ -12,8 +12,7 @@ function CreateAccount5() {
   }
 
   return (
-    <div className="home-container">
-      {/* <div className="home-background">Home</div> */}
+    <div className="home-container">      
       <div className="home-up"></div>
       <img src={logo} alt="logo"/>
       <div className="home-middle">
