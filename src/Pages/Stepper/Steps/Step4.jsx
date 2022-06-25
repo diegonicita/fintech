@@ -45,7 +45,7 @@ function Step4({ data, updateStep }) {
         values={values}
         placeholder="None"
         type="checkbox"
-        options={["SOI", "PEP", "FATCA", "Ninguna"]}
+        options={["SOI", "PEP", "FATCA", "Ninguna"]}        
       ></CheckBoxField>
       <CheckBoxField
         label="¿Tributas en otro país ademas de Argentina?"

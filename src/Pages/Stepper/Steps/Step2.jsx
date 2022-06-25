@@ -30,8 +30,8 @@ function Step2({data,updateStep}) {
     const { handleSubmit, handleChange, handleBlur, errors, touched, values } = formik;    
 
   return (
-    <form onSubmit={handleSubmit} type="POST">   
-     <h2> Datos Personales </h2>                 
+    <form onSubmit={handleSubmit} type="POST">       
+     <h2 style={{paddingLeft: "45px", backgroundImage: "url('/person-solid.svg')"}}> Datos Personales</h2>                 
             <InputField
                 label="Primer Nombre"
                 name="primerNombre"
@@ -85,7 +85,7 @@ function Step2({data,updateStep}) {
                 touched={touched}
                 values={values}
                 placeholder="genero"
-                type="string">
+                type="text">
             </InputField>
             <InputField
                 label="Nacionalidad"
@@ -96,7 +96,7 @@ function Step2({data,updateStep}) {
                 touched={touched}
                 values={values}
                 placeholder="nacionalidad"
-                type="string">
+                type="text">
             </InputField>
             <InputField
                 label="Pais Nacimiento"
@@ -107,7 +107,7 @@ function Step2({data,updateStep}) {
                 touched={touched}
                 values={values}
                 placeholder="Pais de Nacimiento"
-                type="string">
+                type="text">
             </InputField>
             <InputField
                 label="Fecha Nacimiento"

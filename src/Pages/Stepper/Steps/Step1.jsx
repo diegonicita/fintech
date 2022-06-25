@@ -24,12 +24,14 @@ function Step1({data, updateStep}) {
       };        
 
     const formik = useFormik({ initialValues, validationSchema, onSubmit, enableReinitialize: true });
-    const { handleSubmit, handleChange, handleBlur, errors, touched, values } = formik;       
+    const { handleSubmit, handleChange, handleBlur, errors, touched, values } = formik; 
+    
+    const inputClass = "with-margin-top";
+    const inputClassError = "with-margin-top error";
 
   return (
     <form onSubmit={handleSubmit} type="POST">          
-          <label className="with-margin-top">
-          <GiSmartphone />
+          <label className="with-margin-top">          
             <input
               type="tel"
               name="phone"
@@ -37,7 +39,8 @@ function Step1({data, updateStep}) {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.phone}
-              className={errors.phone && touched.phone && "error"}
+              className={errors.phone && touched.phone ? inputClassError : inputClass}
+              style={{backgroundImage: "url('/mobile-screen-solid.svg')"}}
             />            
           </label>
           {errors.phone && touched.phone ? (
@@ -46,7 +49,7 @@ function Step1({data, updateStep}) {
               ""
             )}
           <label className="with-margin-top">
-          <HiOutlineMail />
+          {/* <HiOutlineMail /> */}
             <input
               type="email"
               name="email"
@@ -55,6 +58,7 @@ function Step1({data, updateStep}) {
               onBlur={handleBlur}
               value={values.email}
               className={errors.email && touched.email && "error"}
+              style={{backgroundImage: "url('/envelope-regular.svg'"}}
             />           
           </label>
           {errors.email && touched.email ? (
@@ -63,8 +67,8 @@ function Step1({data, updateStep}) {
               ""
             )}
           <label className="with-margin-top">
-          <FaAddressCard/>
-            <select
+          {/* <FaAddressCard/> */}
+            <select              
               name="tipoDeDocumento"
               placeholder="Tipo de Documento"
               onChange={handleChange}
@@ -73,8 +77,9 @@ function Step1({data, updateStep}) {
               className={
                 errors.tipoDeDocumento && touched.tipoDeDocumento && "error"
               }
+              style={{backgroundImage: "url('/id-card-regular.svg'"}}
             >
-              <option value="">Tipo de Documento</option>
+              <option value="" disabled selected>Tipo de Documento</option>
               <option value="dni">DNI</option>
               <option value="passport">Pasaporte</option>
               <option value="DNI">LC</option>
@@ -87,7 +92,7 @@ function Step1({data, updateStep}) {
               ""
             )}
           <label className="with-margin-top">
-          <FaAddressCard />
+          {/* <FaAddressCard /> */}
             <input
               type="number"
               name="numeroDeDocumento"
@@ -97,7 +102,8 @@ function Step1({data, updateStep}) {
               value={values.numeroDeDocumento}
               className={
                 errors.numeroDeDocumento && touched.numeroDeDocumento && "error"
-              }
+              }              
+              style={{backgroundImage: "url('/id-card-regular.svg'"}}
             />            
           </label>
           {errors.numeroDeDocumento && touched.numeroDeDocumento ? (

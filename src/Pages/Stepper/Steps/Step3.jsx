@@ -30,7 +30,7 @@ function Step3({data,updateStep}) {
 
   return (
     <form onSubmit={handleSubmit} type="POST">   
-     <h2> Dirección </h2>                 
+     <h2 style={{paddingLeft: "45px", backgroundSize: "18px", backgroundImage: "url('/house-solid.svg')"}}>  Dirección </h2>                                
             <InputField
                 label="Pais"
                 name="pais"
@@ -73,7 +73,7 @@ function Step3({data,updateStep}) {
                 touched={touched}
                 values={values}
                 placeholder="calle"
-                type="string">
+                type="text">
             </InputField>
             <InputField
                 label="Altura"
@@ -95,7 +95,7 @@ function Step3({data,updateStep}) {
                 touched={touched}
                 values={values}
                 placeholder="Piso y/o Depto"
-                type="string">
+                type="text">
             </InputField>
             <InputField
                 label="Codigo Postal"
@@ -106,7 +106,7 @@ function Step3({data,updateStep}) {
                 touched={touched}
                 values={values}
                 placeholder="Codigo Postal"
-                type="string">
+                type="text">
             </InputField>          
 
           <button type="submit"> Proximo Paso </button>

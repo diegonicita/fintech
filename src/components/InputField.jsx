@@ -12,6 +12,8 @@ function InputField({label, handleChange, handleBlur, errors, touched, values, n
         onBlur={handleBlur}
         value={values[name]}
         className={errors[name] && touched[name] && "error"}
+        style={{paddingLeft: "15px"}}
+        // style={{backgroundImage: "url('/mobile-screen-solid.svg')"}}
       />
     </label>
       {errors[name] && touched[name] ? (

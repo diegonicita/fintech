@@ -1,27 +1,21 @@
     
     .myCheckbox div {
-        display: flex;        
-        flex-direction: row;
+        display: flex;                
         max-width: 400px;
-        justify-content: left;
-        align-items: left;        
+        justify-content: left;       
     }
     
     .myCheckbox div input{
         width: 5%; 
-        margin-top: 1rem;
-        padding: 0;       
+        margin-top: 1rem;                       
+        margin-left: 2rem;
     }     
     
     .error-msg {
         color: var(--global-error-color);
-        font-size: 1rem;        
-    }    
-
-    .terminos {
-        width: 90%;  
-        margin-top: 1rem;      
-    } 
+        font-size: 1rem;  
+        padding-left: 2rem;      
+    }       
 
     .check-box-field {
         display: flex;
@@ -29,8 +23,7 @@
     }
 
     .check-box-field div {
-        display: flex;
-        flex-direction: row;        
+        display: flex;        
         align-items: center;
     }
 
