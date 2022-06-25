@@ -16,7 +16,7 @@ function Stepper() {
     const step2 = sessionStorage.getItem("step2");
     const step3 = sessionStorage.getItem("step3");
     const step4 = sessionStorage.getItem("step4");
-    const step5 = sessionStorage.getItem("step5");
+    const step5 = sessionStorage.getItem("step5");    
     setData((prevData) => ({
       ...prevData,
       ...JSON.parse(step1),
@@ -41,7 +41,7 @@ function Stepper() {
         {step === 2 && <Step2 data={data} updateStep={updateStep} />}
         {step === 3 && <Step3 data={data} updateStep={updateStep} />}
         {step === 4 && <Step4 data={data} updateStep={updateStep} />}
-        {step === 5 && <Step5 data={data} updateStep={updateStep} />}
+        {step === 5 && <Step5 data={data} updateStep={updateStep} />}        
       </section>
       <section className="stepper-down"></section>
     </div>

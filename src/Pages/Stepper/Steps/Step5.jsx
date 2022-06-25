@@ -3,14 +3,21 @@ import "./Steps.styles.css";
 import { useFormik } from "formik";
 import validationSchema from "../Formik-yup/validationSchemaStep5";
 import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function Step5({data, updateStep}) {
+
+  const navigate = useNavigate();
 
     const onSubmit = () => { 
         console.log("submit 5");
         sessionStorage.setItem("step5", JSON.stringify({...values}));
-        updateStep(1);
+        handleClick();
     }; 
+
+    const handleClick = () => {
+      navigate("/createAccount1", {replace: true});
+    }
 
     const initialValues = {
         cvucbu: data.cvucbu || "",
