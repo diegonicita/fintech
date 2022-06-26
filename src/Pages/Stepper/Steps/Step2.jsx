@@ -56,7 +56,7 @@ function Step2({ data, setData, updateStep }) {
             ...data,
             calle: d.domicilio[0].calle,
             altura: d.domicilio[0].numero,
-            pisoDepto: d.domicilio[0].piso + " " + d.domicilio[0].oficinaDptoLocal,
+            pisoDepto: d.domicilio[0]?.piso + " " + d.domicilio[0]?.oficinaDptoLocal,
         }            
         );
       })
