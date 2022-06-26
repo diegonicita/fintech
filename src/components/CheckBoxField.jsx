@@ -13,7 +13,7 @@ function CheckBoxField({
 }) {
   return (
     <div className="check-box-field">
-      <h2 className="step4">{label}</h2>
+      <h2 className="step4" style={{textAlign: "center"}}>{label}</h2>
       {options.map( (option, index) => {
 
         let nameIndex = `${name}${index+1}`;
@@ -28,7 +28,7 @@ function CheckBoxField({
           checked={values[nameIndex]}
           className={errors[nameIndex] && touched[nameIndex] && "error"}                              
         />
-        <label className="without-border" htmlFor={nameIndex}><h3>{option}</h3></label>
+        <label className="without-border" htmlFor={nameIndex}><h3 style={{margin: "5px"}}>{option}</h3></label>
         {errors[nameIndex] && touched[nameIndex] ? (<div className="error-msg">{errors[nameIndex]}</div>) : ("")}
       </div>)})}
     </div>

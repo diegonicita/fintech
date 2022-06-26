@@ -19,7 +19,7 @@ function CreateAccount5() {
         <h1 style={{margin: "0", maxWidth: "80%"}}> ¡Excelente!</h1>        
         <h1 style={{margin: "0", maxWidth: "80%"}}> Ahora continuemos con una foto del dorso del DNI.</h1>        
       </div>
-      <div className="home-down" style={{height: "20vh"}}>
+      <div className="home-down" style={{height: "25vh"}}>
       <button onClick={handleClick}> Sacar foto </button>
       <button style={{marginTop: "20px"}} onClick={handleClick}> Subir archivo </button>
       </div>

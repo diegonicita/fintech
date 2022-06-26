@@ -109,7 +109,7 @@ function Step3({data,updateStep}) {
                 type="text">
             </InputField>          
 
-          <button type="submit"> Proximo Paso </button>
+          <button type="submit"><span className="icon" style={{left: "15%",top:"5%"}}></span>Proximo Paso</button>
           <Link to="/stepper" onClick={()=>updateStep(2)}>Volver</Link>
         </form>
   )

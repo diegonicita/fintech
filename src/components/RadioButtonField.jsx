@@ -27,7 +27,7 @@ function RadioButtonField({
               checked={values==option}
             />
             <label htmlFor={name + index}>
-              <h3>{option}</h3>
+              <h3 style={{margin: "5px"}}>{option}</h3>
             </label>
           </div>
         );

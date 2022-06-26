@@ -37,8 +37,8 @@ function Stepper() {
       <section className="stepper-up"></section>
       <img src={logo} alt="logo" />
       <section className="stepper-middle">
-        {step === 1 && <Step1 data={data} updateStep={updateStep} />}
-        {step === 2 && <Step2 data={data} updateStep={updateStep} />}
+        {step === 1 && <Step1 data={data} setData={setData} updateStep={updateStep} />}
+        {step === 2 && <Step2 data={data} setData={setData} updateStep={updateStep} />}
         {step === 3 && <Step3 data={data} updateStep={updateStep} />}
         {step === 4 && <Step4 data={data} updateStep={updateStep} />}
         {step === 5 && <Step5 data={data} updateStep={updateStep} />}        

@@ -35,7 +35,7 @@ function Step4({ data, updateStep }) {
   return (
     <form onSubmit={handleSubmit} type="POST">
       <CheckBoxField
-        label="¿Cumplis alguna de las siguientes condiciones?"
+        label="¿Cumplís alguna de las siguientes condiciones?"
         name="condicionesSOIPEPFATCA"
         handleChange={handleChange}
         handleBlur={handleBlur}
@@ -52,7 +52,7 @@ function Step4({ data, updateStep }) {
         </Link>
        </div>
       <RadioButtonField
-        label="¿Tributas en otro país ademas de Argentina?"
+        label="¿Tributás en otro país además de Argentina?"
         name="tributaEnOtroPais"
         handleChange={handleChange}
         handleBlur={handleBlur}
@@ -72,7 +72,7 @@ function Step4({ data, updateStep }) {
         options={["Si", "No"]}
       ></RadioButtonField>     
 
-      <button type="submit"> Proximo Paso </button>
+      <button type="submit"><span className="icon" style={{left: "15%",top:"5%"}}></span>Proximo Paso</button>
       <Link to="/stepper" onClick={() => updateStep(3)}>
         Volver
       </Link>

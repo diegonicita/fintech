@@ -77,6 +77,25 @@
     align-self: center;
 }
 
+.stepper-container button span.icon {
+    background: url("/public/flecha-derecha.png") no-repeat;
+    float: left;
+    width: 20px;
+    height: 21px;
+    background-size: cover;
+    position: relative;
+}
+
+.stepper-container button:hover span.icon {
+    background: url("/public/flecha-derecha-blue.png") no-repeat;
+    float: left;
+    width: 20px;
+    height: 21px;       
+    background-size: cover;
+    position: relative;
+}
+
+
 .stepper-container button:hover {
     color: var(--global-primary-color);
     background-color: var(--global-bg-color);
@@ -190,6 +209,7 @@ option:not(:first-of-type) {
     .stepper-container input[type="password"],
     .stepper-container input[type="text"] {
         width: 80vw;
+        font-size: 1rem;
     }
 }
 

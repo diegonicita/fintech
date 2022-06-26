@@ -1,15 +1,51 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import "./Steps.styles.css";
 import { useFormik } from "formik";
 import validationSchema from "../Formik-yup/validationSchemaStep1";
-import { Link } from "react-router-dom";
+import axios from 'axios';
 
-function Step1({data, updateStep}) {
+function Step1({data, setData, updateStep}) {
 
+  const [apiDataCUILCUIT, setApiDataCUILCUIT] = useState("");
+  const [isFetching, setIsFetching] = useState(false);
+
+  useEffect(() => {
+    console.log("useEffect");
+    if (isFetching)
+    {
+    console.log("axios");
+    const url = "https://api-gateway.staging.scala.ly/afip";    
+    const query = `/ws_sr_padron_a13/getIdPersonaListByDocumento?documento=${values.numeroDeDocumento}`;    
+    const fullUrl = url + query;
+    let tokenStr = 'ChTec.mnJeDQsJijJVdLZ409HHgcOnY1OnhZr4DgCvhzWebKqGnQX55M';
+    axios.get(fullUrl, { headers: {"Authorization" : `Apikey ${tokenStr}`} })
+    .then(res => {
+      setApiDataCUILCUIT(res.data.idPersona[0]);
+      console.log(res.data.idPersona[0]);
+      setData( (previous) => {  
+        return {
+          ...previous,
+          cuilcuit: res.data.idPersona[0]
+        }
+      }
+      );      
+      setIsFetching(false);
+      updateStep(2);
+    }
+    ).catch(err => {
+      console.log(err);
+      setIsFetching(false);
+      updateStep(2);
+    }
+    );    
+    }
+  }, [isFetching], updateStep); 
+  
     const onSubmit = () => { 
+        setIsFetching(true);
         console.log("submit 1");
-        sessionStorage.setItem("step1", JSON.stringify({...values}));
-        updateStep(2);
+        console.log("value", values.numeroDeDocumento);
+        sessionStorage.setItem("step1", JSON.stringify({...values}));        
     }; 
 
     const initialValues = {
@@ -129,8 +165,7 @@ function Step1({data, updateStep}) {
             ) : (
               ""
             )}
-          <button type="submit"> Proximo Paso </button>
-          <Link to="/stepper" onClick={()=>updateStep(5)}>Volver</Link>
+          <button type="submit" disabled={isFetching}><span className="icon" style={{left: "15%",top:"5%"}}></span>Proximo Paso</button>          
         </form>
   )
 }
