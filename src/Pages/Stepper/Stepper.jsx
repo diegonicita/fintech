@@ -6,6 +6,7 @@ import Step3 from "./Steps/Step3";
 import Step4 from "./Steps/Step4";
 import Step5 from "./Steps/Step5";
 import "./Stepper.styles.css";
+import { Link } from "react-router-dom";
 
 function Stepper() {
   const [data, setData] = useState({});
@@ -35,7 +36,7 @@ function Stepper() {
   return (
     <div className="stepper-container">
       <section className="stepper-up"></section>
-      <img src={logo} alt="logo" />
+      <Link to="/"><img src={logo} alt="logo" /></Link>
       <section className="stepper-middle">
         {step === 1 && <Step1 data={data} setData={setData} updateStep={updateStep} />}
         {step === 2 && <Step2 data={data} setData={setData} updateStep={updateStep} />}

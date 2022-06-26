@@ -9,9 +9,9 @@ import axios from "axios";
 function Step2({ data, setData, updateStep }) {
 
   const initialValues = {
-    primerNombre: data?.primerNombre || "",
-    segundosNombres: data?.segundosNombres || "",
-    apellidos: data?.apellidos || "",
+    primerNombre: "",
+    segundosNombres: "",
+    apellidos: "",
     cuilcuit: data?.cuilcuit || "",
     genero: data?.genero || "",
     nacionalidad: data?.nacionalidad || "",
@@ -43,20 +43,22 @@ function Step2({ data, setData, updateStep }) {
     axios
       .get(fullUrl, { headers: { Authorization: `Apikey ${tokenStr}` } })
       .then((res) => {        
-        const d = res.data.persona;        
+        const d = res.data.persona;  
+        // console.log(d);
         let nombre = d.nombre;
         let nombres = nombre.split(" ");
-        formik.setFieldValue("primerNombre", nombres[0], true);
-        formik.setFieldValue("segundosNombres", nombres[1], true);       
-        formik.setFieldValue("apellidos", d.apellido, true);
+        formik.setFieldValue("primerNombre", nombres[0] || "", true);
+        formik.setFieldValue("segundosNombres", nombres[1] || "", true);       
+        formik.setFieldValue("apellidos", d.apellido || "", true);
         let fecha = d.fechaNacimiento;
         let fechaSplit = fecha.split("T");
         formik.setFieldValue("fechaDeNacimiento", fechaSplit[0], true);
         setData({
             ...data,
-            calle: d.domicilio[0].calle,
-            altura: d.domicilio[0].numero,
-            pisoDepto: d.domicilio[0]?.piso + " " + d.domicilio[0]?.oficinaDptoLocal,
+            calle: d.domicilio[0].calle || "",
+            altura: d.domicilio[0].numero || "",
+            pisoDepto: (d.domicilio[0]?.piso || "") + (d.domicilio[0]?.oficinaDptoLocal || ""),
+            codigoPostal: d.domicilio[0]?.codigoPostal || "",
         }            
         );
       })
