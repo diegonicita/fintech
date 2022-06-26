@@ -61,7 +61,7 @@ function Home() {
       <div className="home-up"></div>
       <img src={logo} alt="logo"/>
       <Modal show={showModal} handleClose={hideMyModal} handleReset={resetData}>
-          <div>Tenes una apertura en proceso:</div>          
+          <h2>Tenes una apertura en proceso:</h2>          
       </Modal>
       <div className="home-middle">
         <h1> Abrí tu cuenta en minutos</h1>        
