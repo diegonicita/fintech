@@ -1,0 +1,53 @@
+.camera-container {      
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;    
+    overflow: hidden;  
+    position: relative; 
+    height: 100vh;
+  }
+
+    .camera-retake-button,
+    .camera-button {
+        position:absolute;
+        bottom: 10%;
+        left: calc(50% - 30px); 
+        height: 60px;
+        line-height: 80px;  
+        width: 60px;  
+        font-size: 2em;
+        font-weight: bold;
+        border-radius: 50%;
+        background-color: yellow;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .capture-img {                
+        object-fit: contain;     
+        width: 100vw;
+        margin-left: 15vw;   
+        margin-right: 15vw;   
+        height: 100vh;  
+        position: relative;      
+      }
+
+      #web-cam {
+        position: relative;
+        width: auto;
+        height: 100vh;
+      }      
+
+      .rectangle {
+        color: red;
+        top: 10vh;
+        width: 70vw;
+        position: absolute;
+        bottom: 50%;
+        height: 50vh;
+        border: 5px solid yellow;
+        margin-left: 15vw;
+        margin-right: 15vw;
+      }

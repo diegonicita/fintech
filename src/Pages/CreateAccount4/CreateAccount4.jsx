@@ -8,7 +8,7 @@ function CreateAccount4() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/createAccount5", {replace: true});
+    navigate("/camera", {replace: true});
   }
 
   return (
