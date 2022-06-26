@@ -25,7 +25,14 @@ function CreateAccount4() {
       h1Style={{maxWidth: "80%"}}
       divHomeDownStyle={{height: "30vh"}}
       handleClick={handleClick}> 
-        <button style={{marginTop: "20px"}} onClick={handleUploadFile}> Subir archivo </button>
+        <form>          
+        </form>
+        <button style={{marginTop: "20px"}} onClick={handleUploadFile}>
+        <label style={{width: "100%", cursor: "pointer"}}> Subir archivo                    
+        <input style={{display: "none"}} type="file"></input>      
+        </label>  
+        </button>
+        {/* <div> Archivo Cargado : ninguno </div> */}
     </CreateAccountComponent>
   
   );
