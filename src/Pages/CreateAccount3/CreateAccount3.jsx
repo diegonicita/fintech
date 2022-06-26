@@ -2,6 +2,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import "../Home/Home.styles.css";
 import logo from "../../Assets/logo.png";
+import CreateAccountComponent from "../../components/CreateAccountBase";
 
 function CreateAccount3() {
 
@@ -12,16 +13,14 @@ function CreateAccount3() {
   }
 
   return (
-    <div className="home-container">      
-      <div className="home-up"></div>
-      <img src={logo} alt="logo"/>
-      <div className="home-middle">
-        <h1 style={{maxWidth: "80%"}}> ¡Excelente! Ahora necesitamos fotos de tu DNI y una selfie.</h1>        
-      </div>
-      <div className="home-down" style={{height: "20vh"}}>
-      <button onClick={handleClick}> Comenzar </button>
-      </div>
-    </div>
+      <CreateAccountComponent 
+      logo={logo}
+      h1Title="¡Excelente! Ahora necesitamos fotos de tu DNI y una selfie."
+      buttonText="Comenzar"
+      h1Style={{maxWidth: "80%"}}
+      divHomeDownStyle={{height: "20vh"}}
+      handleClick={handleClick}
+    /> 
   );
 }
 

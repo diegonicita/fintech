@@ -41,4 +41,13 @@
         margin-top: 0px!important; 
         height: auto;       
     }    
+
+    img.wait-gif {
+        z-index: -1;        
+        height: 5rem!important;
+        width: 50px!important;
+        height: 50px!important; 
+        margin: 0 auto;
+    }
+    
     

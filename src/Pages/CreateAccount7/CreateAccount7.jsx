@@ -8,7 +8,7 @@ function CreateAccount7() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/createAccount1", {replace: true});
+    // navigate("/createAccount1", {replace: true});
   }
 
   return (
@@ -19,7 +19,7 @@ function CreateAccount7() {
         <h1 style={{margin: "0", maxWidth: "80%"}}>¡Excelente, ya terminamos!</h1>        
         <h1 style={{margin: "0",maxWidth: "80%"}}>Pronto nos pondremos en contacto con vos.</h1>                
       </div>
-      <div className="home-down" style={{height: "20vh"}}>
+      <div className="home-down" style={{height: "25vh"}}>
       <button onClick={handleClick}> Finalizar </button>      
       </div>
     </div>

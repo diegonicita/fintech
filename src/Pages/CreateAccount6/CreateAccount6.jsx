@@ -8,7 +8,7 @@ function CreateAccount6() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/createAccount7", {replace: true});
+    navigate("/camera?stepId=3", {replace: true});
   }
 
   return (
@@ -20,7 +20,7 @@ function CreateAccount6() {
         <h1 style={{margin: "0",maxWidth: "80%"}}>Por último, necesitamos que te saques una selfie con DNI en mano.</h1>        
         <h1 style={{margin: "0",maxWidth: "80%", color: "red"}}> Importante: sostené el DNI en frente tuyo.</h1>        
       </div>
-      <div className="home-down" style={{height: "20vh"}}>
+      <div className="home-down" style={{height: "30vh"}}>
       <button onClick={handleClick}> Sacar foto </button>      
       </div>
     </div>

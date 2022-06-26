@@ -21,7 +21,7 @@ function Step1({data, setData, updateStep}) {
     axios.get(fullUrl, { headers: {"Authorization" : `Apikey ${tokenStr}`} })
     .then(res => {
       setApiDataCUILCUIT(res.data.idPersona[0]);
-      console.log(res.data.idPersona[0]);
+      // console.log(res.data.idPersona[0]);
       setData( (previous) => {  
         return {
           ...previous,
@@ -33,7 +33,7 @@ function Step1({data, setData, updateStep}) {
       updateStep(2);
     }
     ).catch(err => {
-      console.log(err);
+      // console.log(err);
       setIsFetching(false);
       updateStep(2);
     }
@@ -43,8 +43,8 @@ function Step1({data, setData, updateStep}) {
   
     const onSubmit = () => { 
         setIsFetching(true);
-        console.log("submit 1");
-        console.log("value", values.numeroDeDocumento);
+        // console.log("submit 1");
+        // console.log("value", values.numeroDeDocumento);
         sessionStorage.setItem("step1", JSON.stringify({...values}));        
     }; 
 
@@ -165,7 +165,10 @@ function Step1({data, setData, updateStep}) {
             ) : (
               ""
             )}
-          <button type="submit" disabled={isFetching}><span className="icon" style={{left: "15%",top:"5%"}}></span>Proximo Paso</button>          
+          <button type="submit" disabled={isFetching}><span className="icon" style={{left: "15%",top:"5%"}}></span>Proximo Paso                              
+          </button>
+          {isFetching?<img className="wait-gif" src="/wait2.gif" />:""}
+          
         </form>
   )
 }
