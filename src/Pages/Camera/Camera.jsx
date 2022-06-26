@@ -48,6 +48,13 @@ export const Camera = () => {
             >
               Retake
             </button>
+            <button className="camera-confirm-button"
+              onClick={() => {
+            
+              }}
+            >
+              Confirmar
+            </button>
             <div className="rectangle"></div>
           </>
         )}
