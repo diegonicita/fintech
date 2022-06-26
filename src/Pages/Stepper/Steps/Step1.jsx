@@ -10,7 +10,7 @@ function Step1({data, setData, updateStep}) {
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
-    console.log("useEffect");
+    // console.log("useEffect");
     if (isFetching)
     {
     console.log("axios");
