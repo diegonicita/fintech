@@ -130,7 +130,7 @@ function Step2({ data, setData, updateStep }) {
         errors={errors}
         touched={touched}
         values={values}
-        placeholder="genero"
+        placeholder="Género"
         type="text"
       ></InputField>
       <InputField
@@ -141,7 +141,7 @@ function Step2({ data, setData, updateStep }) {
         errors={errors}
         touched={touched}
         values={values}
-        placeholder="nacionalidad"
+        placeholder="Nacionalidad"
         type="text"
       ></InputField>
       <InputField

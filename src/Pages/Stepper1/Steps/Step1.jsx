@@ -68,7 +68,7 @@ function Step1({data, setData, updateStep}) {
             <input
               type="tel"
               name="phone"
-              placeholder="Telefono"
+              placeholder="Teléfono"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.phone}
