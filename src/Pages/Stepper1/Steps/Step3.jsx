@@ -110,7 +110,7 @@ function Step3({data,updateStep}) {
             </InputField>          
 
           <button type="submit"><span className="icon" style={{left: "15%",top:"5%"}}></span>Proximo Paso</button>
-          <Link to="/stepper" onClick={()=>updateStep(2)}>Volver</Link>
+          <Link to="/stepper1" onClick={()=>updateStep(2)}>Volver</Link>
         </form>
   )
 }

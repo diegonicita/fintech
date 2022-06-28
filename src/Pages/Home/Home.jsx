@@ -25,15 +25,16 @@ function Home() {
   }
   const hideMyModal = () => {
     setShowModal(false);
-    goToStepper();
+    goToStepper1();
   }
   const resetData = () => {
     sessionStorage.clear();
     setShowModal(false);
+    goToStepper1();
   }
 
-  const goToStepper = () => {
-    navigate("/stepper", {replace: true});
+  const goToStepper1 = () => {
+    navigate("/stepper1", {replace: true});
   }
 
   const errors = []; 
@@ -52,7 +53,7 @@ function Home() {
   const navigate = useNavigate();
   const handleClick = () => {
     if (errors.length > 0) {showMyModal(); return}
-    goToStepper();
+    goToStepper1();
   }
 
   return (

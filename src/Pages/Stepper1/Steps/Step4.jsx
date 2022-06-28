@@ -73,7 +73,7 @@ function Step4({ data, updateStep }) {
       ></RadioButtonField>     
 
       <button type="submit"><span className="icon" style={{left: "15%",top:"5%"}}></span>Proximo Paso</button>
-      <Link to="/stepper" onClick={() => updateStep(3)}>
+      <Link to="/stepper1" onClick={() => updateStep(3)}>
         Volver
       </Link>
     </form>

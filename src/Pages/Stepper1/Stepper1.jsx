@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import logo from "../../Assets/logo.png";
+import "./Stepper.styles.css";
 import Step1 from "./Steps/Step1";
 import Step2 from "./Steps/Step2";
 import Step3 from "./Steps/Step3";
 import Step4 from "./Steps/Step4";
 import Step5 from "./Steps/Step5";
-import "./Stepper.styles.css";
-import { Link } from "react-router-dom";
 
-function Stepper() {
+function Stepper1() {
   const [data, setData] = useState({});
   const [step, setStep] = useState(1);
 
@@ -49,4 +50,4 @@ function Stepper() {
   );
 }
 
-export default Stepper;
+export default Stepper1;

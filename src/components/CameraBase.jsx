@@ -1,46 +1,16 @@
 import React from "react";
 import Webcam from "react-webcam";
-import { useNavigate } from "react-router-dom";
 import "./Camera.styles.css";
 
-export const Camera = () => {
-  // Camera Setup //
-  const webcamRef = React.useRef(null);
+export const CameraBase = ({goNext, numeroFoto}) => {
+  const webcamRef = React.useRef(null);  
   const [imgSrc, setImgSrc] = React.useState(null);
 
   const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
-    sessionStorage.setItem("imgSrc" + stepId, JSON.stringify(imageSrc));
-  }, [webcamRef, setImgSrc]);
-
-  // Navigation //
-  let query = new URLSearchParams(window.location.search);
-  let stepId = query.get("stepId");
-  const navigate = useNavigate();
-  const handleConfirm = () => {
-    if (stepId === "1") navigate("/createAccount5", { replace: true });
-    if (stepId === "2") navigate("/createAccount6", { replace: true });
-    if (stepId === "3") {
-    const f = async () => {
-        let formData = new FormData();
-        formData.append("img1", sessionStorage.getItem("imgSrc1"));
-        formData.append("img2", sessionStorage.getItem("imgSrc2"));
-        formData.append("img3", sessionStorage.getItem("imgSrc3"));
-        let response = await fetch("/post/image-form", {
-          method: "POST",
-          body: formData,
-        });
-        if (response.ok) {       
-        let result = await response.json();
-        alert(result.message); 
-        }               
-        navigate("/createAccount7", { replace: true });
-      };
-
-      f();
-    }
-  };
+    sessionStorage.setItem("imgSrc" + numeroFoto, JSON.stringify(imageSrc));
+  }, [webcamRef, setImgSrc, numeroFoto]);
 
   return (
     <div className="camera-container">
@@ -78,7 +48,7 @@ export const Camera = () => {
               >
                 Retake
               </button>
-              <button className="camera-confirm-button" onClick={handleConfirm}>
+              <button className="camera-confirm-button" onClick={goNext}>
                 Confirmar
               </button>
             </div>
@@ -87,6 +57,6 @@ export const Camera = () => {
         )}
       </>
     </div>
-  );
+  )
 };
-export default Camera;
+export default CameraBase;

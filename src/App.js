@@ -1,16 +1,7 @@
 // Pages //
 import Home from "./Pages/Home/Home";
-import Stepper from "./Pages/Stepper/Stepper";
-import CreateAccount1 from "./Pages/CreateAccount1/CreateAccount1";
-import CreateAccount2 from "./Pages/CreateAccount2/CreateAccount2";
-import CreateAccount3 from "./Pages/CreateAccount3/CreateAccount3";
-import CreateAccount4 from "./Pages/CreateAccount4/CreateAccount4";
-import CreateAccount5 from "./Pages/CreateAccount5/CreateAccount5";
-import CreateAccount6 from "./Pages/CreateAccount6/CreateAccount6";
-import CreateAccount7 from "./Pages/CreateAccount7/CreateAccount7";
-import { Camera } from "./Pages/Camera/Camera";
-
-
+import Stepper1 from "./Pages/Stepper1/Stepper1";
+import Stepper2 from "./Pages/Stepper2/Stepper2";
 // React Router DOM
 import { Route, Routes, useLocation } from "react-router-dom";
 // Framer Motion
@@ -34,77 +25,21 @@ function App() {
             }
           ></Route>
           <Route
-            path="/stepper"
+            path="/stepper1"
             element={
               <MotionDiv>
-                <Stepper />
+                <Stepper1 />
               </MotionDiv>
             }
           ></Route>
           <Route
-            path="/createAccount1"
+            path="/stepper2"
             element={
               <MotionDiv>
-                <CreateAccount1 />
+                <Stepper2 />
               </MotionDiv>
             }
-          ></Route>
-          <Route
-            path="/createAccount2"
-            element={
-              <MotionDiv>
-                <CreateAccount2 />
-              </MotionDiv>
-            }
-          ></Route>
-          <Route
-            path="/createAccount3"
-            element={
-              <MotionDiv>
-                <CreateAccount3 />
-              </MotionDiv>
-            }
-          ></Route>
-          <Route
-            path="/createAccount4"
-            element={
-              <MotionDiv>
-                <CreateAccount4 />
-              </MotionDiv>
-            }
-          ></Route>
-          <Route
-            path="/createAccount5"
-            element={
-              <MotionDiv>
-                <CreateAccount5 />
-              </MotionDiv>
-            }
-          ></Route>
-          <Route
-            path="/createAccount6"
-            element={
-              <MotionDiv>
-                <CreateAccount6 />
-              </MotionDiv>
-            }
-          ></Route>
-          <Route
-            path="/createAccount7"
-            element={
-              <MotionDiv>
-                <CreateAccount7 />
-              </MotionDiv>
-            }
-          ></Route>
-          <Route
-            path="/camera"
-            element={
-              <MotionDiv>
-                <Camera />
-              </MotionDiv>
-            }
-          ></Route>
+          ></Route>          
         </Routes>
       </AnimatePresence>
     </>

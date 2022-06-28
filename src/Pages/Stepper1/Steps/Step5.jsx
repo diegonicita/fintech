@@ -16,7 +16,7 @@ function Step5({data, updateStep}) {
     }; 
 
     const handleClick = () => {
-      navigate("/createAccount1", {replace: true});
+      navigate("/stepper2", {replace: true});
     }
 
     const initialValues = {
@@ -114,7 +114,7 @@ function Step5({data, updateStep}) {
             )}          
         
           <button type="submit"><span className="icon"style={{left: "21%",top:"5%"}}></span>Continuar</button>
-          <Link to="/stepper" onClick={()=>updateStep(4)}>Volver</Link>
+          <Link to="/stepper1" onClick={()=>updateStep(4)}>Volver</Link>
         </form>
   )
 }
