@@ -3,6 +3,8 @@
 ## Proyecto
 Creacion de un onboarding digital para una fintech con el objetivo de abrir cuentas de personas humanas. Se puede completar información básica, consultas avanzadas a una API y luego hacer una prueba de vida con fotos de frente/dorso del dni y video y/o selfie con el dni en la mano. 
 
+![Imagen de la app](https://github.com/diegonicita/fintech/blob/454f3fc90b68dd3a55174ed4f509039f195d0dac/public/fintech.jpg)
+
 ## Entregable
 
 - Tiene que ser Mobile-first pero responsive para desktop.
