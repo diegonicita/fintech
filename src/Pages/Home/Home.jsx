@@ -9,8 +9,8 @@ const Modal = ({ handleClose, show, children, handleReset }) => {
     <div className={showHideClassName}>
       <section className='modal-main'>
         {children}
-        <button style={{margin: "10px"}} onClick={handleReset}> Empezar de nuevo </button>
-        <button onClick={handleClose}> Continuar </button>
+        <button style={{width: "130px", margin: "10px", fontSize:"1rem"}} onClick={handleReset}> Empezar de nuevo </button>
+        <button style={{width: "130px", margin: "10px", fontSize:"1rem"}} onClick={handleClose}> Continuar </button>
       </section>
     </div>
   );
@@ -62,7 +62,7 @@ function Home() {
       <div className="home-up"></div>
       <img src={logo} alt="logo"/>
       <Modal show={showModal} handleClose={hideMyModal} handleReset={resetData}>
-          <h2>Tenes una apertura en proceso:</h2>          
+          <h3 style={{textAlign: "center"}}>Tenes una apertura en proceso:</h3>          
       </Modal>
       <div className="home-middle">
         <h1> Abrí tu cuenta en minutos</h1>        
