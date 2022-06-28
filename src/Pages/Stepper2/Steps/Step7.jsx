@@ -1,15 +1,34 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import logo from "../../../Assets/logo.png";
 
 function Step7() {
-
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/", {replace: true});
-  }
+    const f = async () => {
+      console.log("sending data");
+      let formData = new FormData();
+      formData.set("step1", sessionStorage.getItem("step1"));
+      formData.set("step2", sessionStorage.getItem("step2"));
+      formData.set("step3", sessionStorage.getItem("step3"));
+      let response = await fetch("//localhost:8000/fintech-form-data", {
+        method: "POST",        
+        body: formData, 
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },                       
+      });
+      if (response.ok) {
+        let result = await response.json();
+        alert(result.message);
+      }            
+    };
+
+    f();
+    // navigate("/", { replace: true });
+  };
 
   return (
     <div className="home-container">
