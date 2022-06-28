@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../../Assets/logo.png";
 
 function Step7() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleClick = () => {
     const f = async () => {
-      console.log("sending data");
+      console.log("Client: Sending Data to Server");
       let formData = new FormData();
-      formData.set("step1", sessionStorage.getItem("step1"));
-      formData.set("step2", sessionStorage.getItem("step2"));
-      formData.set("step3", sessionStorage.getItem("step3"));
+      formData.append("img1", sessionStorage.getItem("imgSrc1"));
+      formData.append("img2", sessionStorage.getItem("imgSrc2"));
+      formData.append("img3", sessionStorage.getItem("imgSrc3"));
       let response = await fetch("//localhost:8000/fintech-form-data", {
         method: "POST",        
         body: formData, 
@@ -22,7 +22,7 @@ function Step7() {
       });
       if (response.ok) {
         let result = await response.json();
-        alert(result.message);
+        console.log(result);
       }            
     };
 

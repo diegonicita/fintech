@@ -9,7 +9,7 @@ export const CameraBase = ({goNext, numeroFoto}) => {
   const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
-    sessionStorage.setItem("imgSrc" + numeroFoto, JSON.stringify(imageSrc));
+    sessionStorage.setItem("imgSrc" + numeroFoto, imageSrc);
   }, [webcamRef, setImgSrc, numeroFoto]);
 
   return (

@@ -84,7 +84,7 @@
     width: 20px;
     height: 21px;
     background-size: cover;
-    position: relative;
+    position: relative;   
 }
 
 .stepper-container button:hover span.icon {
@@ -212,6 +212,18 @@ option:not(:first-of-type) {
         width: 80vw;
         font-size: 1rem;
     }
+}
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+background-color: white;
 }
 
 @media (min-width: 400px) {
