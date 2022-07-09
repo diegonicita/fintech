@@ -1,7 +1,6 @@
 import React from 'react'
-import "./Steps.styles.css";
 import { useFormik } from "formik";
-import validationSchema from "../Formik-yup/validationSchemaStep5";
+import validationSchema from "../validations/step5";
 import { Link } from "react-router-dom";
 import {useNavigate} from "react-router-dom";
 
@@ -16,7 +15,7 @@ function Step5({data, updateStep}) {
     }; 
 
     const handleClick = () => {
-      navigate("/stepper2", {replace: true});
+      updateStep(6);
     }
 
     const initialValues = {
@@ -114,7 +113,7 @@ function Step5({data, updateStep}) {
             )}          
         
           <button type="submit"><span className="icon"style={{left: "21%",top:"5%"}}></span>Continuar</button>
-          <Link to="/stepper1" onClick={()=>updateStep(4)}>Volver</Link>
+          <Link to="" onClick={()=>updateStep(4)}>Volver</Link>
         </form>
   )
 }

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import "./Steps.styles.css";
 import { useFormik } from "formik";
-import validationSchema from "../Formik-yup/validationSchemaStep2";
+import validationSchema from "../validations/step2";
 import { Link } from "react-router-dom";
 import InputField from "../../../components/InputField";
 import axios from "axios";
@@ -171,7 +170,7 @@ function Step2({ data, setData, updateStep }) {
         <span className="icon" style={{ left: "15%", top: "5%" }}></span>Proximo
         Paso
       </button>
-      <Link to="/stepper1" onClick={() => updateStep(1)}>
+      <Link to="" onClick={() => updateStep(1)}>
         Volver
       </Link>
     </form>

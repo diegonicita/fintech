@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import "./Steps.styles.css";
 import { useFormik } from "formik";
-import validationSchema from "../Formik-yup/validationSchemaStep1";
+import validationSchema from "../validations/step1";
 import axios from 'axios';
 
 function Step1({data, setData, updateStep}) {

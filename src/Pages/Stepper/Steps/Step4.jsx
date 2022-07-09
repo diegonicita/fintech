@@ -1,7 +1,6 @@
 import React from "react";
-import "./Steps.styles.css";
 import { useFormik } from "formik";
-import validationSchema from "../Formik-yup/validationSchemaStep4";
+import validationSchema from "../validations/step4";
 import { Link } from "react-router-dom";
 import CheckBoxField from "../../../components/CheckBoxField";
 import RadioButtonField from "../../../components/RadioButtonField";
@@ -107,7 +106,7 @@ function Step4({ data, updateStep }) {
         <span className="icon" style={{ left: "15%", top: "5%" }}></span>Proximo
         Paso
       </button>
-      <Link to="/stepper1" onClick={() => updateStep(3)}>
+      <Link to="" onClick={() => updateStep(3)}>
         Volver
       </Link>
     </form>

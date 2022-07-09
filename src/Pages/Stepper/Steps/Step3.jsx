@@ -1,7 +1,6 @@
 import React from 'react'
-import "./Steps.styles.css";
 import { useFormik } from "formik";
-import validationSchema from "../Formik-yup/validationSchemaStep3";
+import validationSchema from "../validations/step3";
 import {Link} from "react-router-dom";
 import InputField from '../../../components/InputField';
 
@@ -110,7 +109,7 @@ function Step3({data,updateStep}) {
             </InputField>          
 
           <button type="submit"><span className="icon" style={{left: "15%",top:"5%"}}></span>Proximo Paso</button>
-          <Link to="/stepper1" onClick={()=>updateStep(2)}>Volver</Link>
+          <Link to="" onClick={()=>updateStep(2)}>Volver</Link>
         </form>
   )
 }
