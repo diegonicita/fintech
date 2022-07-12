@@ -30,19 +30,36 @@ export const Image = styled.img`
   width: auto;
   height: 15vh;
   margin-bottom: 50px;
+  @media (min-width: 600px) { 
+    height: 20vh;
+  } 
+  @media (max-width: 200px) {
+    width: 90vw;
+    height: auto;
+  }
 `;
 
 export const Title = styled.h1`
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.5rem;
+@media (min-width: 600px) {
+    font-size: 1.5rem;
+}
+@media (min-width: 900px) {
+    font-size: 1.5rem;
+}
+@media (max-width: 200px) {
+    font-size: 1.5rem;    
+    width: 80vw;
+  }
 `;
 
 export const Button = styled.button`
-  color: white;
-  font-size: 1rem;
+  color: white;  
   background-color: var(--global-primary-color);
-  width: 12rem;
-  height: 3rem;
+  font-size: 1.3rem;
+  width: 15rem;
+  height: 4rem;
   border-radius: var(--global-border-radius);
   cursor: pointer;
   border: 1px solid var(--global-primary-color);
@@ -50,31 +67,22 @@ export const Button = styled.button`
     color: var(--global-primary-color);
     background-color: var(--global-bg-color);
     border-color: var(--global-border-color);
+  }  
+  @media (min-width: 600px) { 
+    font-size: 1.3rem;
+        width: 15rem;
+        height: 4rem; 
+  }
+  @media (min-width: 900px) {  
+    font-size: 1.3rem;
+        width: 15rem;
+        height: 4rem;  
+  }
+  @media (max-width: 300px) {
+    font-size: 1rem;    
+    width: 60vw;
+    height: 4rem;
   }
 `;
-
-export const Modal = styled.div`
-    display: ${(props) => props.show ? 'block' : 'none'};
-    position: fixed;
-    top: 0;
-    left: 0;
-    width:100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-`;
-
-export const ModalMain = styled.section`
-    ${flexConfig}
-    position:fixed;
-    background: white;
-    width: 80%;
-    max-width: 250px;
-    height: auto;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);      
-    border-radius: 25px;
-    padding: 15px;
-  `;
 
 

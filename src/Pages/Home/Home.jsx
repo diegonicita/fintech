@@ -1,40 +1,24 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
-// import "./Home.styles.css";
+import Modal from "../../components/Modal/Modal.jsx";
 import logo from "../../Assets/logo.png";
-import * as S from "./Styles";
-
-const Modal = ({ handleClose, show, children, handleReset }) => {  
-  return (  
-    <S.Modal show={true}>
-      <S.ModalMain>
-        {children}
-        <button style={{width: "130px", margin: "10px", fontSize:"1rem"}} onClick={handleReset}> Empezar de nuevo </button>
-        <button style={{width: "130px", margin: "10px", fontSize:"1rem"}} onClick={handleClose}> Continuar </button>
-      </S.ModalMain>    
-    </S.Modal>  
-  );
-};
+import * as S from "./styles";
 
 function Home() {
 
   const [showModal, setShowModal] = React.useState(false); 
   
-  const showMyModal = () => {
-    setShowModal(true);
-  }
-  const hideMyModal = () => {
-    setShowModal(false);
-    goToStepper1();
-  }
-  const resetData = () => {
-    sessionStorage.clear();
-    setShowModal(false);
-    goToStepper1();
-  }
+  const handleModal = (e) => {        
+    if (e.target.name == "Reset") {
+      sessionStorage.clear();    
+      setShowModal(false);      
+    }
+    if (e.target.name == "Continue") {
+      setShowModal(false);
+    }
+  }  
 
   const goToStepper1 = () => {
-    navigate("/stepper1", {replace: true});
   }
 
   const errors = []; 
@@ -48,19 +32,19 @@ function Home() {
   if (sessionStorage.getItem("imgSrc2") != null) errors.push("Existe img 2");
   if (sessionStorage.getItem("imgSrc3") != null) errors.push("Existe img3 3");
   
-  // console.log(errors);
+  errors.push("false error");
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();  
   const handleClick = () => {
-    if (errors.length > 0) {showMyModal(); return}
-    goToStepper1();
-  }
+    if (errors.length > 0) {setShowModal(true); return}
+    // goToStepper1();
+  }  
 
   return (
     <S.HomeContainer>      
       <div className="up"></div>
       <S.Image src={logo} alt="logo"/>
-      <Modal show={showModal} handleClose={hideMyModal} handleReset={resetData}>
+      <Modal show={showModal} handleModal={handleModal} text={{text1: "Comenzar de nuevo", text2: "Continuar"}}>
         <h3 style={{textAlign: "center"}}>Tenes una apertura en proceso:</h3>          
       </Modal>
       <div className="middle">
