@@ -1,18 +1,18 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import "./Home.styles.css";
+// import "./Home.styles.css";
 import logo from "../../Assets/logo.png";
+import * as S from "./Styles";
 
-const Modal = ({ handleClose, show, children, handleReset }) => {
-  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
-  return (
-    <div className={showHideClassName}>
-      <section className='modal-main'>
+const Modal = ({ handleClose, show, children, handleReset }) => {  
+  return (  
+    <S.Modal show={true}>
+      <S.ModalMain>
         {children}
         <button style={{width: "130px", margin: "10px", fontSize:"1rem"}} onClick={handleReset}> Empezar de nuevo </button>
         <button style={{width: "130px", margin: "10px", fontSize:"1rem"}} onClick={handleClose}> Continuar </button>
-      </section>
-    </div>
+      </S.ModalMain>    
+    </S.Modal>  
   );
 };
 
@@ -57,20 +57,19 @@ function Home() {
   }
 
   return (
-    <div className="home-container">
-      {/* <div className="home-background">Home</div> */}
-      <div className="home-up"></div>
-      <img src={logo} alt="logo"/>
+    <S.HomeContainer>      
+      <div className="up"></div>
+      <S.Image src={logo} alt="logo"/>
       <Modal show={showModal} handleClose={hideMyModal} handleReset={resetData}>
-          <h3 style={{textAlign: "center"}}>Tenes una apertura en proceso:</h3>          
+        <h3 style={{textAlign: "center"}}>Tenes una apertura en proceso:</h3>          
       </Modal>
-      <div className="home-middle">
-        <h1> Abrí tu cuenta en minutos</h1>        
+      <div className="middle">
+        <S.Title> Abrí tu cuenta en minutos</S.Title>        
       </div>
-      <div className="home-down">
-      <button onClick={handleClick}> Comenzar </button>
+      <div className="down">
+        <S.Button onClick={handleClick}> Comenzar </S.Button>
       </div>
-    </div>
+    </S.HomeContainer>
   );
 }
 

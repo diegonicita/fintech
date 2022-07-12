@@ -1,5 +1,6 @@
 // Pages //
 import StepperUnico from "./Pages/Stepper/Stepper";
+import Home from "./Pages/Home/Home";
 // React Router DOM
 import { Route, Routes, useLocation } from "react-router-dom";
 // Framer Motion
@@ -18,7 +19,7 @@ function App() {
             path="/"
             element={
               <MotionDiv>
-                <StepperUnico />
+                <Home />
               </MotionDiv>
             }
           ></Route>
