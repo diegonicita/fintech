@@ -24,18 +24,24 @@ export const HomeContainer = styled.div`
   .up {}
   .middle {}
   .down {}
+
+  @media (min-height: 480px) { 
+    justify-content: center;    
+  } 
 `;
 
 export const Image = styled.img`
   display: none;
   width: 150px;
-  margin: 3rem;  
-  margin-bottom: 2rem;
+  margin: 3rem; 
   @media (min-width: ${theme.breakpoints.tabletX1}) { 
     display: block;    
   } 
   @media (max-width: ${theme.breakpoints.phoneX1}) {    
   }
+  @media (max-height: 300px) { 
+    margin: 0 auto;    
+  } 
 `;
 
 export const ImageSmall = styled.img`
@@ -49,6 +55,10 @@ export const ImageSmall = styled.img`
   @media (max-width: ${theme.breakpoints.phoneX1}) {
     
   }
+  @media (max-height: 300px) { 
+    margin: 3rem;    
+    margin-top: 2rem;
+  } 
 `;
 
 export const Title = styled.h1`
@@ -63,6 +73,9 @@ export const Title = styled.h1`
 @media (max-width: ${theme.breakpoints.phoneX1}) {   
     width: 80vw;
   }
+  @media (max-height: 300px) { 
+    margin: 0 auto;    
+  } 
 `;
 
 export const Button = styled.button`
@@ -88,6 +101,9 @@ export const Button = styled.button`
   @media (max-width: ${theme.breakpoints.phoneX1}) {
     
   }
+  @media (max-height: 300px) { 
+    margin: 0 auto;    
+  } 
 `;
 
 
