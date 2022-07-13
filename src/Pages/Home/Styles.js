@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import theme from "../../globalBreakpoints";
 
 const flexConfig = css`
   display: flex;
@@ -30,11 +31,11 @@ export const Image = styled.img`
   width: auto;
   height: 15vh;
   margin-bottom: 50px;
-  @media (min-width: 600px) { 
+  @media (min-width: ${theme.breakpoints.tabletX1}) { 
     height: 20vh;
   } 
-  @media (max-width: 200px) {
-    width: 90vw;
+  @media (max-width: ${theme.breakpoints.phoneX1}) {
+    width: 50vw;
     height: auto;
   }
 `;
@@ -42,13 +43,13 @@ export const Image = styled.img`
 export const Title = styled.h1`
   text-align: center;
   font-size: 1.5rem;
-@media (min-width: 600px) {
+@media (min-width: ${theme.breakpoints.tabletX1}) {
     font-size: 1.5rem;
 }
-@media (min-width: 900px) {
+@media (min-width: ${theme.breakpoints.largeX1}) {
     font-size: 1.5rem;
 }
-@media (max-width: 200px) {
+@media (max-width: ${theme.breakpoints.phoneX1}) {
     font-size: 1.5rem;    
     width: 80vw;
   }
@@ -68,19 +69,19 @@ export const Button = styled.button`
     background-color: var(--global-bg-color);
     border-color: var(--global-border-color);
   }  
-  @media (min-width: 600px) { 
+  @media (min-width: ${theme.breakpoints.tabletX1}) { 
     font-size: 1.3rem;
         width: 15rem;
         height: 4rem; 
   }
-  @media (min-width: 900px) {  
+  @media (min-width: ${theme.breakpoints.largeX1}) {  
     font-size: 1.3rem;
         width: 15rem;
         height: 4rem;  
   }
-  @media (max-width: 300px) {
+  @media (max-width: ${theme.breakpoints.phoneX1}) {
     font-size: 1rem;    
-    width: 60vw;
+    width: 95vw;
     height: 4rem;
   }
 `;

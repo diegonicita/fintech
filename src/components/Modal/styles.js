@@ -1,5 +1,6 @@
 
 import styled, {css} from "styled-components";
+import theme from "../../globalBreakpoints";
 
 const flexConfig = css`
   display: flex;
@@ -38,12 +39,13 @@ max-width: 350px;
 `;
 
 export const Button = styled.button`
-  color: white;
-  margin: 10px;
-  font-size: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;  
   background-color: var(--global-primary-color);
-  width: 130px;
-  height: 3rem;
+  font-size: 1.3rem;
+  width: 15rem;
+  height: 4rem;
   border-radius: var(--global-border-radius);
   cursor: pointer;
   border: 1px solid var(--global-primary-color);
@@ -51,5 +53,20 @@ export const Button = styled.button`
     color: var(--global-primary-color);
     background-color: var(--global-bg-color);
     border-color: var(--global-border-color);
+  }  
+  @media (min-width: ${theme.breakpoints.tabletX1}) { 
+    font-size: 1.3rem;
+        width: 15rem;
+        height: 4rem; 
+  }
+  @media (min-width: ${theme.breakpoints.largeX1}) {  
+    font-size: 1.3rem;
+        width: 15rem;
+        height: 4rem;  
+  }
+  @media (max-width: ${theme.breakpoints.phoneX1}) {
+    font-size: 1rem;    
+    width: 85vw;
+    height: 4rem;
   }
 `;
