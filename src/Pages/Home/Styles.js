@@ -2,8 +2,7 @@ import styled, { css } from "styled-components";
 import theme from "../../globalBreakpoints";
 
 const flexConfig = css`
-  display: flex;
-  justify-content: center;
+  display: flex;  
   align-items: center;
   flex-direction: column;
 `;
@@ -22,35 +21,46 @@ export const HomeContainer = styled.div`
     ${flexConfig}
   }
 
-  .up {height: 20vh;}
-  .middle {height: 10vh;}
-  .down {height: 30vh;}
+  .up {}
+  .middle {}
+  .down {}
 `;
 
 export const Image = styled.img`
-  width: auto;
-  height: 15vh;
-  margin-bottom: 50px;
+  display: none;
+  width: 150px;
+  margin: 3rem;  
+  margin-bottom: 2rem;
   @media (min-width: ${theme.breakpoints.tabletX1}) { 
-    height: 20vh;
+    display: block;    
+  } 
+  @media (max-width: ${theme.breakpoints.phoneX1}) {    
+  }
+`;
+
+export const ImageSmall = styled.img`
+  display: block;  
+  width: 50px;
+  margin: 3rem;
+  margin-top: 6rem;  
+  @media (min-width: ${theme.breakpoints.tabletX1}) {     
+    display: none;
   } 
   @media (max-width: ${theme.breakpoints.phoneX1}) {
-    width: 50vw;
-    height: auto;
+    
   }
 `;
 
 export const Title = styled.h1`
   text-align: center;
   font-size: 1.5rem;
-@media (min-width: ${theme.breakpoints.tabletX1}) {
-    font-size: 1.5rem;
+  margin: 2rem;
+  max-width: 10rem;
+@media (min-width: ${theme.breakpoints.tabletX1}) {    
 }
-@media (min-width: ${theme.breakpoints.largeX1}) {
-    font-size: 1.5rem;
+@media (min-width: ${theme.breakpoints.largeX1}) {    
 }
-@media (max-width: ${theme.breakpoints.phoneX1}) {
-    font-size: 1.5rem;    
+@media (max-width: ${theme.breakpoints.phoneX1}) {   
     width: 80vw;
   }
 `;
@@ -59,8 +69,8 @@ export const Button = styled.button`
   color: white;  
   background-color: var(--global-primary-color);
   font-size: 1.3rem;
-  width: 15rem;
-  height: 4rem;
+  width: 12rem;
+  height: 3.5rem;
   border-radius: var(--global-border-radius);
   cursor: pointer;
   border: 1px solid var(--global-primary-color);
@@ -70,19 +80,13 @@ export const Button = styled.button`
     border-color: var(--global-border-color);
   }  
   @media (min-width: ${theme.breakpoints.tabletX1}) { 
-    font-size: 1.3rem;
-        width: 15rem;
-        height: 4rem; 
+    
   }
   @media (min-width: ${theme.breakpoints.largeX1}) {  
-    font-size: 1.3rem;
-        width: 15rem;
-        height: 4rem;  
+    
   }
   @media (max-width: ${theme.breakpoints.phoneX1}) {
-    font-size: 1rem;    
-    width: 95vw;
-    height: 4rem;
+    
   }
 `;
 

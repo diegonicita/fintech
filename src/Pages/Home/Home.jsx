@@ -2,50 +2,56 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import Modal from "../../components/Modal/Modal.jsx";
 import logo from "../../Assets/logo.png";
+import logoSmall from "../../Assets/logo-small.png";
 import * as S from "./styles";
 
 function Home() {
 
   const [showModal, setShowModal] = React.useState(false); 
+  const navigate = useNavigate();  
   
-  const handleModal = (e) => {        
-    if (e.target.name == "Reset") {
+  const handleModal = (e) => {  
+    // Button "Empezar de nuevo" //      
+    if (e.target.name === "Reset") {
       sessionStorage.clear();    
       setShowModal(false);      
+      goToStepper();
     }
-    if (e.target.name == "Continue") {
+    // Button "Continuar" //
+    if (e.target.name === "Continue") {
       setShowModal(false);
+      goToStepper();
     }
   }  
 
-  const goToStepper1 = () => {
+  const goToStepper = () => {
+    navigate("/stepper");
   }
 
-  const errors = []; 
+  // Check if the user has already started the survey //
+  const check = ["step1", "step2", "step3", "step4", "step5", "imgSrc1", "imgSrc2", "imgSrc3"];
+  const errors = [];
+  for (let i = 0; i < check.length; i++) {
+    if (sessionStorage.getItem(check[i]) != null) {
+      errors.push("existe ya: " + check[i]);
+    }
+  }
 
-  if (sessionStorage.getItem("step1") != null) errors.push("Existe step 1");
-  if (sessionStorage.getItem("step2") != null) errors.push("Existe step 2");
-  if (sessionStorage.getItem("step3") != null) errors.push("Existe step 3");
-  if (sessionStorage.getItem("step4") != null) errors.push("Existe step 4");
-  if (sessionStorage.getItem("step5") != null) errors.push("Existe step 5");  
-  if (sessionStorage.getItem("imgSrc1") != null) errors.push("Existe img 1");
-  if (sessionStorage.getItem("imgSrc2") != null) errors.push("Existe img 2");
-  if (sessionStorage.getItem("imgSrc3") != null) errors.push("Existe img3 3");
-  
-  errors.push("false error");
-
-  const navigate = useNavigate();  
+   errors.push("invento");
+  // Navigate to the stepper if the survey is empty //
+  // if there are errors show the modal //    
   const handleClick = () => {
     if (errors.length > 0) {setShowModal(true); return}
-    // goToStepper1();
+    goToStepper();
   }  
 
   return (
     <S.HomeContainer>      
       <div className="up"></div>
       <S.Image src={logo} alt="logo"/>
+      <S.ImageSmall src={logoSmall} alt="logo"/>
       <Modal show={showModal} handleModal={handleModal} text={{text1: "Comenzar de nuevo", text2: "Continuar"}}>
-        <h3 style={{textAlign: "center"}}>Tenes una apertura en proceso:</h3>          
+        <h3 style={{textAlign: "center", maxWidth: "180px"}}>Tenes una apertura en proceso:</h3>          
       </Modal>
       <div className="middle">
         <S.Title> Abrí tu cuenta en minutos</S.Title>        

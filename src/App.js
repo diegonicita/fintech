@@ -1,5 +1,5 @@
 // Pages //
-import StepperUnico from "./Pages/Stepper/Stepper";
+import Stepper from "./Pages/Stepper/Stepper";
 import Home from "./Pages/Home/Home";
 // React Router DOM
 import { Route, Routes, useLocation } from "react-router-dom";
@@ -20,6 +20,14 @@ function App() {
             element={
               <MotionDiv>
                 <Home />
+              </MotionDiv>
+            }
+          ></Route>
+          <Route
+            path="/stepper"
+            element={
+              <MotionDiv>
+                <Stepper />
               </MotionDiv>
             }
           ></Route>

@@ -21,12 +21,13 @@ background: rgba(0, 0, 0, 0.6);
 
 export const ModalMain = styled.section`
 ${flexConfig}
+justify-content: space-around;
 position:fixed;
 background: white;
 width: 80%;
 max-width: 250px;
-height: auto;
-top:50%;
+min-height: 23rem;
+top:43%;
 left:50%;
 transform: translate(-50%,-50%);      
 border-radius: 25px;
