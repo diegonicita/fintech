@@ -4,25 +4,25 @@ import Modal from "../../components/Modal/Modal.jsx";
 import logo from "../../Assets/logo.png";
 import logoSmall from "../../Assets/logo-small.png";
 import * as S from "./styles";
+import Button from "../../components/Button/Button.jsx";
 
 function Home() {
-
-  const [showModal, setShowModal] = React.useState(false); 
+  
   const navigate = useNavigate();  
   
-  const handleModal = (e) => {  
-    // Button "Empezar de nuevo" //      
-    if (e.target.name === "Reset") {
-      sessionStorage.clear();    
-      setShowModal(false);      
-      goToStepper();
-    }
-    // Button "Continuar" //
-    if (e.target.name === "Continue") {
-      setShowModal(false);
-      goToStepper();
-    }
-  }  
+  // const handleModal = (e) => {  
+  //   // Button "Empezar de nuevo" //      
+  //   if (e.target.name === "Reset") {
+  //     sessionStorage.clear();    
+  //     setShowModal(false);      
+  //     goToStepper();
+  //   }
+  //   // Button "Continuar" //
+  //   if (e.target.name === "Continue") {
+  //     setShowModal(false);
+  //     goToStepper();
+  //   }
+  // }  
 
   const goToStepper = () => {
     navigate("/stepper");
@@ -37,11 +37,14 @@ function Home() {
     }
   }
 
-   errors.push("invento");
+  // errors.push("invento");
   // Navigate to the stepper if the survey is empty //
   // if there are errors show the modal //    
-  const handleClick = () => {
-    if (errors.length > 0) {setShowModal(true); return}
+  const handleContinue = () => {    
+    goToStepper();
+  }  
+  const handleReset = () => {    
+    sessionStorage.clear(); 
     goToStepper();
   }  
 
@@ -50,14 +53,16 @@ function Home() {
       <div className="up"></div>
       <S.Image src={logo} alt="logo"/>
       <S.ImageSmall src={logoSmall} alt="logo"/>
-      <Modal show={showModal} handleModal={handleModal} text={{text1: "Comenzar de nuevo", text2: "Continuar"}}>
+      {(errors.length > 0) &&
+      <Modal context={[{text: "Comenzar de nuevo", fnClick: handleReset}, {text: "Continuar", fnClick: handleContinue}]}>
         <h3 style={{textAlign: "center", maxWidth: "180px"}}>Tenes una apertura en proceso:</h3>          
       </Modal>
+      }
       <div className="middle">
         <S.Title> Abrí tu cuenta en minutos</S.Title>        
       </div>
       <div className="down">
-        <S.Button onClick={handleClick}> Comenzar </S.Button>
+        <Button handleClick={handleContinue}> Comenzar </Button>
       </div>
     </S.HomeContainer>
   );

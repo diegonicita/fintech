@@ -40,29 +40,3 @@ h3 {
 }
 
 `;
-
-export const Button = styled.button`
-  color: white;  
-  background-color: var(--global-primary-color);
-  font-size: 1.1rem;
-  width: 12rem;
-  height: 3.5rem;
-  margin-bottom: 1rem;
-  border-radius: var(--global-border-radius);
-  cursor: pointer;
-  border: 1px solid var(--global-primary-color);
-  :hover {
-    color: var(--global-primary-color);
-    background-color: var(--global-bg-color);
-    border-color: var(--global-border-color);
-  }  
-  @media (min-width: ${theme.breakpoints.tabletX1}) { 
-    
-  }
-  @media (min-width: ${theme.breakpoints.largeX1}) {  
-    
-  }
-  @media (max-width: ${theme.breakpoints.phoneX1}) {
-    
-  }
-`;
