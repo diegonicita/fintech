@@ -1,38 +1,49 @@
-import React from 'react';
+import React from "react";
 import * as S from "./styles";
 import Button from "../Button/Button";
 
-const Modal = ({ context, children }) => {  
+const Modal = ({ context, children }) => {
+  const [showModal, setShowModal] = React.useState(true);
 
-    const [showModal, setShowModal] = React.useState(true); 
-
-    const handleModal = (e) => {  
-      // Button "Empezar de nuevo" //      
-      if (e.target.name === "Reset") {            
-        console.log("Reset");
-        setShowModal(false); 
-        context[1].fnClick();             
-      }
-      // Button "Continuar" //
-      if (e.target.name === "Continue") {
-        console.log("Continue");
-        setShowModal(false);        
-        context[0].fnClick();             
-      }
-    }      
-
-    return (  
-      <S.Modal show={showModal}>
-        <S.ModalMain>
-          {children}
-          <div style={{textAlign: "center"}}>
-          <Button name="Reset" handleClick={handleModal}> {context[1].text}</Button>
-          <div style={{padding:"5px"}}></div>
-          <Button name="Continue" handleClick={handleModal}> {context[0].text} </Button>
-          </div>
-        </S.ModalMain>    
-      </S.Modal> 
-          );
+  const handleModal = (e) => {
+    // Button "Empezar de nuevo" //
+    if (e.target.name === "Reset") {
+      console.log("Reset");
+      setShowModal(false);
+      context[1].fnClick();
+    }
+    // Button "Continuar" //
+    if (e.target.name === "Continue") {
+      console.log("Continue");
+      setShowModal(false);
+      context[0].fnClick();
+    }
   };
 
-  export default Modal;
+  return (
+    <S.Modal show={showModal}>
+      <S.ModalMain>
+        {children}
+        <div style={{ textAlign: "center" }}>
+          <Button
+            style={{ fontSize: "1rem", width: "10rem", height: "3rem" }}
+            name="Reset"
+            handleClick={handleModal}
+          >
+            {context[1].text}
+          </Button>
+          <div style={{ padding: "5px" }}></div>
+          <Button
+            style={{ fontSize: "1rem", width: "10rem", height: "3rem"}}
+            name="Continue"
+            handleClick={handleModal}
+          >
+            {context[0].text}
+          </Button>
+        </div>
+      </S.ModalMain>
+    </S.Modal>
+  );
+};
+
+export default Modal;

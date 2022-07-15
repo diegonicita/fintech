@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../../Assets/logo.png";
-import "./Stepper.styles.css";
+import logoSmall from "../../Assets/logo-small.png";
+
+// import "./Stepper.styles.css";
+import * as S from "./styles";
 import Step1 from "./Steps/Step1";
 import Step2 from "./Steps/Step2";
 import Step3 from "./Steps/Step3";
@@ -47,16 +50,17 @@ function StepperUnico() {
   }
 
   return (
-    <div className="stepper-container">
-      <section className="stepper-up"></section>
-      <Link to="/"><img src={logo} alt="logo" /></Link>
-      <section className="stepper-middle">
+    <S.Container>
+      <section className="up"></section>
+      <Link to="/"><S.Image src={logo} alt="logo" /></Link>
+      <Link to="/"><S.ImageSmall src={logoSmall} alt="logo"/></Link>
+      
+      <section className="middle">
         {step === 1 && <Step1 data={data} setData={setData} updateStep={updateStep} />}
         {step === 2 && <Step2 data={data} setData={setData} updateStep={updateStep} />}
         {step === 3 && <Step3 data={data} updateStep={updateStep} />}
         {step === 4 && <Step4 data={data} updateStep={updateStep} />}
         {step === 5 && <Step5 data={data} updateStep={updateStep} />}
-
         {step === 6 && <Step6 goNext={goNext} time={30} />}
         {step === 7 && <Step7 goNext={goNext} />}
         {step === 8 && <Step8 goNext={goNext} />}
@@ -68,8 +72,8 @@ function StepperUnico() {
         {step === 14 && <StepCamera goNext={goNext} numeroFoto={3} />}
         {step === 15 && <Step15 />}        
       </section>
-      <section className="stepper-down"></section>
-    </div>
+      <section className="down"></section>
+    </S.Container>
   );
 }
 

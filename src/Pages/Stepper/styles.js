@@ -18,12 +18,8 @@ export const Container = styled.div`
   .up,
   .middle,
   .down {
-    ${flexConfig}
+    ${flexConfig}    
   }
-
-  .up {}
-  .middle {}
-  .down {}
 
   @media (min-height: 480px) { 
     justify-content: center;    
@@ -44,6 +40,7 @@ export const Image = styled.img`
   } 
 `;
 
+
 export const ImageSmall = styled.img`
   display: block;  
   width: 50px;
@@ -60,23 +57,3 @@ export const ImageSmall = styled.img`
     margin-top: 2rem;
   } 
 `;
-
-export const Title = styled.h1`
-  text-align: center;
-  font-size: 1.5rem;
-  margin: 2rem;
-  max-width: 10rem;
-@media (min-width: ${theme.breakpoints.tabletX1}) {    
-}
-@media (min-width: ${theme.breakpoints.largeX1}) {    
-}
-@media (max-width: ${theme.breakpoints.phoneX1}) {   
-    width: 80vw;
-  }
-  @media (max-height: 300px) { 
-    margin: 0 auto;    
-  } 
-`;
-
-
-

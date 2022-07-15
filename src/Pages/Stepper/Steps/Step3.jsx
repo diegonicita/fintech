@@ -29,7 +29,7 @@ function Step3({data,updateStep}) {
 
   return (
     <form onSubmit={handleSubmit} type="POST">   
-     <h2 style={{paddingLeft: "45px", backgroundSize: "18px", backgroundImage: "url('/house-solid.svg')"}}>  Dirección </h2>                                
+     <h2>  Dirección </h2>                                
             <InputField
                 label="Pais"
                 name="pais"

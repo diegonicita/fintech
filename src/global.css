@@ -1,3 +1,5 @@
+
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap');
 
 * {
@@ -14,6 +16,7 @@
   --global-border-color: #afafaf;
   --global-select-option-color: #000000;
   --global-border-radius: 5px;
+  --global-border-error: 1px solid red; 
   --global-error-color: red;
 }
 

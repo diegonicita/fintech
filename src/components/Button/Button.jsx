@@ -1,10 +1,19 @@
-import React from 'react'
-import * as S from './styles';
+import React from "react";
+import * as S from "./styles";
 
-function Button({handleClick, name, children}) {  
+function Button({ type, handleClick, name, children, style }) {
   return (
-    <S.Button name={name} onClick={(e) => {if (typeof handleClick === 'function') handleClick(e)}}> {children} </S.Button>
-  )
+    <S.Button
+      type={type}
+      style={style}
+      name={name}
+      onClick={(e) => {
+        if (typeof handleClick === "function") handleClick(e);
+      }}
+    >
+      {children}
+    </S.Button>
+  );
 }
 
-export default Button
+export default Button;

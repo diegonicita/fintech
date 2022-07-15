@@ -70,8 +70,7 @@ function Step2({ data, setData, updateStep }) {
     <form onSubmit={handleSubmit} type="POST">
       <h2
         style={{
-          paddingLeft: "45px",
-          backgroundImage: "url('/person-solid.svg')",
+          paddingLeft: "45px",         
         }}
       >
         {" "}
