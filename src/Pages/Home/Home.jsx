@@ -23,9 +23,7 @@ function Home() {
       errors.push("ya existe: " + check[i]);
     }
   }
-
-  test: errors.push("invento");
-  
+    
   // Modal Handlers //
   const handleContinue = () => {    
     goToStepper();

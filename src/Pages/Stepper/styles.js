@@ -22,38 +22,34 @@ export const Container = styled.div`
   }
 
   @media (min-height: 480px) { 
-    justify-content: center;    
+    
   } 
 `;
 
 export const Image = styled.img`
   display: none;
-  width: 150px;
-  margin: 3rem; 
+  width: auto;
+  height: 150px;
+  margin: 2rem; 
   @media (min-width: ${theme.breakpoints.tabletX1}) { 
     display: block;    
   } 
   @media (max-width: ${theme.breakpoints.phoneX1}) {    
-  }
-  @media (max-height: 300px) { 
-    margin: 0 auto;    
   } 
 `;
 
 
 export const ImageSmall = styled.img`
   display: block;  
-  width: 50px;
-  margin: 3rem;
-  margin-top: 6rem;  
+  width: auto;
+  height: 50px;
+  margin: 2rem;
+  margin-top: 4rem;  
   @media (min-width: ${theme.breakpoints.tabletX1}) {     
     display: none;
   } 
   @media (max-width: ${theme.breakpoints.phoneX1}) {
     
   }
-  @media (max-height: 300px) { 
-    margin: 3rem;    
-    margin-top: 2rem;
-  } 
+ 
 `;

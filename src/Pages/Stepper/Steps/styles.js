@@ -4,7 +4,8 @@ import theme from "../../../globalBreakpoints";
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;    
+  align-items: center;  
+  justify-content: flex-start;
 `;
 
 export const Error = styled.div`
@@ -18,7 +19,7 @@ export const Error = styled.div`
 const commonPadding = css`
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  padding-left: 2rem;
+  padding-left: 0.5rem;
 `;
 
 const commonStyles = css`  
@@ -48,11 +49,34 @@ export const Label = styled.label`
 `;
 
 export const CheckBoxContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 350px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
+  display: flex;  
+  align-items: flex-start;
+  width: 350px;  
 `;
+
+export const CheckBox = styled.input`
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  margin-bottom: 3.5rem;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--global-border);
+  border-radius: 5px;
+  background-color: var(--global-background-color);
+  &:checked {
+    background-color: var(--global-primary-color);
+  }
+`;
+
+export const Terminos = styled.div`
+  width: 100%;
+  font-size: 0.8rem;
+  color: var(--global-text-color);
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+
+
+

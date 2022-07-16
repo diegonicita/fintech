@@ -4,6 +4,9 @@ import validationSchema from "../validations/step2";
 import { Link } from "react-router-dom";
 import InputField from "../../../components/InputField";
 import axios from "axios";
+import {campos2 as campos} from "./campos.js";
+import * as s from "./styles";
+import Button from "../../../components/Button/Button";
 
 function Step2({ data, setData, updateStep }) {
 
@@ -67,112 +70,72 @@ function Step2({ data, setData, updateStep }) {
   }, [setData]);
 
   return (
-    <form onSubmit={handleSubmit} type="POST">
-      <h2
-        style={{
-          paddingLeft: "45px",         
-        }}
-      >
-        {" "}
-        Datos Personales
-      </h2>
-      <InputField
-        label="Primer Nombre"
-        name="primerNombre"
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-        errors={errors}
-        touched={touched}
-        values={values}
-        placeholder="Primer Nombre"
-        type="text"
-      ></InputField>
-      <InputField
-        label="Segundos Nombres"
-        name="segundosNombres"
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-        errors={errors}
-        touched={touched}
-        values={values}
-        placeholder="Segundos Nombres"
-        type="text"
-      ></InputField>
-      <InputField
-        label="Apellidos"
-        name="apellidos"
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-        errors={errors}
-        touched={touched}
-        values={values}
-        placeholder="Apellidos"
-        type="text"
-      ></InputField>
-      <InputField
-        label="Cuil/Cuit"
-        name="cuilcuit"
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-        errors={errors}
-        touched={touched}
-        values={values}
-        placeholder="Cuil/Cuit"
-        type="text"
-      ></InputField>
-      <InputField
-        label="Genero"
-        name="genero"
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-        errors={errors}
-        touched={touched}
-        values={values}
-        placeholder="Género"
-        type="text"
-      ></InputField>
-      <InputField
-        label="Nacionalidad"
-        name="nacionalidad"
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-        errors={errors}
-        touched={touched}
-        values={values}
-        placeholder="Nacionalidad"
-        type="text"
-      ></InputField>
-      <InputField
-        label="Pais Nacimiento"
-        name="paisDeNacimiento"
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-        errors={errors}
-        touched={touched}
-        values={values}
-        placeholder="Pais de Nacimiento"
-        type="text"
-      ></InputField>
-      <InputField
-        label="Fecha Nacimiento"
-        name="fechaDeNacimiento"
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-        errors={errors}
-        touched={touched}
-        values={values}
-        placeholder="Fecha de Nacimiento"
-        type="date"
-      ></InputField>
-
-      <button type="submit">
+    <s.Form onSubmit={handleSubmit} type="POST">
+      <h2>Datos Personales</h2>
+      {campos.map((campo) => {
+        return (
+          <React.Fragment key={campo.name + new Date().getMilliseconds}>
+            <s.Label>
+              {campo.type !== "select" && campo.type !== "checkbox" && (
+                <s.Input
+                  type={campo.type}
+                  name={campo.name}
+                  placeholder={campo.placeholder}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values[campo.name]}
+                  borderError={errors[campo.name] && touched[campo.name]}
+                />
+              )}
+              {campo.type === "select" && (
+                <s.Select
+                  name={campo.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values[campo.name]}
+                  borderError={errors[campo.name] && touched[campo.name]}
+                >
+                  {campo.options.map((option) => {
+                    return (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    );
+                  })}
+                </s.Select>
+              )}
+              {campo.type === "checkbox" && (
+                <s.CheckBoxContainer>
+                  <s.CheckBox
+                    type={campo.type}
+                    name={campo.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    checked={values[campo.name]}
+                  />
+                  <s.Terminos>
+                    Declaro bajo juramento que toda la informacion consignada en
+                    el presente formulario es fehaciente y he leido y acepto los
+                    terminos de la Apertura de la Cuenta Comitente
+                  </s.Terminos>
+                </s.CheckBoxContainer>
+              )}
+            </s.Label>
+            {errors[campo.name] && touched[campo.name] && (
+              <s.Error>{errors[campo.name]}</s.Error>
+            )}
+          </React.Fragment>
+        );
+      })}
+     
+      <Button type="submit">
         <span className="icon" style={{ left: "15%", top: "5%" }}></span>Proximo
         Paso
-      </button>
+      </Button>
       <Link to="" onClick={() => updateStep(1)}>
         Volver
       </Link>
-    </form>
+    </s.Form>
   );
 }
 
