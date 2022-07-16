@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import validationSchema from "../validations/step2";
 import { Link } from "react-router-dom";
-import InputField from "../../../components/InputField";
 import axios from "axios";
 import {campos2 as campos} from "./campos.js";
 import * as s from "./styles";
@@ -34,7 +33,7 @@ function Step2({ data, setData, updateStep }) {
     onSubmit,
     enableReinitialize: true,
   });
-  const { handleSubmit, handleChange, handleBlur, errors, touched, values } =
+  const { handleSubmit, errors, touched, values } =
     formik; 
 
   useEffect(() => {    
@@ -46,8 +45,7 @@ function Step2({ data, setData, updateStep }) {
     axios
       .get(fullUrl, { headers: { Authorization: `Apikey ${tokenStr}` } })
       .then((res) => {        
-        const d = res.data.persona;  
-        // console.log(d);
+        const d = res.data.persona;          
         let nombre = d.nombre;
         let nombres = nombre.split(" ");
         formik.setFieldValue("primerNombre", nombres[0] || "", true);

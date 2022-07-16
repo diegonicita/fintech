@@ -57,17 +57,21 @@ function Step4({ data, updateStep }) {
     setFieldValue,
   } = formik;
 
+  const commonAtr = {    
+    handleBlur: handleBlur,
+    errors: errors,
+    touched: touched,
+    values: values,
+    placeholder: "None"  
+  }  
+
   return (
     <form onSubmit={handleSubmit} type="POST">
       <CheckBoxField
         label="¿Cumplís alguna de las siguientes condiciones?"
         name="condicionesSOIPEPFATCA"
         handleChange={handleChangeCheckBoxs}
-        handleBlur={handleBlur}
-        errors={errors}
-        touched={touched}
-        values={values}
-        placeholder="None"
+        {...commonAtr}
         type="checkbox"
         options={["SOI", "PEP", "FATCA", "Ninguna"]}
       ></CheckBoxField>
