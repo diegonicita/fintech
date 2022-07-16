@@ -65,72 +65,82 @@ function Step1({ data, setData, updateStep }) {
   const { handleSubmit, handleChange, handleBlur, errors, touched, values } =
     formik;
 
-  const inputClass = "with-margin-top";
-  const inputClassError = "with-margin-top error";
+  const campos = [
+    {
+      name: "phone",      
+      type: "tel",
+      placeholder: "Teléfono",      
+    },
+    {
+      name: "email",      
+      type: "email",
+      placeholder: "Email",      
+    },
+    {
+      name: "tipoDeDocumento",      
+      type: "select",
+      placeholder: "Tipo de Documento", 
+      options: [
+        { value: "", label: "Tipo de documento" },
+        { value: "1", label: "DNI" },
+        { value: "2", label: "CUIT" },
+        { value: "3", label: "CUIL" },
+        { value: "4", label: "CDI" },
+        { value: "5", label: "LE" },
+        { value: "6", label: "LC" },
+        { value: "7", label: "CI" },
+        { value: "8", label: "Pasaporte" },
+        { value: "9", label: "Otro" },           
+      ],
+    },
+    {
+      name: "numeroDeDocumento",      
+      type: "number",
+      placeholder: "Número de Documento",       
+    }
+  ];
 
+  
   return (
     <s.Form onSubmit={handleSubmit} type="POST">
-      <s.Label>
-        <s.Input
-          type="tel"
-          name="phone"
-          placeholder="Teléfono"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.phone}
-          borderError={errors.phone && touched.phone}
-        />
-      </s.Label>
-      {errors.phone && touched.phone && <s.Error>{errors.phone}</s.Error>}
 
-      <s.Label>
-        <s.Input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-          borderError={errors.email && touched.email}
-        />
-      </s.Label>
-      {errors.email && touched.email && <s.Error>{errors.email}</s.Error>}
-
-      <s.Label>
-        <s.Select
-          name="tipoDeDocumento"
-          placeholder="Tipo de Documento"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.tipoDeDocumento}
-          borderError={errors.tipoDeDocumento && touched.tipoDeDocumento}
-        >
-          <option value="" disabled defaultValue="true">
-            Tipo de Documento
-          </option>
-          <option value="dni">DNI</option>
-          <option value="passport">Pasaporte</option>
-          <option value="DNI">LC</option>
-          <option value="LE">LE</option>
-        </s.Select>
-      </s.Label>
-      {errors.tipoDeDocumento && touched.tipoDeDocumento && (
-        <s.Error>{errors.tipoDeDocumento}</s.Error>
-      )}
-
-      <s.Label>
-        <s.Input
-          type="number"
-          name="numeroDeDocumento"
-          placeholder="Número de Documento"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.numeroDeDocumento}
-          borderError={errors.numeroDeDocumento && touched.numeroDeDocumento}
-        />
-      </s.Label>
-      {errors.numeroDeDocumento && touched.numeroDeDocumento && (
-        <s.Error>{errors.numeroDeDocumento}</s.Error>
+      {campos.map((campo) => {	
+        return (          
+            <React.Fragment key={campo.name + new Date().getMilliseconds}>
+            <s.Label>
+            {campo.type !== "select" && 
+            <s.Input
+              type={campo.type}
+              name={campo.name}
+              placeholder={campo.placeholder}                           
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values[campo.name]}
+              borderError={errors[campo.name] && touched[campo.name]}
+            />                        
+          }
+          {campo.type === "select" &&
+            <s.Select
+            name={campo.name}            
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values[campo.name]}
+            borderError={errors[campo.name] && touched[campo.name]}
+          >            
+            {campo.options.map((option) => {
+              return (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              );
+            })}             
+          </s.Select>
+          }
+            </s.Label>
+            {errors[campo.name] && touched[campo.name] && <s.Error>{errors[campo.name]}</s.Error>}
+            </React.Fragment>
+        );
+      }
       )}
       <s.CheckBoxContainer>
         <input
