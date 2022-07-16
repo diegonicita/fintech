@@ -88,4 +88,4 @@ export const campos1 = [
       type: "date",
       placeholder: "Fecha de Nacimiento",      
     }
-  ];
+  ]; 

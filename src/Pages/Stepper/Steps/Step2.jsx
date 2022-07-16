@@ -7,6 +7,7 @@ import axios from "axios";
 import {campos2 as campos} from "./campos.js";
 import * as s from "./styles";
 import Button from "../../../components/Button/Button";
+import { renderSwitch as renderSwitchInput } from "./renderSwitch.js";
 
 function Step2({ data, setData, updateStep }) {
 
@@ -69,69 +70,26 @@ function Step2({ data, setData, updateStep }) {
       });
   }, [setData]);
 
+  const renderError = (campo) => {
+    return (errors[campo.name] && touched[campo.name] &&
+      (<s.Error>{errors[campo.name]}</s.Error>)
+    )
+  }
+
   return (
     <s.Form onSubmit={handleSubmit} type="POST">
-      <h2>Datos Personales</h2>
+    <h2>Datos Personales</h2>
       {campos.map((campo) => {
         return (
           <React.Fragment key={campo.name + new Date().getMilliseconds}>
-            <s.Label>
-              {campo.type !== "select" && campo.type !== "checkbox" && (
-                <s.Input
-                  type={campo.type}
-                  name={campo.name}
-                  placeholder={campo.placeholder}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values[campo.name]}
-                  borderError={errors[campo.name] && touched[campo.name]}
-                />
-              )}
-              {campo.type === "select" && (
-                <s.Select
-                  name={campo.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values[campo.name]}
-                  borderError={errors[campo.name] && touched[campo.name]}
-                >
-                  {campo.options.map((option) => {
-                    return (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    );
-                  })}
-                </s.Select>
-              )}
-              {campo.type === "checkbox" && (
-                <s.CheckBoxContainer>
-                  <s.CheckBox
-                    type={campo.type}
-                    name={campo.name}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    checked={values[campo.name]}
-                  />
-                  <s.Terminos>
-                    Declaro bajo juramento que toda la informacion consignada en
-                    el presente formulario es fehaciente y he leido y acepto los
-                    terminos de la Apertura de la Cuenta Comitente
-                  </s.Terminos>
-                </s.CheckBoxContainer>
-              )}
-            </s.Label>
-            {errors[campo.name] && touched[campo.name] && (
-              <s.Error>{errors[campo.name]}</s.Error>
-            )}
+            {renderSwitchInput(campo, formik)}
+            {renderError(campo)}
           </React.Fragment>
         );
       })}
-     
       <Button type="submit">
-        <span className="icon" style={{ left: "15%", top: "5%" }}></span>Proximo
-        Paso
-      </Button>
+        Proximo Paso
+      </Button>      
       <Link to="" onClick={() => updateStep(1)}>
         Volver
       </Link>
