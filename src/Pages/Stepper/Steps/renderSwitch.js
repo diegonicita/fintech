@@ -9,7 +9,8 @@ export const renderSwitch = (campo, f) => {
           onChange: f.handleChange,
           onBlur: f.handleBlur,
           value: f.values[campo.name],
-          borderError: f.errors[campo.name] && f.touched[campo.name]
+          borderError: f.errors[campo.name] && f.touched[campo.name],
+          checked: f.values[campo.name]
         }
     
         switch (campo.type) {
@@ -18,6 +19,7 @@ export const renderSwitch = (campo, f) => {
           case 'date':
           case 'tel':
           case 'email':
+            delete commonAttr.checked;
             return (
             <s.Label>
               <s.Input           
@@ -26,6 +28,7 @@ export const renderSwitch = (campo, f) => {
             </s.Label>
             );
           case 'select':
+            delete commonAttr.checked;
             return (
             <s.Label>
               <s.Select             

@@ -7,7 +7,6 @@ import * as s from "./styles";
 import Button from "../../../components/Button/Button";
 import { renderSwitch as renderSwitchInput } from "./renderSwitch.js";
 
-
 function Step3({ data, updateStep }) {
 
     const onSubmit = () => {   

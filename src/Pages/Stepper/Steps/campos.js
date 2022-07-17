@@ -152,3 +152,38 @@ export const campos3 = [
       placeholder: "None"
     }
   ]
+
+  export const campos5 = [
+    {
+      label: "cvuvbu",
+      type: "text",
+      name: "cvucbu",
+      placeholder: "cvu/vbu"
+    },
+    {      
+      name: "tipoDeCuenta",
+      type: "select",
+      placeholder: "Tipo de Cuenta",
+      options: [
+        { value: "", label: "Tipo de Cuenta" },
+        { value: "1", label: "Caja de Ahorro" },       
+        { value: "2", label: "Cuenta Corriente" },
+      ]
+    },
+    {      
+      name: "moneda",
+      type: "select",
+      placeholder: "Moneda",
+      options: [
+        { value: "", label: "Moneda" },
+        { value: "ars", label: "ARS" },       
+        { value: "usd", label: "USD" },
+      ]
+    },
+    {      
+      type: "text",
+      name: "entidad",
+      placeholder: "Entidad Bancaria",
+      label: "Entidad Bancaria"
+    },
+  ]

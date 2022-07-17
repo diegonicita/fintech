@@ -37,17 +37,12 @@ function Step2({ data, setData, updateStep }) {
     formik; 
 
   useEffect(() => {    
-    console.log("axios");
-    const url = "https://api-gateway.staging.scala.ly/afip";
-    const query = `/ws_sr_padron_a13/getPersona?idPersona=${data.cuilcuit}`;
-    const fullUrl = url + query;
-    let tokenStr = "ChTec.mnJeDQsJijJVdLZ409HHgcOnY1OnhZr4DgCvhzWebKqGnQX55M";
+    const url = process.env.REACT_APP_URL + `${process.env.REACT_APP_QUERY2}${data.cuilcuit}`;
     axios
-      .get(fullUrl, { headers: { Authorization: `Apikey ${tokenStr}` } })
+      .get(url, { headers: { Authorization: `Apikey ${process.env.REACT_APP_TOKEN}` } })
       .then((res) => {        
         const d = res.data.persona;          
-        let nombre = d.nombre;
-        let nombres = nombre.split(" ");
+        let nombres = res.data.persona.nombre.split(" ");
         formik.setFieldValue("primerNombre", nombres[0] || "", true);
         formik.setFieldValue("segundosNombres", nombres[1] || "", true);       
         formik.setFieldValue("apellidos", d.apellido || "", true);

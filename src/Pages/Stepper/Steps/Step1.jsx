@@ -8,41 +8,35 @@ import { renderSwitch as renderSwitchInput } from "./renderSwitch.js";
 import Button from "../../../components/Button/Button";
 
 function Step1({ data, setData, updateStep }) {
-  const [apiDataCUILCUIT, setApiDataCUILCUIT] = useState("");
-  const [isFetching, setIsFetching] = useState(false);
+  
+  const [loading, setLoading] = useState(false);
 
   useEffect(
     () => {
-      if (isFetching) {
-        console.log("axios");
-        const url = process.env.REACT_APP_URL;
-        const query = `${process.env.REACT_APP_QUERY}${values.numeroDeDocumento}`;
-        const fullUrl = url + query;
+      if (loading) {        
+        const url = process.env.REACT_APP_URL + `${process.env.REACT_APP_QUERY1}${values.numeroDeDocumento}`;
         axios
-          .get(fullUrl, { headers: { Authorization: `Apikey ${process.env.REACT_APP_TOKEN}` } })
-          .then((res) => {
-            setApiDataCUILCUIT(res.data.idPersona[0]);
+          .get(url, { headers: { Authorization: `Apikey ${process.env.REACT_APP_TOKEN}` } })
+          .then((res) => {            
             setData((previous) => {
               return {
                 ...previous,
                 cuilcuit: res.data.idPersona[0],
               };
             });
-            setIsFetching(false);
+            setLoading(false);
             updateStep(2);
           })
           .catch((err) => {
-            setIsFetching(false);
-            updateStep(2);
+            setLoading(false);            
           });
       }
     },
-    [isFetching],
-    updateStep
+    [loading]   
   );
 
   const onSubmit = () => {
-    setIsFetching(true);
+    setLoading(true);
     sessionStorage.setItem("step1", JSON.stringify({ ...values }));
   };
 
@@ -60,8 +54,8 @@ function Step1({ data, setData, updateStep }) {
     onSubmit,
     enableReinitialize: true,
   });
-  const { handleSubmit, handleChange, handleBlur, errors, touched, values } =
-    formik;
+
+  const { handleSubmit, errors, touched, values } = formik;
 
   const renderError = (campo) => {
     return (errors[campo.name] && touched[campo.name] &&
@@ -80,10 +74,10 @@ function Step1({ data, setData, updateStep }) {
           </React.Fragment>
         );
       })}
-      <Button type="submit" disabled={isFetching}>
+      <Button type="submit" disabled={loading}>
         Proximo Paso
       </Button>
-      {isFetching ? <img src="/wait2.gif" /> : ""}
+      {loading ? <img alt="leyenedo datos" src="/wait2.gif" /> : ""}
     </s.Form>
   );
 }
