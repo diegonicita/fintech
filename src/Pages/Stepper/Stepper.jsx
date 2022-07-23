@@ -50,9 +50,11 @@ function Stepper() {
   }
 
   return (
+    <>    
     <S.Container>
-      <section className="up"></section>
-      <Link to="/"><S.Image src={logo} alt="logo" /></Link>
+      <Link to="/" style={{ display: "flex", alignSelf: "flex-start", position: "absolute"}}>
+      <S.Image src={logo} alt="logo" style={{ justifyContent: "flex-start", alignSelf: "flex-end"}}/></Link>
+      <section className="up"></section>      
       <Link to="/"><S.ImageSmall src={logoSmall} alt="logo"/></Link>
       
       <section className="middle">
@@ -74,6 +76,7 @@ function Stepper() {
       </section>
       <section className="down"></section>
     </S.Container>
+    </>
   );
 }
 

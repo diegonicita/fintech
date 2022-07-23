@@ -29,8 +29,8 @@ export const Container = styled.div`
 export const Image = styled.img`
   display: none;
   width: auto;
-  height: 150px;
-  margin: 2rem; 
+  height: 120px;
+  margin-left: 1rem;   
   @media (min-width: ${theme.breakpoints.tabletX1}) { 
     display: block;    
   } 
@@ -40,7 +40,7 @@ export const Image = styled.img`
 
 
 export const ImageSmall = styled.img`
-  display: block;  
+  display: inline-block;  
   width: auto;
   height: 50px;
   margin: 2rem;

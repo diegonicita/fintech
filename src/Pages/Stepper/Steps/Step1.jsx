@@ -92,6 +92,7 @@ function Step1({ data, setData, updateStep }) {
       <Button type="submit" disabled={loading}>
         Proximo Paso
       </Button>
+      <div style={{margin: "25px"}} />
       {loading ? <img alt="leyenedo datos" src="/wait2.gif" /> : ""}
     </s.Form>
   );
