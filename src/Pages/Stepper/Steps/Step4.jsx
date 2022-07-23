@@ -4,6 +4,9 @@ import validationSchema from "../validations/step4";
 import { Link } from "react-router-dom";
 import CheckBoxField from "../../../components/CheckBoxField";
 import RadioButtonField from "../../../components/RadioButtonField";
+import * as s from "./styles";
+import Button from "../../../components/Button/Button";
+
 
 function Step4({ data, updateStep }) {
   const onSubmit = () => {
@@ -105,14 +108,15 @@ function Step4({ data, updateStep }) {
         values={values.fondosOrigenesLicitos}
         options={["Si", "No"]}
       ></RadioButtonField>
-
-      <button type="submit">
-        <span className="icon" style={{ left: "15%", top: "5%" }}></span>Proximo
-        Paso
-      </button>
-      <Link to="" onClick={() => updateStep(3)}>
+      <div style={{textAlign: "center"}}>
+      <Button type="submit">Proximo Paso</Button>
+      <div style={{ marginTop: "5px" }} />
+      <Button handleClick={() => updateStep(3)} type="button">
         Volver
-      </Link>
+      </Button>
+      <div style={{ margin: "25px" }} /> 
+      </div>
+      
     </form>
   );
 }

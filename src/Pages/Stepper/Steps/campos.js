@@ -65,21 +65,34 @@ export const campos2 = [
   },
   {
     name: "genero",
-    label: "Género",
-    type: "text",
+    type: "select",
     placeholder: "Género",
+    options: [
+      { value: "", label: "Género"},
+      { value: "1", label: "Masculino" },
+      { value: "2", label: "Femenino" },
+      { value: "3", label: "Otro" },
+    ],
   },
   {
     name: "nacionalidad",
-    label: "Nacionalidad",
-    type: "text",
+    type: "select",    
     placeholder: "Nacionalidad",
+    options: [
+      { value: "", label: "Nacionalidad"},
+      { value: "1", label: "Argentino" },
+      { value: "2", label: "Otro" },      
+    ],
   },
   {
     name: "paisDeNacimiento",
-    label: "País de Nacimiento",
-    type: "text",
+    type: "select",    
     placeholder: "País de Nacimiento",
+    options: [
+      { value: "", label: "Pais de Nacimiento"},
+      { value: "1", label: "Argentina" },
+      { value: "2", label: "Otro" },      
+    ],
   }
   ,
   {
@@ -91,22 +104,29 @@ export const campos2 = [
 ];
 
 export const campos3 = [
-  {
-    label: "Pais",
+  {    
+    type: "select",
     name: "pais",
-    placeholder: "Pais",
-    type: "text"
+    placeholder: "Pais",  
+    options: [
+      { value: "", label: "Pais"},
+      { value: "1", label: "Argentina" },
+      { value: "2", label: "Otro" },      
+    ], 
   }
   ,
-  {
-    label: "Provincia",
+  {    
     name: "provincia",
     placeholder: "Provincia",
-    type: "text"
+    type: "select",
+    options: [
+      { value: "", label: "Provincia"},
+      { value: "1", label: "CABA" },
+      { value: "2", label: "Otra" },      
+    ], 
   }
   ,
   {
-
     label: "Ciudad o Localidad",
     name: "ciudadLocalidad",
     placeholder: "Ciudad o Localidad",

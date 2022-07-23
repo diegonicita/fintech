@@ -15,7 +15,7 @@ function RadioButtonField({
       <h2 className="step4">{label}</h2>
       {options.map((option, index) => {
         return (
-          <div key={"aa"+ index}>
+          <div style={{display: "flex"}} key={"aa"+ index}>
             <input
               type="radio"
               name={name}

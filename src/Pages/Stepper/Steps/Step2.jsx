@@ -1,77 +1,123 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import validationSchema from "../validations/step2";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import {campos2 as campos} from "./campos.js";
+import { campos2 as campos } from "./campos.js";
 import * as s from "./styles";
 import Button from "../../../components/Button/Button";
 import { renderSwitch as renderSwitchInput } from "./renderSwitch.js";
 
 function Step2({ data, setData, updateStep }) {
+  const [loading, setLoading] = useState({ value: true, cuil: data.cuilcuit });
+  const [stepData, setStepData] = useState(null);
+  
+  // Fetch the data from the API using CUIL/CUIT from previous Step //
+  // Save the result in stepData //
+  useEffect(() => {
+    if (loading.value === true) {
+      const fetchData = () => {
+        const url =
+          process.env.REACT_APP_URL +
+          `${process.env.REACT_APP_QUERY2}${loading.cuil}`;
+        axios
+          .get(url, {
+            headers: { Authorization: `Apikey ${process.env.REACT_APP_TOKEN}` },
+          })
+          .then((res) => {
+            setStepData(res.data);
+            setLoading((previous) => {
+              return { ...previous, value: false };
+            });
+          })
+          .catch((err) => {
+            setLoading((previous) => {
+              return { ...previous, value: false };
+            });
+          });
+      };
+      fetchData();
+    }
+  }, [loading, setStepData]);
 
+  // Procesa y almacena los datos del formulario //
+  useEffect(() => {
+    const processData = () => {      
+
+      let persona = stepData.persona;
+
+      if (persona != null) {
+        if (persona.nombre != null) {
+        let nombres = persona.nombre.split(" ");
+          if (nombres !== undefined)
+            {
+            formik.setFieldValue("primerNombre", nombres[0] || "", true);
+            formik.setFieldValue("segundosNombres", nombres[1] || "", true);
+            }
+          }
+        }
+      if (persona.apellido !== undefined) {
+        formik.setFieldValue("apellidos", persona.apellido || "", true);
+      }
+      if (persona.fechaNacimiento !== undefined) {
+        let fecha = persona.fechaNacimiento;
+        let fechaSplit = fecha.split("T");
+        formik.setFieldValue("fechaDeNacimiento", fechaSplit[0], true);
+      }
+      let calle, altura, pisoDepto, codigoPostal = "";
+      if (persona.domicilio.length !== 0) 
+        {
+          calle = persona.domicilio[0].calle;
+          altura = persona.domicilio[0].numero;          
+          if (persona.domicilio[0].piso) pisoDepto = persona.domicilio[0].piso;
+          if (persona.domicilio[0].oficinaDptoLocal) pisoDepto = " " + persona.domicilio[0].oficinaDptoLocal;          
+          codigoPostal = persona.domicilio[0].codigoPostal;  
+        }               
+      setData({
+          ...data,          
+          calle: calle || "",
+          altura: altura || "",
+          pisoDepto: pisoDepto || "",
+          codigoPostal: codigoPostal || "",
+        });        
+    };
+    if (stepData != null) processData();
+  }, [stepData]);
+
+  // Formik //
+  const onSubmit = () => {
+    sessionStorage.setItem("step2", JSON.stringify({ ...values }));
+    updateStep(3);
+  };
   const initialValues = {
-    primerNombre: "",
-    segundosNombres: "",
-    apellidos: "",
-    cuilcuit: data?.cuilcuit || "",
+    primerNombre: data?.primerNombre || "",
+    segundosNombres: data?.segundosNombres || "",
+    apellidos: data?.apellidos || "",
+    cuilcuit: loading?.cuil || "",
     genero: data?.genero || "",
     nacionalidad: data?.nacionalidad || "",
     paisDeNacimiento: data?.paisDeNacimiento || "",
     fechaDeNacimiento: data?.fechaDeNacimiento || "",
   };
-
-  const onSubmit = () => {
-    console.log("submit 2");
-    sessionStorage.setItem("step2", JSON.stringify({ ...values }));
-    updateStep(3);
-  };
-
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit,
     enableReinitialize: true,
   });
-  const { handleSubmit, errors, touched, values } =
-    formik; 
+  const { handleSubmit, errors, touched, values } = formik;
 
-  useEffect(() => {    
-    const url = process.env.REACT_APP_URL + `${process.env.REACT_APP_QUERY2}${data.cuilcuit}`;
-    axios
-      .get(url, { headers: { Authorization: `Apikey ${process.env.REACT_APP_TOKEN}` } })
-      .then((res) => {        
-        const d = res.data.persona;          
-        let nombres = res.data.persona.nombre.split(" ");
-        formik.setFieldValue("primerNombre", nombres[0] || "", true);
-        formik.setFieldValue("segundosNombres", nombres[1] || "", true);       
-        formik.setFieldValue("apellidos", d.apellido || "", true);
-        let fecha = d.fechaNacimiento;
-        let fechaSplit = fecha.split("T");
-        formik.setFieldValue("fechaDeNacimiento", fechaSplit[0], true);
-        setData({
-            ...data,
-            calle: d.domicilio[0].calle || "",
-            altura: d.domicilio[0].numero || "",
-            pisoDepto: (d.domicilio[0]?.piso || "") + (d.domicilio[0]?.oficinaDptoLocal || ""),
-            codigoPostal: d.domicilio[0]?.codigoPostal || "",
-        }            
-        );
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [setData]);
-
+  // Para hacer el Render de los errores en cada campo //
   const renderError = (campo) => {
-    return (errors[campo.name] && touched[campo.name] &&
-      (<s.Error>{errors[campo.name]}</s.Error>)
-    )
-  }
+    return (
+      errors[campo.name] &&
+      touched[campo.name] && <s.Error>{errors[campo.name]}</s.Error>
+    );
+  };
 
   return (
     <s.Form onSubmit={handleSubmit} type="POST">
-    <h2>Datos Personales</h2>
+      <h2>Datos Personales</h2>
       {campos.map((campo) => {
         return (
           <React.Fragment key={campo.name + new Date().getMilliseconds}>
@@ -80,12 +126,10 @@ function Step2({ data, setData, updateStep }) {
           </React.Fragment>
         );
       })}
-      <Button type="submit">
-        Proximo Paso
-      </Button>      
-      <Link to="" onClick={() => updateStep(1)}>
-        Volver
-      </Link>
+      <Button type="submit">Proximo Paso</Button>
+      <div style={{marginTop: "5px"}} />
+      <Button handleClick={() => updateStep(1)} type="button">Volver</Button>      
+      <div style={{margin: "25px"}} />
     </s.Form>
   );
 }

@@ -12,14 +12,14 @@ function CheckBoxField({
   options,
 }) {
   return (
-    <div className="check-box-field">
-      <h2 className="step4" style={{textAlign: "center"}}>{label}</h2>
+    <div>
+      <h2>{label}</h2>
       {options.map( (option, index) => {
 
         let nameIndex = `${name}${index+1}`;
         
         return (
-      <div key={1001 + index}>      
+      <div key={1001 + index} style={{display: "flex"}}>      
         <input
           type={type}
           name={nameIndex}
@@ -28,8 +28,8 @@ function CheckBoxField({
           checked={values[nameIndex]}
           className={errors[nameIndex] && touched[nameIndex] && "error"}                              
         />
-        <label className="without-border" htmlFor={nameIndex}><h3 style={{margin: "5px"}}>{option}</h3></label>
-        {errors[nameIndex] && touched[nameIndex] ? (<div className="error-msg">{errors[nameIndex]}</div>) : ("")}
+        <label htmlFor={nameIndex}><h3 style={{margin: "5px"}}>{option}</h3></label>
+        {errors[nameIndex] && touched[nameIndex] ? (<div>{errors[nameIndex]}</div>) : ("")}
       </div>)})}
     </div>
   );

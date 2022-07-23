@@ -20,7 +20,7 @@ import Step13 from "./Steps/Step13";
 import Step15 from "./Steps/Step15";
 import StepCamera from "./Steps/StepCamera";
 
-function StepperUnico() {
+function Stepper() {
   const [data, setData] = useState({});
   const [step, setStep] = useState(1);
 
@@ -77,4 +77,4 @@ function StepperUnico() {
   );
 }
 
-export default StepperUnico;
+export default Stepper;
