@@ -11,8 +11,8 @@ border-radius: var(--global-border-radius);
 cursor: pointer;
 border: 1px solid var(--global-primary-color);
 :hover {
-  color: var(--global-primary-color);
-  background-color: var(--global-bg-color);
+  color: white;
+  background-color: var(--global-secundary-color);
   border-color: var(--global-border-color);
 }  
 @media (min-width: ${theme.breakpoints.tabletX1}) { 

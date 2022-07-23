@@ -1,18 +1,23 @@
 import React from "react";
-import logo from "../../../Assets/logo.png";
-import CreateAccountComponent from "../../../components/CreateAccountBase";
+import * as s from "./styles";
+import Button from "../../../components/Button/Button";
 
-function Step2({goNext}) {
+function Step2({ goNext }) {
   return (
- <CreateAccountComponent
-  logo={logo}
-  h1Title="Cuenta fue agregada con éxito."
-  buttonText="Hacer prueba de vida"
-  h1Style={{ maxWidth: "80%" }}
-  divHomeDownStyle={{ height: "20vh" }}
-  handleClick={goNext}
-  /> 
-  )
+    <>      
+      <s.Form type="POST">
+        <div style={{ margin: "50px" }} />
+        <h2 style={{ textAlign: "center" }}>
+          Cuenta fue agregada con éxito.
+        </h2>
+        <div style={{ margin: "15px" }} />
+        <Button style={{fontSize: "1.2rem", width: "14rem"}} type="button" handleClick={goNext}>
+          Hacer prueba de vida
+        </Button>
+        <div style={{ margin: "15px" }} />
+      </s.Form>     
+    </>
+  );
 }
 
 export default Step2;

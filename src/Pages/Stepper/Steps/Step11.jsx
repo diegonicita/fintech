@@ -1,31 +1,30 @@
 import React from "react";
-import logo from "../../../Assets/logo.png";
+import * as s from "./styles";
+import Button from "../../../components/Button/Button";
 
-function Step5({ goNext }) { 
-
-  const handleUploadFile = () => {
-    // navigate("/camera", {replace: true});
-  };
+function Step5({ goNext }) {
+  const handleUploadFile = () => {};
 
   return (
-
- <div className="home-container">
-  <div className="home-up"></div>
-  <img src={logo} alt="logo" />
-  <div className="home-middle">
-    <h1 style={{ margin: "0", maxWidth: "80%" }}> ¡Excelente!</h1>
-    <h1 style={{ margin: "0", maxWidth: "80%" }}>      
-      Ahora continuemos con una foto del dorso del DNI.
-    </h1>
-  </div>
-  <div className="home-down" style={{ height: "40vh" }}>
-    <button onClick={goNext}> Sacar foto </button>
-    <button style={{ marginTop: "20px" }} onClick={handleUploadFile}>     
-      Subir archivo
-    </button>
-  </div>
-</div>
-);
+    <s.Form type="POST">
+      <div style={{ margin: "50px" }} />
+      <h2 style={{ textAlign: "center" }}>¡Excelente!</h2>
+      <h2 style={{ textAlign: "center" }}>
+        Ahora continuemos con una foto del dorso del DNI.
+      </h2>
+      <s.Botonera>
+        <div style={{ margin: "10px" }} />
+        <Button type="button" handleClick={goNext}>
+          Sacar Foto
+        </Button>
+        <div style={{ margin: "10px" }} />
+        <Button type="button" handleClick={handleUploadFile}>
+          Subir archivo
+        </Button>
+        <div style={{ margin: "10px" }} />
+      </s.Botonera>
+    </s.Form>
+  );
 }
 
 export default Step5;

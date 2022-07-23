@@ -1,17 +1,16 @@
 import React from "react";
-import logo from "../../../Assets/logo.png";
-import CreateAccountComponent from "../../../components/CreateAccountBase";
+import * as s from "./styles";
+import Button from "../../../components/Button/Button";
 
 function Step3({ goNext }) {
   return (
-    <CreateAccountComponent
-      logo={logo}
-      h1Title="¡Excelente! Ahora necesitamos fotos de tu DNI y una selfie."
-      buttonText="Comenzar"
-      h1Style={{ maxWidth: "80%" }}
-      divHomeDownStyle={{ height: "20vh" }}
-      handleClick={goNext}
-    />
+    <s.Form type="POST">
+    <div style={{ margin: "50px" }} />
+    <h2 style={{ textAlign: "center" }}>¡Excelente! Ahora necesitamos fotos de tu DNI y una selfie.</h2>    
+    <div style={{ margin: "15px" }} />
+    <Button type="button" handleClick={goNext}>Comenzar</Button>
+    <div style={{ margin: "15px" }} />
+   </s.Form>
   );
 }
 

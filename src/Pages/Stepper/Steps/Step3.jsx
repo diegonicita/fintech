@@ -49,12 +49,13 @@ function Step3({ data, updateStep }) {
           </React.Fragment>
         );
       })}
-      <Button type="submit">Proximo Paso</Button>
-      <div style={{ marginTop: "5px" }} />
-      <Button handleClick={() => updateStep(2)} type="button">
-        Volver
-      </Button>
-      <div style={{ margin: "25px" }} />
+      <s.Botonera>
+        <div style={{margin: "10px"}} />
+        <Button handleClick={() => updateStep(2)} type="button">Volver</Button>      
+        <div style={{margin: "10px"}} />
+        <Button type="submit">Proximo Paso</Button>        
+        <div style={{margin: "10px"}} />
+      </s.Botonera>
     </s.Form>
   );
 }

@@ -108,14 +108,13 @@ function Step4({ data, updateStep }) {
         values={values.fondosOrigenesLicitos}
         options={["Si", "No"]}
       ></RadioButtonField>
-      <div style={{textAlign: "center"}}>
-      <Button type="submit">Proximo Paso</Button>
-      <div style={{ marginTop: "5px" }} />
-      <Button handleClick={() => updateStep(3)} type="button">
-        Volver
-      </Button>
-      <div style={{ margin: "25px" }} /> 
-      </div>
+      <s.Botonera>
+        <div style={{margin: "10px"}} />
+        <Button handleClick={() => updateStep(3)} type="button">Volver</Button>      
+        <div style={{margin: "10px"}} />
+        <Button type="submit">Proximo Paso</Button>        
+        <div style={{margin: "10px"}} />
+      </s.Botonera>
       
     </form>
   );

@@ -11,8 +11,7 @@ function CreateAccountComponent({
 }) {
   return (
     <div className="home-container">
-      <div className="home-up"></div>
-      <img src={logo} alt="logo" />
+      <div className="home-up"></div>     
       <div className="home-middle">
         <h1 style={h1Style}> {h1Title} </h1>
       </div>
