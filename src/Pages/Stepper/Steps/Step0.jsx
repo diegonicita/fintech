@@ -7,10 +7,10 @@ function Step0({ updateStep }) {
     <>      
         <s.Form type="POST" style={{ marginTop: "25vh"}}>        
         <h2 style={{ textAlign: "center" }}>
-          Abrí tu cuenta en minutos
+          Son necesarios algunos datos personales
         </h2>        
         <Button style={{fontSize: "1.2rem", width: "14rem"}} type="button" handleClick={ () => {updateStep(1)}}>
-          Comenzar
+          Siguiente
         </Button>        
       </s.Form>           
     </>

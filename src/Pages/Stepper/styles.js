@@ -10,10 +10,10 @@ const flexConfig = css`
 export const Container = styled.div`
   ${flexConfig}
   position: relative;
-  margin: 0px;
+  margin: 0px auto;
   padding: 0px;
   height: auto;
-  width: 95vw;
+  width: 95vw; 
 
   .up,
   .middle,

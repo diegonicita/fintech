@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import validationSchema from "../validations/step2";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { campos2 as campos } from "./campos.js";
 import * as s from "./styles";
@@ -11,11 +10,16 @@ import { renderSwitch as renderSwitchInput } from "./renderSwitch.js";
 function Step2({ data, setData, updateStep }) {
   const [loading, setLoading] = useState({ value: true, cuil: data.cuilcuit });
   const [stepData, setStepData] = useState(null);
+
+  const oldcuilcuit = JSON.parse(sessionStorage.getItem("cuilcuit"));
   
   // Fetch the data from the API using CUIL/CUIT from previous Step //
   // Save the result in stepData //
   useEffect(() => {
     if (loading.value === true) {
+      
+      if (oldcuilcuit !== loading.cuil) {
+        console.log("myFetch in Step 2");
       const fetchData = () => {
         const url =
           process.env.REACT_APP_URL +
@@ -38,6 +42,13 @@ function Step2({ data, setData, updateStep }) {
       };
       fetchData();
     }
+    else {
+      console.log(false);
+      setLoading((previous) => {
+        return { ...previous, value: false };
+      });
+    }
+  }
   }, [loading, setStepData]);
 
   // Procesa y almacena los datos del formulario //
@@ -87,8 +98,10 @@ function Step2({ data, setData, updateStep }) {
   // Formik //
   const onSubmit = () => {
     sessionStorage.setItem("step2", JSON.stringify({ ...values }));
+    sessionStorage.setItem("cuilcuit", JSON.stringify(data.cuilcuit));
     updateStep(3);
   };
+  
   const initialValues = {
     primerNombre: data?.primerNombre || "",
     segundosNombres: data?.segundosNombres || "",
@@ -130,9 +143,10 @@ function Step2({ data, setData, updateStep }) {
         <div style={{margin: "10px"}} />
         <Button handleClick={() => updateStep(1)} type="button">Volver</Button>      
         <div style={{margin: "10px"}} />
-        <Button type="submit">Proximo Paso</Button>        
-        <div style={{margin: "10px"}} />
+        <Button type="submit">Proximo Paso</Button>                
       </s.Botonera>
+      <div style={{margin: "10px"}} />
+      {loading.value && <img style={{ width: "3rem" }} alt="leyendo datos" src="/wait2.gif" />}
     </s.Form>
   );
 }

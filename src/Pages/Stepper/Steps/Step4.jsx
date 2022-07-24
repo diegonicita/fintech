@@ -1,18 +1,26 @@
 import React from "react";
 import { useFormik } from "formik";
 import validationSchema from "../validations/step4";
-import { Link } from "react-router-dom";
-import CheckBoxField from "../../../components/CheckBoxField";
-import RadioButtonField from "../../../components/RadioButtonField";
+import RadioCheck from "../../../components/RadioCheck/RadioCheck";
 import * as s from "./styles";
 import Button from "../../../components/Button/Button";
-
+import { useState } from "react";
 
 function Step4({ data, updateStep }) {
+
+  const [checkBoxError, setCheckBoxError] = useState(false);
+
   const onSubmit = () => {
-    console.log("submit 4");
-    sessionStorage.setItem("step4", JSON.stringify({ ...values }));
-    updateStep(5);
+    let flag = [values.condicionesSOIPEPFATCA1, 
+                values.condicionesSOIPEPFATCA2, 
+                values.condicionesSOIPEPFATCA3,
+                values.condicionesSOIPEPFATCA4].some(x => x === true);
+    if (flag)
+    {sessionStorage.setItem("step4", JSON.stringify({ ...values }));
+    updateStep(5);}
+    else {
+      setCheckBoxError(true);
+    }
   };
 
   const initialValues = {
@@ -32,6 +40,7 @@ function Step4({ data, updateStep }) {
   });
 
   const handleChangeCheckBoxs = (e) => {
+    setCheckBoxError(false);
     setFieldValue(e.target.name, e.target.checked);
     if (
       e.target.name === "condicionesSOIPEPFATCA4" &&
@@ -46,8 +55,8 @@ function Step4({ data, updateStep }) {
       e.target.name !== "condicionesSOIPEPFATCA4" &&
       e.target.checked === true
     ) {
-      setFieldValue("condicionesSOIPEPFATCA4", false);      
-    }
+      setFieldValue("condicionesSOIPEPFATCA4", false);
+    }     
   };
 
   const {
@@ -60,62 +69,63 @@ function Step4({ data, updateStep }) {
     setFieldValue,
   } = formik;
 
-  const commonAtr = {    
+  const commonAtr = {
     handleBlur: handleBlur,
     errors: errors,
     touched: touched,
     values: values,
-    placeholder: "None"  
-  }  
+    placeholder: "None",
+  };
 
   return (
-    <form onSubmit={handleSubmit} type="POST" style={{marginTop: "2rem"}}>
-      <CheckBoxField
+    <form onSubmit={handleSubmit} type="POST" style={{ marginTop: "2rem" }}>
+      <RadioCheck
         label="¿Cumplís alguna de las siguientes condiciones?"
         name="condicionesSOIPEPFATCA"
         handleChange={handleChangeCheckBoxs}
         {...commonAtr}
         type="checkbox"
         options={["SOI", "PEP", "FATCA", "Ninguna"]}
-      ></CheckBoxField>
-      <div style={{ fontSize: "0.8rem", color: "gray", fontWeight: "800" }}>
+        customError={checkBoxError}
+      ></RadioCheck>
+      <s.MoreInformation>
         ¿No estás seguro?
-        <Link
-          style={{ fontSize: "0.8rem", color: "#1488E9", fontWeight: "800" }}
-          to="/"
-        >
-          {" "}
-          Ver más informacion
-        </Link>
-      </div>
-      <RadioButtonField
+        <s.Enlace to="/">Ver más informacion</s.Enlace>
+      </s.MoreInformation>
+
+      <RadioCheck
         label="¿Tributás en otro país además de Argentina?"
         name="tributaEnOtroPais"
+        values={values.tributaEnOtroPais}
         handleChange={handleChange}
         handleBlur={handleBlur}
         errors={errors}
         touched={touched}
-        values={values.tributaEnOtroPais}
+        type="radio"
         options={["Si", "No"]}
-      ></RadioButtonField>
-      <RadioButtonField
+      ></RadioCheck>
+
+      <RadioCheck
         label="¿Sus fondos provienen de orígenes lícitos?"
         name="fondosOrigenesLicitos"
+        values={values.fondosOrigenesLicitos}
         handleChange={handleChange}
         handleBlur={handleBlur}
         errors={errors}
         touched={touched}
-        values={values.fondosOrigenesLicitos}
+        type="radio"
         options={["Si", "No"]}
-      ></RadioButtonField>
+      ></RadioCheck>
+
       <s.Botonera>
-        <div style={{margin: "10px"}} />
-        <Button handleClick={() => updateStep(3)} type="button">Volver</Button>      
-        <div style={{margin: "10px"}} />
-        <Button type="submit">Proximo Paso</Button>        
-        <div style={{margin: "10px"}} />
+        <div style={{ margin: "10px" }} />
+        <Button handleClick={() => updateStep(3)} type="button">
+          Volver
+        </Button>
+        <div style={{ margin: "10px" }} />
+        <Button type="submit">Proximo Paso</Button>
+        <div style={{ margin: "10px" }} />
       </s.Botonera>
-      
     </form>
   );
 }
