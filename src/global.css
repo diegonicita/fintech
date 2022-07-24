@@ -7,10 +7,12 @@
 }
 
 :root {
-  --global-primary-color: #1488E9;
+  --global-primary-color: #0062FF;
   --global-secundary-color: #0098C9;  
+  --global-dark-color: #002C75;  
   --global-bg-color: white;
   --global-bg-color-soft: #fafafa;
+  --global-bg-color-soft-alpha: #fafafaBB;
   --global-radius: 8px;
   --global-border: 1px solid #afafaf; 
   --global-border-color: #afafaf;

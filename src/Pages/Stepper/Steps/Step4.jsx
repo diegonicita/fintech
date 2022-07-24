@@ -69,7 +69,7 @@ function Step4({ data, updateStep }) {
   }  
 
   return (
-    <form onSubmit={handleSubmit} type="POST">
+    <form onSubmit={handleSubmit} type="POST" style={{marginTop: "2rem"}}>
       <CheckBoxField
         label="¿Cumplís alguna de las siguientes condiciones?"
         name="condicionesSOIPEPFATCA"

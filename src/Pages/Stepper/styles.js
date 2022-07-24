@@ -12,8 +12,8 @@ export const Container = styled.div`
   position: relative;
   margin: 0px;
   padding: 0px;
-  height: 100vh;
-  width: 100vw;
+  height: auto;
+  width: 95vw;
 
   .up,
   .middle,
@@ -21,16 +21,17 @@ export const Container = styled.div`
     ${flexConfig}    
   }
 
-  @media (min-height: 480px) { 
-    
-  } 
+  .down {
+    margin-bottom: 10vh;
+  }
 `;
 
 export const Image = styled.img`
   display: none;
   width: auto;
   height: 120px;
-  margin-left: 1rem;   
+  margin-left: 1rem; 
+  margin-top: 2rem;  
   @media (min-width: ${theme.breakpoints.tabletX1}) { 
     display: block;    
   } 
@@ -43,8 +44,8 @@ export const ImageSmall = styled.img`
   display: inline-block;  
   width: auto;
   height: 50px;
-  margin: 2rem;
-  margin-top: 4rem;  
+  margin: 0rem;
+  margin-top: 2rem;  
   @media (min-width: ${theme.breakpoints.tabletX1}) {     
     display: none;
   } 
