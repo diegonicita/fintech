@@ -13,6 +13,8 @@
   --global-bg-color: white;
   --global-bg-color-soft: #fafafa;
   --global-bg-color-soft-alpha: #fafafaBB;
+  --global-disabled-color: #afafaf;
+  --global-disabled-text-color: #444444;
   --global-radius: 8px;
   --global-border: 1px solid #afafaf; 
   --global-border-color: #afafaf;

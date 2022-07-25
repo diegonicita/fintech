@@ -1,9 +1,10 @@
 import React from "react";
 import * as S from "./styles";
 
-function Button({ type, handleClick, name, children, style }) {
+function Button({ disabled, type, handleClick, name, children, style }) {
   return (
     <S.Button
+      disabled={disabled}
       type={type}
       style={style}
       name={name}

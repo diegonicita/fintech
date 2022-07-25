@@ -10,11 +10,17 @@ height: 3.5rem;
 border-radius: var(--global-border-radius);
 cursor: pointer;
 border: 1px solid var(--global-primary-color);
-:hover {
+&:hover:not([disabled]) {
   color: white;
   background-color: var(--global-secundary-color);
   border-color: var(--global-border-color);
 }  
+&:disabled {	
+  background-color: var(--global-disabled-color);  
+  border-color: var(--global-disabled-color);
+  color: var(--global-disabled-text-color);
+  cursor: not-allowed;
+}
 @media (min-width: ${theme.breakpoints.tabletX1}) { 
   
 }

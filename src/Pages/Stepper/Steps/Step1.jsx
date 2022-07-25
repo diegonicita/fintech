@@ -32,11 +32,13 @@ function Step1({ data, setData, updateStep }) {
       });
   }
 else {  
-  setLoading(false);
-  sessionStorage.clear();
-  sessionStorage.setItem("step1", JSON.stringify({ ...values }));
-  sessionStorage.setItem("url", JSON.stringify(url));
-  updateStep(2);
+  setTimeout(() => {
+              setLoading(false);
+              sessionStorage.clear();
+              sessionStorage.setItem("step1", JSON.stringify({ ...values }));
+              sessionStorage.setItem("url", JSON.stringify(url));
+              updateStep(2);
+  }, 1000);
 }
 };
 
