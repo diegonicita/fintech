@@ -57,7 +57,7 @@ export const Label = styled.label`
 
 export const Botonera = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
   width: 100%;
