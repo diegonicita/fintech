@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import Modal from "../../components/Modal/Modal.jsx";
 import logo from "../../Assets/logo.png";
 import logoSmall from "../../Assets/logo-small.png";
-import * as S from "./styles";
+import * as S from "./Home.styles.js";
 import Button from "../../components/Button/Button.jsx";
 
 function Home() {
