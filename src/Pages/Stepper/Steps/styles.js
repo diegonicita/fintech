@@ -52,7 +52,13 @@ export const Label = styled.label`
   ${commonPadding};
   box-sizing: border-box;
   font-size: 1.2rem;
-  width: 400px;
+  width: 300px;
+  @media (min-width: ${theme.breakpoints.phoneX1}) {
+    width: 320px;
+  }
+  @media (min-width: ${theme.breakpoints.tabletX1}) {
+    width: 400px;
+  }
 `;
 
 export const Botonera = styled.div`
@@ -74,7 +80,7 @@ export const Botonera = styled.div`
 export const CheckBoxContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  width: 350px;
+  width: 100%;
 `;
 
 export const CheckBox = styled.input`

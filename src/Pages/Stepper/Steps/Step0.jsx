@@ -30,32 +30,26 @@ function Step0({ data, setData, updateStep }) {
   const handleReset = () => {
     errors = [];
     setData({});
-    sessionStorage.clear();    
+    sessionStorage.clear();
   };
 
   return (
     <>
       {errors.length > 0 && (
         <Modal
-          context={[
-            { text: "Comenzar de nuevo", fnClick: handleReset },
-            { text: "Continuar", fnClick: handleContinue },
-          ]}
-        >
-          <h3
-            style={{ textAlign: "center", maxWidth: "180px", marginTop: "0" }}
-          >
-            Tenes una apertura en proceso:
-          </h3>
-        </Modal>
+          context={{
+            buttons: [
+              { text: "Comenzar de nuevo", fnClick: handleReset },
+              { text: "Continuar", fnClick: handleContinue },
+            ],
+            title: "Tenes una apertura en proceso:",
+          }}
+        />
       )}
       <s.Form type="POST" style={{ marginTop: "25vh" }}>
         <h2 style={{ textAlign: "center" }}>
-          Bienvenido a la Fintech Nº 1 de Latinoamerica! 
-        </h2>
-        <h2 style={{ textAlign: "center" }}>
-        
-        </h2>
+          Bienvenido a la Fintech Nº 1 de Latinoamerica!
+        </h2>        
         <Button
           style={{ fontSize: "1.2rem", width: "14rem" }}
           type="button"
