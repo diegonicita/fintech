@@ -141,7 +141,7 @@ function Step2({ data, setData, updateStep }) {
         );
       })}
       <s.Botonera>
-        <div style={{ margin: "10px" }} />
+        <div style={{ margin: "15px" }} />
         <Button
           disabled={loading.value}
           handleClick={() => updateStep(1)}

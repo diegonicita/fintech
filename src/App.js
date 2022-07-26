@@ -1,6 +1,5 @@
 // Pages //
 import Stepper from "./Pages/Stepper/Stepper";
-import Home from "./Pages/Home/Home";
 // React Router DOM
 import { Route, Routes, useLocation } from "react-router-dom";
 // Framer Motion
@@ -14,17 +13,9 @@ function App() {
   return (
     <>
       <AnimatePresence>
-        <Routes location={location} key={location.pathname}>
+        <Routes location={location} key={location.pathname}>          
           <Route
             path="/"
-            element={
-              <MotionDiv>
-                <Home />
-              </MotionDiv>
-            }
-          ></Route>
-          <Route
-            path="/stepper"
             element={
               <MotionDiv>
                 <Stepper />

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import logo from "../../Assets/logo.png";
 import logoSmall from "../../Assets/logo-small.png";
 
-// import "./Stepper.styles.css";
 import * as S from "./styles";
 import Step0 from "./Steps/Step0";
 import Step1 from "./Steps/Step1";
@@ -55,7 +54,7 @@ function Stepper() {
     <>
       <S.Container>
         <Link
-          to="/"
+          to=""
           style={{
             display: "flex",
             alignSelf: "flex-start",
@@ -63,6 +62,7 @@ function Stepper() {
           }}
         >
           <S.Image
+            onClick={ () => { updateStep(0) }} 
             src={logo}
             alt="logo"
             style={{ justifyContent: "flex-start", alignSelf: "flex-end" }}
@@ -71,12 +71,12 @@ function Stepper() {
         <section className="up" style={{justifyContent: "flex-end", alignItems: "flex-start"}}>
           <StepperLine step={step} />
         </section>
-        <Link to="/">
-          <S.ImageSmall src={logoSmall} alt="logo" />
+        <Link to="">
+          <S.ImageSmall src={logoSmall} alt="logo" onClick={ () => { updateStep(0) }} />
         </Link>
 
         <section className="middle">
-          {step === 0 && <Step0 updateStep={updateStep} />}
+          {step === 0 && <Step0 data={data} setData={setData} updateStep={updateStep} />}
           {step === 1 && (
             <Step1 data={data} setData={setData} updateStep={updateStep} />
           )}
