@@ -20,6 +20,7 @@ import Step13 from "./Steps/Step13";
 import Step15 from "./Steps/Step15";
 import StepCamera from "./Steps/StepCamera";
 import StepperLine from "../../components/StepperLine/StepperLine";
+import StepBase from "../../components/StepBase/StepBase";
 
 function Stepper() {
   const [data, setData] = useState({});
@@ -87,15 +88,39 @@ function Stepper() {
           {step === 4 && <Step4 data={data} updateStep={updateStep} />}
           {step === 5 && <Step5 data={data} updateStep={updateStep} />}
           {step === 6 && <Step6 goNext={goNext} time={30} />}
-          {step === 7 && <Step7 goNext={goNext} />}
-          {step === 8 && <Step8 goNext={goNext} />}
-          {step === 9 && <Step9 goNext={goNext} />}
-          {step === 10 && <StepCamera goNext={goNext} numeroFoto={1} />}
-          {step === 11 && <Step11 goNext={goNext} />}
+          {step === 7 && <StepBase context={ {
+            title: "Cuenta fue agregada con éxito.", 
+            buttons: [{title: "Volver", goTo: 6}, {title: "Hacer prueba de vida", goTo: 8}],
+            updateStep
+           }} />}
+          {step === 8 && <StepBase context={ {
+            title: "¡Excelente! \n \n Necesitamos fotos de tu DNI y una selfie.", 
+            buttons: [{title: "Volver", goTo: 7}, {title: "Comenzar", goTo: 9}],
+            updateStep
+           }} />}
+          {step === 9 && <StepBase context={ {
+            title: "Comencemos con una foto del frente del DNI.", 
+            buttons: [{title: "Volver", goTo: 8}, {title: "Sacar foto", goTo: 10}],
+            updateStep
+           }} />}
+          {step === 10 && <StepCamera goNext={goNext} numeroFoto={1} />} 
+          {step === 11 && <StepBase context={ {
+            title: "¡Excelente!. \n \n Ahora continuemos con una foto del dorso del DNI.", 
+            buttons: [{title: "Volver", goTo: 10}, {title: "Sacar foto", goTo: 12}],
+            updateStep
+           }} />}          
           {step === 12 && <StepCamera goNext={goNext} numeroFoto={2} />}
-          {step === 13 && <Step13 goNext={goNext} />}
+          {step === 13 && <StepBase context={ {
+            title: "¡Excelente! \n \nPor último, necesitamos que te saques una selfie con DNI en mano. \n \nImportante: sostené el DNI en frente tuyo.", 
+            buttons: [{title: "Volver", goTo: 12}, {title: "Sacar foto", goTo: 14}],
+            updateStep
+           }} />} 
           {step === 14 && <StepCamera goNext={goNext} numeroFoto={3} />}
-          {step === 15 && <Step15 />}
+          {step === 15 && <StepBase context={ {
+            title: "¡Excelente, ya terminamos! \n Pronto nos pondremos en contacto con vos!", 
+            buttons: [{title: "Volver", goTo: 14}, {title: "Finalizar", goTo: 1}],
+            updateStep
+           }} />} 
         </section>
         <section className="down"></section>
       </S.Container>
