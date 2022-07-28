@@ -4,7 +4,7 @@ import Stepper from "./Pages/Stepper/Stepper";
 import { Route, Routes, useLocation } from "react-router-dom";
 // Framer Motion
 import { AnimatePresence } from "framer-motion";
-import MotionDiv from "./components/MotionDiv";
+// import MotionDiv from "./components/MotionDiv";
 
 function App() {
   // Hooks //
@@ -17,9 +17,9 @@ function App() {
           <Route
             path="/"
             element={
-              <MotionDiv>
+              // <MotionDiv>
                 <Stepper />
-              </MotionDiv>
+              // </MotionDiv>
             }
           ></Route>
         </Routes>

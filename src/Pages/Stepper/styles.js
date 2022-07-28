@@ -32,7 +32,7 @@ export const Image = styled.img`
   height: 120px;
   margin-left: 1rem; 
   margin-top: 2rem;  
-  z-index: -1;
+  /* z-index: -1; */
   @media (min-width: ${theme.breakpoints.tabletX1}) { 
     display: block;    
   } 

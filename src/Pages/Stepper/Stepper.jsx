@@ -6,6 +6,7 @@ import logoSmall from "../../Assets/logo-small.png";
 
 import * as S from "./styles";
 import Step0 from "./Steps/Step0";
+import Modal from "../../components/Modal/Modal.jsx";
 import Step1 from "./Steps/Step1";
 import Step2 from "./Steps/Step2";
 import Step3 from "./Steps/Step3";
@@ -77,13 +78,27 @@ function Stepper() {
         </Link>
 
         <section className="middle">
-          {step === 0 && <Step0 data={data} setData={setData} updateStep={updateStep} />}
-          {step === 1 && (
-            <Step1 data={data} setData={setData} updateStep={updateStep} />
-          )}
-          {step === 2 && (
-            <Step2 data={data} setData={setData} updateStep={updateStep} />
-          )}
+          {step === 0 &&          
+          <Modal
+          setData={setData}
+          context={{
+            buttons: [
+              { text: "Comenzar de nuevo" },
+              { text: "Continuar"},
+            ],
+            title: "Tenes una apertura en proceso:",
+          }}
+          /> 
+          }   
+          {step === 0 && 
+          <StepBase context={ {
+            title: " Bienvenido a la Fintech Nº 1 de Latinoamerica!", 
+            buttons: [{title: "Volver", goTo: 0}, {title: "Comenzar", goTo: 1}],
+            updateStep
+           }} />           
+           }           
+          {step === 1 && <Step1 data={data} setData={setData} updateStep={updateStep} />}
+          {step === 2 && <Step2 data={data} setData={setData} updateStep={updateStep} />}
           {step === 3 && <Step3 data={data} updateStep={updateStep} />}
           {step === 4 && <Step4 data={data} updateStep={updateStep} />}
           {step === 5 && <Step5 data={data} updateStep={updateStep} />}
