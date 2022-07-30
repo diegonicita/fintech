@@ -8,6 +8,8 @@ import { renderSwitch as renderSwitchInput } from "./renderSwitch.js";
 
 function Step2({ data, setData, updateStep }) {
 
+  console.log(data);
+
   // Formik //
   const onSubmit = () => {
     sessionStorage.setItem("step2", JSON.stringify({ ...values }));    

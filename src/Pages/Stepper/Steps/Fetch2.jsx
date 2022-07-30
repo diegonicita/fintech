@@ -15,25 +15,26 @@ function Fetch2({ data, setData, updateStep }) {
       })
       .then((res) => {
         let persona = res.data.persona;
+        console.log(persona);
         let nombres = persona?.nombre?.split(" ");
         let apellido = persona?.apellido;
         let fechaNacimiento = persona?.fechaNacimiento?.split("T");        
-        let calle = persona?.domicilio?.calle;
-        let altura = persona?.domicilio?.numero;
-        let pisoDepto = persona?.domicilio?.piso;        
-        // let oficinaDptoLocal = persona?.domicilio?.oficinaDptoLocal;
-        let codigoPostal = persona?.domicilio?.codigoPostal;        
+        let calle = persona?.domicilio[0].calle;        
+        let altura = persona?.domicilio[0].numero;
+        let pisoDepto = persona?.domicilio[0].piso;                        
+        let codigoPostal = persona?.domicilio[0].codigoPostal;        
+        console.log(calle, altura, pisoDepto, codigoPostal)
         setData({
           ...data,
-          primerNombre: nombres[0] || "",
-          segundosNombres: nombres[1] || "",
-          apellidos: apellido || "",
-          fechaDeNacimiento: fechaNacimiento || "",
-          calle: calle || "",
-          altura: altura || "",
-          pisoDepto: pisoDepto || "",
-          codigoPostal: codigoPostal || "",
-        });        
+          primerNombre: nombres[0],
+          segundosNombres: nombres[1],
+          apellidos: apellido,
+          fechaDeNacimiento: fechaNacimiento,
+          calle: calle,
+          altura: altura,
+          pisoDepto: pisoDepto,
+          codigoPostal: codigoPostal,
+        });          
       })
       .catch((err) => { console.log(err)  })
       .finally(() => {
