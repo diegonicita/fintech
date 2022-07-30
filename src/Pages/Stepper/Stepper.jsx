@@ -8,6 +8,8 @@ import * as S from "./styles";
 import Step0 from "./Steps/Step0";
 import Modal from "../../components/Modal/Modal.jsx";
 import Step1 from "./Steps/Step1";
+import Fetch1 from "./Steps/Fetch1";
+import Fetch2 from "./Steps/Fetch2";
 import Step2 from "./Steps/Step2";
 import Step3 from "./Steps/Step3";
 import Step4 from "./Steps/Step4";
@@ -98,6 +100,8 @@ function Stepper() {
            }} />           
            }           
           {step === 1 && <Step1 data={data} setData={setData} updateStep={updateStep} />}
+          {step === "fetch1" && <Fetch1 data={data} setData={setData} updateStep={updateStep} />}
+          {step === "fetch2" && <Fetch2 data={data} setData={setData} updateStep={updateStep} />}
           {step === 2 && <Step2 data={data} setData={setData} updateStep={updateStep} />}
           {step === 3 && <Step3 data={data} updateStep={updateStep} />}
           {step === 4 && <Step4 data={data} updateStep={updateStep} />}
