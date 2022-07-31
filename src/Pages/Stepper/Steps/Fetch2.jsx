@@ -2,34 +2,36 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Fetch2({ data, setData, updateStep }) {
-  console.log("Fetch2");
+  console.log("Fetch2 Render");
 
   const url =
     process.env.REACT_APP_URL +
     `${process.env.REACT_APP_QUERY2}${data.cuilcuit}`;
 
   const myFetch = () => {
+    console.log("Fetch2 Axios Get");
     axios
       .get(url, {
         headers: { Authorization: `Apikey ${process.env.REACT_APP_TOKEN}` },
       })
       .then((res) => {
         let persona = res.data.persona;
-        console.log(persona);
-        let nombres = persona?.nombre?.split(" ");
+        console.log(persona);        
+        let names = persona?.nombre?.split(" ");
+        let nombre1 = (names !== undefined && names.length > 1)?names[0]:"";
+        let nombre2 = (names !== undefined && names.length > 2)?names[1]:"";
         let apellido = persona?.apellido;
-        let fechaNacimiento = persona?.fechaNacimiento?.split("T");        
-        let calle = persona?.domicilio[0].calle;        
-        let altura = persona?.domicilio[0].numero;
-        let pisoDepto = persona?.domicilio[0].piso;                        
-        let codigoPostal = persona?.domicilio[0].codigoPostal;        
-        console.log(calle, altura, pisoDepto, codigoPostal)
+        let fecha = persona?.fechaNacimiento?.split("T")[0];	        
+        let calle = (persona?.domicilio.length>0) ? persona.domicilio[0].calle:"";
+        let altura = (persona?.domicilio.length>0) ? persona?.domicilio[0].numero:"";
+        let pisoDepto = (persona?.domicilio.length>0) ? persona?.domicilio[0].piso:"";                        
+        let codigoPostal = (persona?.domicilio.length>0) ? persona?.domicilio[0].codigoPostal:"";          
         setData({
           ...data,
-          primerNombre: nombres[0],
-          segundosNombres: nombres[1],
+          primerNombre: nombre1,
+          segundosNombres: nombre2,
           apellidos: apellido,
-          fechaDeNacimiento: fechaNacimiento,
+          fechaDeNacimiento: fecha,
           calle: calle,
           altura: altura,
           pisoDepto: pisoDepto,

@@ -6,9 +6,7 @@ import * as s from "./styles";
 import Button from "../../../components/Button/Button";
 import { renderSwitch as renderSwitchInput } from "./renderSwitch.js";
 
-function Step2({ data, setData, updateStep }) {
-
-  console.log(data);
+function Step2({ data, setData, updateStep }) {  
 
   // Formik //
   const onSubmit = () => {

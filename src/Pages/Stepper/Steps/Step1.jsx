@@ -10,15 +10,15 @@ import Button from "../../../components/Button/Button";
 function Step1({ data, setData, updateStep }) {
 
   const onSubmit = () => {    
-    setData({
-      ...data,
+    setData({      
       phone: values.phone,
       email: values.email,
       tipoDeDocumento: values.tipoDeDocumento,
       numeroDeDocumento: values.numeroDeDocumento,
       aceptacionTerminos: values.aceptacionTerminos,
-    });
-    sessionStorage.setItem("step1", JSON.stringify({ ...values }));
+    });    
+    sessionStorage.clear();
+    sessionStorage.setItem("step1", JSON.stringify({ ...values }));    
     updateStep("fetch1");
   }
 

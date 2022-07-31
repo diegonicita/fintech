@@ -3,13 +3,16 @@ import axios from "axios";
 
 function Fetch1({ data, setData, updateStep }) {
   
-  console.log("Fetch1");
+  console.log("Fetch1 Render");
 
   const url =
     process.env.REACT_APP_URL +
     `${process.env.REACT_APP_QUERY1}${data.numeroDeDocumento}`;
 
   const myFetch = () => {
+
+    console.log("Fetch1 Axios Get");
+
     axios
       .get(url, {
         headers: { Authorization: `Apikey ${process.env.REACT_APP_TOKEN}` },
@@ -37,7 +40,7 @@ function Fetch1({ data, setData, updateStep }) {
   };
 
   useEffect(() => {
-    myFetch();
+    setTimeout(() => myFetch(), 1000);
   }, []);
 
   return (
