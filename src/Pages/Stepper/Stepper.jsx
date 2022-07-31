@@ -48,6 +48,14 @@ function Stepper() {
     setStep((previous) => previous + 1);
   }
 
+  function translateStep(step)
+  {
+    if (step === "fetch1" || step === "fetch2") {
+      return 2;
+    }
+    else {return step}
+  }
+
   return (
     <>
       <S.Container>
@@ -72,7 +80,7 @@ function Stepper() {
           className="up"
           style={{ justifyContent: "flex-end", alignItems: "flex-start" }}
         >
-          <StepperLine step={step} />
+          <StepperLine step={translateStep(step)} />
         </section>
         <Link to="">
           <S.ImageSmall
