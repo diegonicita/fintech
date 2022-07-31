@@ -1,26 +1,37 @@
 import React from "react";
 import { useFormik } from "formik";
 import validationSchema from "../validations/step1";
-import axios from "axios";
 import * as s from "./styles";
 import { campos1 as campos } from "./campos.js";
 import { renderSwitch as renderSwitchInput } from "./renderSwitch.js";
 import Button from "../../../components/Button/Button";
 
 function Step1({ data, setData, updateStep }) {
-
-  const onSubmit = () => {    
-    setData({      
-      phone: values.phone,
-      email: values.email,
-      tipoDeDocumento: values.tipoDeDocumento,
-      numeroDeDocumento: values.numeroDeDocumento,
-      aceptacionTerminos: values.aceptacionTerminos,
-    });    
-    sessionStorage.clear();
-    sessionStorage.setItem("step1", JSON.stringify({ ...values }));    
-    updateStep("fetch1");
-  }
+  const onSubmit = () => {
+    const storage = JSON.parse(sessionStorage.getItem("step1"));
+    if (storage?.numeroDeDocumento === values.numeroDeDocumento) {
+      setData({
+        ...data,
+        phone: values.phone,
+        email: values.email,
+        tipoDeDocumento: values.tipoDeDocumento,
+        numeroDeDocumento: values.numeroDeDocumento,
+        aceptacionTerminos: values.aceptacionTerminos,
+      });
+      updateStep(2);
+    } else {
+      setData({
+        phone: values.phone,
+        email: values.email,
+        tipoDeDocumento: values.tipoDeDocumento,
+        numeroDeDocumento: values.numeroDeDocumento,
+        aceptacionTerminos: values.aceptacionTerminos,
+      });
+      sessionStorage.clear();
+      sessionStorage.setItem("step1", JSON.stringify({ ...values }));
+      updateStep("fetch1");
+    }
+  };
 
   // Formik //
   const initialValues = {
@@ -59,9 +70,7 @@ function Step1({ data, setData, updateStep }) {
           </React.Fragment>
         );
       })}
-      <Button type="submit">
-        Proximo Paso
-      </Button>      
+      <Button type="submit">Proximo Paso</Button>
     </s.Form>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Progressbar({ goNext, time }) {
+function Progressbar({ goTo, updateStep, time }) {
   const [progression, setProgression] = useState(0);
 
   useEffect(() => {
@@ -9,11 +9,16 @@ function Progressbar({ goNext, time }) {
         setProgression((prevWidth) => prevWidth + 1);        
       }
     }, time);
-    setTimeout( 
+    const tiempoFuera = setTimeout( 
         () => {
             clearInterval(interval);
-            goNext()}, time * 100)
-    }, []);
+            updateStep(goTo)}, time * 100)
+    
+    return () => {
+      clearInterval(interval);
+      clearTimeout(tiempoFuera);
+    }    
+          }, []);
 
   return (
     <div>

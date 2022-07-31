@@ -2,9 +2,8 @@ import React from "react";
 import * as s from "./styles";
 import Button from "../../components/Button/Button";
 
-function StepBase({ context, children}) {
-  
-  const handleClickButtonBack = (e) => {    
+function StepBase({ context, children }) {
+  const handleClickButtonBack = (e) => {
     context.updateStep(context.buttons[0].goTo);
   };
   const handleClickButtonSubmit = (e) => {
@@ -15,14 +14,22 @@ function StepBase({ context, children}) {
   return (
     <s.Form onSubmit={handleClickButtonSubmit} type="POST">
       <h2>{context.title}</h2>
-      {children}      
-      <s.Botonera>
-        <div style={{margin: "10px"}} />
-        <Button handleClick={handleClickButtonBack} type="button">{context.buttons[0].title}</Button>      
-        <div style={{margin: "10px"}} />
-        <Button type="submit">{context.buttons[1].title}</Button>        
-        <div style={{margin: "10px"}} />
-      </s.Botonera>
+      {children}
+      {context.buttons.length > 0 && (
+        <s.Botonera>
+          <div style={{ margin: "10px" }} />
+          {context.buttons[0].title === "Volver" && (
+            <>
+              <Button handleClick={handleClickButtonBack} type="button">
+                {context.buttons[0].title}
+              </Button>
+              <div style={{ margin: "10px" }} />
+            </>
+          )}
+          <Button type="submit">{context.buttons[1].title}</Button>
+          <div style={{ margin: "10px" }} />
+        </s.Botonera>
+      )}
     </s.Form>
   );
 }
