@@ -1,4 +1,4 @@
-import * as s from "./styles";
+import * as s from "../../Pages/Stepper/Steps/styles";
 
 export const renderSwitch = (campo, f) => {
     

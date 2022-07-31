@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import validationSchema from "../validations/step2";
 import { campos2 as campos } from "./campos.js";
-import * as s from "./styles";
 import Button from "../../../components/Button/Button";
-import { renderSwitch as renderSwitchInput } from "./renderSwitch.js";
+import Form from "../../../components/Form/Form";
+import Separador from "../../../components/Separador/Separador";
+import * as s from "./styles";
 
-function Step2({ data, setData, updateStep }) {  
-
+function Step2({ data, setData, updateStep }) {
   // Formik //
   const onSubmit = () => {
-    sessionStorage.setItem("step2", JSON.stringify({ ...values }));    
+    sessionStorage.setItem("step2", JSON.stringify({ ...values }));
     updateStep(3);
   };
 
@@ -31,43 +31,21 @@ function Step2({ data, setData, updateStep }) {
     onSubmit,
     enableReinitialize: true,
   });
-  const { handleSubmit, errors, touched, values } = formik;
-
-  // Para hacer el Render de los errores en cada campo //
-  const renderError = (campo) => {
-    return (
-      errors[campo.name] &&
-      touched[campo.name] && <s.Error>{errors[campo.name]}</s.Error>
-    );
-  };
+  const { values } = formik;
 
   return (
-    <s.Form onSubmit={handleSubmit} type="POST">
-      <h2>Datos Personales</h2>
-      {campos.map((campo) => {
-        return (
-          <React.Fragment key={campo.name + new Date().getMilliseconds}>
-            {renderSwitchInput(campo, formik)}
-            {renderError(campo)}
-          </React.Fragment>
-        );
-      })}
+    <Form title="Datos Personales" formik={formik} campos={campos}>
       <s.Botonera>
-        <div style={{ margin: "15px" }} />
-        <Button          
-          handleClick={() => updateStep(1)}
-          type="button"
-        >
+        <Separador />
+        <Button handleClick={() => updateStep(1)} type="button">
           Volver
         </Button>
-        <div style={{ margin: "10px" }} />
-        <Button type="submit">
-          Proximo Paso
-        </Button>
-        <div style={{margin: "10px"}} />
+        <Separador />
+        <Button type="submit">Proximo Paso</Button>
+        <Separador />
       </s.Botonera>
-      <div style={{ margin: "10px" }} />      
-    </s.Form>
+      <Separador />
+    </Form>
   );
 }
 
