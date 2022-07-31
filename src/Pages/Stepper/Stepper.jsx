@@ -1,10 +1,13 @@
+// React Hooks
 import React, { useState, useEffect } from "react";
+// React Router
 import { Link } from "react-router-dom";
-
+// Imagenes
 import logo from "../../Assets/logo.png";
 import logoSmall from "../../Assets/logo-small.png";
-
+// Styles Components //
 import * as S from "./styles";
+// Components //
 import Modal from "../../components/Modal/Modal.jsx";
 import Progressbar from "../../components/Progressbar";
 import Step1 from "./Steps/Step1";
@@ -14,11 +17,11 @@ import Step2 from "./Steps/Step2";
 import Step3 from "./Steps/Step3";
 import Step4 from "./Steps/Step4";
 import Step5 from "./Steps/Step5";
-// import Step6 from "./Steps/Step6";
 import StepCamera from "./Steps/StepCamera";
 import StepperLine from "../../components/StepperLine/StepperLine";
 import StepBase from "../../components/StepBase/StepBase";
 
+// Stepper //
 function Stepper() {
   const [data, setData] = useState({});
   const [step, setStep] = useState(0);
@@ -39,8 +42,7 @@ function Stepper() {
     }));
   }, [step]);
 
-  const updateStep = (n) => {
-    console.log("step " + n);
+  const updateStep = (n) => {    
     setStep(n);
   };
 
@@ -48,50 +50,36 @@ function Stepper() {
     setStep((previous) => previous + 1);
   }
 
-  function translateStep(step)
-  {
+  function translateStep(step) {
     if (step === "fetch1" || step === "fetch2") {
       return 2;
+    } else {
+      return step;
     }
-    else {return step}
   }
 
   return (
     <>
       <S.Container>
-        <Link
-          to=""
-          style={{
-            display: "flex",
-            alignSelf: "flex-start",
-            position: "absolute",
-          }}
-        >
+        <S.ImageContainer to="">
           <S.Image
-            onClick={() => {
-              updateStep(0);
-            }}
+            onClick={() => updateStep(0)}
             src={logo}
-            alt="logo"
-            style={{ justifyContent: "flex-start", alignSelf: "flex-end" }}
+            alt="logo de la aplicacion version grande"
           />
-        </Link>
-        <section
-          className="up"
-          style={{ justifyContent: "flex-end", alignItems: "flex-start" }}
-        >
+        </S.ImageContainer>
+        <section className="up">
           <StepperLine step={translateStep(step)} />
         </section>
         <Link to="">
           <S.ImageSmall
             src={logoSmall}
-            alt="logo"
+            alt="logo de la aplicacion version pequeña"
             onClick={() => {
               updateStep(0);
             }}
           />
         </Link>
-
         <section className="middle">
           {step === 0 && (
             <Modal
@@ -130,7 +118,7 @@ function Stepper() {
           {step === 4 && <Step4 data={data} updateStep={updateStep} />}
           {step === 5 && <Step5 data={data} updateStep={updateStep} />}
           {step === 6 && (
-            <>              
+            <>
               <StepBase
                 context={{
                   title: "Estamos guardando la información, por favor aguarde",

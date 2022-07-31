@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import theme from "../../globalBreakpoints";
+import { Link } from "react-router-dom";
 
 const flexConfig = css`
   display: flex;  
@@ -15,7 +16,12 @@ export const Container = styled.div`
   height: auto;
   width: 95vw; 
 
-  .up,
+  .up {
+    ${flexConfig} 
+    justify-content: flex-end;
+    align-items: flex-start;
+  };
+
   .middle,
   .down {
     ${flexConfig}    
@@ -26,7 +32,15 @@ export const Container = styled.div`
   }
 `;
 
+export const ImageContainer = styled(Link)`	
+  display: flex;
+  align-self: flex-start;
+  position: absolute;
+`;          
+
 export const Image = styled.img`
+  justify-content: flex-start;
+  align-self: flex-end;
   display: none;
   width: auto;
   height: 120px;
