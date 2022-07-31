@@ -30,7 +30,7 @@ function Step5({ data, updateStep }) {
   const { values } = formik;  
 
   return (
-    <Form title="Direccion" formik={formik} onSubmit={onSubmit} campos={campos}>      
+    <Form title="Datos Bancarios" formik={formik} onSubmit={onSubmit} campos={campos}>      
       <s.Botonera>
         <Separador />
           <Button handleClick={() => updateStep(4)} type="button">Volver</Button>      
