@@ -26,6 +26,7 @@ function RadioCheck({
           <s.Wrapper key={1001 + index}>
             <s.Input
               type={type}
+              id={nameIndex}
               name={nameIndex}
               onChange={handleChange}
               onBlur={handleBlur}
