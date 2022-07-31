@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import validationSchema from "../validations/step4";
 import RadioCheck from "../../../components/RadioCheck/RadioCheck";
 import * as s from "./styles";
 import Button from "../../../components/Button/Button";
-import { useState } from "react";
+import Separador from "../../../components/Separador/Separador";
 
 function Step4({ data, updateStep }) {
-
   const [checkBoxError, setCheckBoxError] = useState(false);
 
   const onSubmit = () => {
-    let flag = [values.condicionesSOIPEPFATCA1, 
-                values.condicionesSOIPEPFATCA2, 
-                values.condicionesSOIPEPFATCA3,
-                values.condicionesSOIPEPFATCA4].some(x => x === true);
-    if (flag)
-    {sessionStorage.setItem("step4", JSON.stringify({ ...values }));
-    updateStep(5);}
-    else {
+    let flag = [
+      values.condicionesSOIPEPFATCA1,
+      values.condicionesSOIPEPFATCA2,
+      values.condicionesSOIPEPFATCA3,
+      values.condicionesSOIPEPFATCA4,
+    ].some((x) => x === true);
+    if (flag) {
+      sessionStorage.setItem("step4", JSON.stringify({ ...values }));
+      updateStep(5);
+    } else {
       setCheckBoxError(true);
     }
   };
@@ -56,7 +57,7 @@ function Step4({ data, updateStep }) {
       e.target.checked === true
     ) {
       setFieldValue("condicionesSOIPEPFATCA4", false);
-    }     
+    }
   };
 
   const {
@@ -118,13 +119,13 @@ function Step4({ data, updateStep }) {
       ></RadioCheck>
 
       <s.Botonera>
-        <div style={{ margin: "10px" }} />
+        <Separador />
         <Button handleClick={() => updateStep(3)} type="button">
           Volver
         </Button>
-        <div style={{ margin: "10px" }} />
+        <Separador />
         <Button type="submit">Proximo Paso</Button>
-        <div style={{ margin: "10px" }} />
+        <Separador />
       </s.Botonera>
     </form>
   );
