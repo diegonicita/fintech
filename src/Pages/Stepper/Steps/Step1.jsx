@@ -2,8 +2,8 @@ import React from "react";
 import { useFormik } from "formik";
 import validationSchema from "../validations/step1";
 import { campos1 as campos } from "./campos.js";
-import Button from "../../../components/Button/Button";
-import Form from "../../../components/Form/Form";
+import Button from "../../../Components/Button/Button";
+import Form from "../../../Components/Form/Form";
 
 function Step1({ data, setData, updateStep }) {
 

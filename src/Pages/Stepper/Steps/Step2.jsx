@@ -2,9 +2,9 @@ import React from "react";
 import { useFormik } from "formik";
 import validationSchema from "../validations/step2";
 import { campos2 as campos } from "./campos.js";
-import Button from "../../../components/Button/Button";
-import Form from "../../../components/Form/Form";
-import Separador from "../../../components/Separador/Separador";
+import Button from "../../../Components/Button/Button";
+import Form from "../../../Components/Form/Form";
+import Separador from "../../../Components/Separador/Separador";
 import * as s from "./styles";
 
 function Step2({ data, setData, updateStep }) {

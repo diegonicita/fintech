@@ -8,8 +8,8 @@ import logoSmall from "../../Assets/logo-small.png";
 // Styles Components //
 import * as S from "./styles";
 // Components //
-import Modal from "../../components/Modal/Modal.jsx";
-import Progressbar from "../../components/Progressbar";
+import Modal from "../../Components/Modal/Modal.jsx";
+import Progressbar from "../../Components/Progressbar/Progressbar";
 import Step1 from "./Steps/Step1";
 import Fetch1 from "./Steps/Fetch1";
 import Fetch2 from "./Steps/Fetch2";
@@ -18,8 +18,8 @@ import Step3 from "./Steps/Step3";
 import Step4 from "./Steps/Step4";
 import Step5 from "./Steps/Step5";
 import StepCamera from "./Steps/StepCamera";
-import StepperLine from "../../components/StepperLine/StepperLine";
-import StepBase from "../../components/StepBase/StepBase";
+import StepperLine from "../../Components/StepperLine/StepperLine";
+import StepBase from "../../Components/StepBase/StepBase";
 
 // Stepper //
 function Stepper() {

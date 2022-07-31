@@ -1,6 +1,6 @@
 import React from "react";
 import * as s from "./styles";
-import Button from "../../components/Button/Button";
+import Button from "../Button/Button";
 
 function StepBase({ context, children }) {
   const handleClickButtonBack = (e) => {

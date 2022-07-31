@@ -3,9 +3,9 @@ import { useFormik } from "formik";
 import validationSchema from "../validations/step3";
 import { campos3 as campos } from "./campos.js";
 import * as s from "./styles";
-import Button from "../../../components/Button/Button";
-import Form from "../../../components/Form/Form";
-import Separador from "../../../components/Separador/Separador";
+import Button from "../../../Components/Button/Button";
+import Form from "../../../Components/Form/Form";
+import Separador from "../../../Components/Separador/Separador";
 
 function Step3({ data, updateStep }) {
   const onSubmit = () => {

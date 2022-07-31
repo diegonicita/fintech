@@ -1,5 +1,5 @@
 import React from "react";
-import CameraBase from "../../../components/CameraBase";
+import CameraBase from "../../../Components/CameraBase/CameraBase";
 
 function StepCamera({ goNext, numeroFoto }) {
   return (

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import validationSchema from "../validations/step4";
-import RadioCheck from "../../../components/RadioCheck/RadioCheck";
+import RadioCheck from "../../../Components/RadioCheck/RadioCheck";
 import * as s from "./styles";
-import Button from "../../../components/Button/Button";
-import Separador from "../../../components/Separador/Separador";
+import Button from "../../../Components/Button/Button";
+import Separador from "../../../Components/Separador/Separador";
 
 function Step4({ data, updateStep }) {
   const [checkBoxError, setCheckBoxError] = useState(false);
