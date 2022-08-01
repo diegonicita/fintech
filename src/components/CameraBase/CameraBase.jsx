@@ -19,14 +19,14 @@ export const CameraBase = ({goNext, numeroFoto}) => {
           <Webcam
             id="web-cam"
             videoConstraints={{
-              width: 640,
-              height: 1024,
+              width: 320,
+              height: 640,
               facingMode: "user",
               aspectRatio: 1.7777777777777777,
             }}
             audio={false}
-            height={640}
             width={320}
+            height={640}
             screenshotFormat="image/jpeg"
             ref={webcamRef}
           ></Webcam>
